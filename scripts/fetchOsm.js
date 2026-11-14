@@ -1,6 +1,7 @@
 /**
  * Fetch real OpenStreetMap (OSM) infrastructure data for Hulikere village,
- * Mandya district, Karnataka using the Overpass API and convert it to GeoJSON.
+ * Mandya taluk, Mandya district, Karnataka using the Overpass API with a configurable
+ * bounding box centered on Hulikere village.
  *
  * Usage:
  *   node scripts/fetchOsm.js
@@ -15,44 +16,51 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * Editable configuration for Overpass query & fallback bounding box.
- * fallbackBbox format: [south, west, north, east]
+ * Easily editable center & radius configuration.
+ * Coordinates centered on Hulikere village, Mandya District (OSM node 3211036616).
  */
 export const CONFIG = {
   overpassUrl: 'https://overpass-api.de/api/interpreter',
-  districtName: 'Mandya',
   villageName: 'Hulikere',
-  fallbackBbox: [12.505, 76.885, 12.535, 76.915],
+  districtName: 'Mandya',
+  stateName: 'Karnataka',
+  // Village centre coordinates
+  centerLat: 12.57056,
+  centerLng: 76.77363,
+  radiusKm: 1.5,
   outputPath: path.resolve(__dirname, '../src/data/osm.json'),
-  timeoutSeconds: 30,
+  timeoutSeconds: 45,
 };
+
+/**
+ * Computes bounding box [south, west, north, east] from center (lat, lng) and radius in km.
+ */
+export function getBoundingBox(
+  lat = CONFIG.centerLat,
+  lng = CONFIG.centerLng,
+  radiusKm = CONFIG.radiusKm
+) {
+  const kmPerLat = 111.132;
+  const kmPerLng = 111.32 * Math.cos((lat * Math.PI) / 180);
+  const deltaLat = radiusKm / kmPerLat;
+  const deltaLng = radiusKm / kmPerLng;
+
+  return [
+    Number((lat - deltaLat).toFixed(6)), // south
+    Number((lng - deltaLng).toFixed(6)), // west
+    Number((lat + deltaLat).toFixed(6)), // north
+    Number((lng + deltaLng).toFixed(6)), // east
+  ];
+}
 
 function buildFeatureFilters(scopeClause) {
   return `
   way["highway"](${scopeClause});
-  nwr["amenity"~"^(school|kindergarten|hospital|clinic|doctors|community_centre|social_facility|place_of_worship|townhall)$"](${scopeClause});
-  nwr["office"~"^(government|administrative)$"](${scopeClause});
+  nwr["amenity"](${scopeClause});
+  nwr["office"](${scopeClause});
   nwr["government"](${scopeClause});
-  nwr["building"~"^(school|kindergarten|hospital|clinic|civic|public|government|temple|chapel|church|mosque|hall)$"](${scopeClause});
-  nwr["building"]["name"](${scopeClause});
+  nwr["building"](${scopeClause});
   nwr["man_made"~"^(water_tower|water_tank|water_well|storage_tank)$"](${scopeClause});
-`.trim();
-}
-
-function buildAreaQuery(districtName, villageName, timeoutSeconds) {
-  return `
-[out:json][timeout:${timeoutSeconds}];
-area["name"~"${districtName}",i]["boundary"="administrative"]->.district;
-(
-  rel["name"~"^${villageName}$",i]["boundary"="administrative"](area.district);
-  rel["name:en"~"^${villageName}$",i]["boundary"="administrative"](area.district);
-  rel["name"~"^${villageName}$",i]["place"](area.district);
-);
-map_to_area->.searchArea;
-(
-  ${buildFeatureFilters('area.searchArea')}
-);
-out body geom;
 `.trim();
 }
 
@@ -89,6 +97,43 @@ async function queryOverpass(ql) {
   return response.json();
 }
 
+/**
+ * Filter roads: drop unnamed footpaths and tiny service lanes,
+ * while keeping all residential, unclassified, tertiary, secondary, primary, and named roads.
+ */
+function shouldKeepRoad(tags = {}) {
+  const highway = String(tags.highway || '').toLowerCase();
+  const name = tags.name || tags['name:en'] || tags['name:kn'];
+
+  // Drop unnamed footpaths, trails, steps, cycleways, tracks
+  const pedestrianTypes = [
+    'footway',
+    'path',
+    'steps',
+    'cycleway',
+    'pedestrian',
+    'bridleway',
+    'corridor',
+  ];
+  if (pedestrianTypes.includes(highway)) {
+    if (!name) return false;
+  }
+
+  // Drop tiny service lanes (driveways, parking aisles, alleys)
+  if (highway === 'service') {
+    const serviceType = String(tags.service || '').toLowerCase();
+    if (['driveway', 'parking_aisle', 'alley'].includes(serviceType)) {
+      return false;
+    }
+    // Also drop tiny unnamed service access
+    if (!name && serviceType === '') {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function classifyElement(tags = {}) {
   const manMade = String(tags.man_made || '').toLowerCase();
   if (
@@ -101,6 +146,9 @@ function classifyElement(tags = {}) {
   }
 
   if (tags.highway) {
+    if (!shouldKeepRoad(tags)) {
+      return null;
+    }
     return 'road';
   }
 
@@ -215,6 +263,7 @@ function overpassToGeoJson(overpassJson, metaInfo) {
     roads: 0,
     publicBuildings: 0,
     waterTanks: 0,
+    droppedRoads: 0,
     buildingsBreakdown: {
       school: 0,
       anganwadi: 0,
@@ -233,6 +282,11 @@ function overpassToGeoJson(overpassJson, metaInfo) {
 
   for (const el of elements) {
     const tags = el.tags || {};
+    if (tags.highway && !shouldKeepRoad(tags)) {
+      counts.droppedRoads += 1;
+      continue;
+    }
+
     const category = classifyElement(tags);
     if (!category) continue;
 
@@ -335,6 +389,7 @@ function overpassToGeoJson(overpassJson, metaInfo) {
       counts: {
         total: features.length,
         roads: counts.roads,
+        droppedRoads: counts.droppedRoads,
         publicBuildings: counts.publicBuildings,
         waterTanks: counts.waterTanks,
         buildingsBreakdown: counts.buildingsBreakdown,
@@ -345,65 +400,62 @@ function overpassToGeoJson(overpassJson, metaInfo) {
   };
 }
 
-async function main() {
-  console.log(
-    `Querying Overpass API for "${CONFIG.villageName}" in "${CONFIG.districtName}" district...`
-  );
+export async function fetchOsmData() {
+  const bbox = getBoundingBox(CONFIG.centerLat, CONFIG.centerLng, CONFIG.radiusKm);
+  console.log(`\n======================================================`);
+  console.log(`Fetching OpenStreetMap data for ${CONFIG.villageName} village`);
+  console.log(`Center: [${CONFIG.centerLat}, ${CONFIG.centerLng}]`);
+  console.log(`Radius: ${CONFIG.radiusKm} km`);
+  console.log(`Bounding Box [S, W, N, E]: [${bbox.join(', ')}]`);
+  console.log(`======================================================\n`);
 
-  let queryMethod = 'area';
-  let overpassData = await queryOverpass(
-    buildAreaQuery(CONFIG.districtName, CONFIG.villageName, CONFIG.timeoutSeconds)
-  );
+  const ql = buildBboxQuery(bbox, CONFIG.timeoutSeconds);
+  const overpassData = await queryOverpass(ql);
 
   if (overpassData.remark) {
-    console.warn(`Overpass area query remark: ${overpassData.remark}`);
-  }
-
-  if (!Array.isArray(overpassData.elements) || overpassData.elements.length === 0) {
-    console.log(
-      `Area lookup returned 0 elements. Falling back to bounding box [${CONFIG.fallbackBbox.join(
-        ', '
-      )}]...`
-    );
-    queryMethod = 'bbox';
-    overpassData = await queryOverpass(
-      buildBboxQuery(CONFIG.fallbackBbox, CONFIG.timeoutSeconds)
-    );
+    console.warn(`Overpass remark: ${overpassData.remark}`);
   }
 
   const geoJson = overpassToGeoJson(overpassData, {
     fetchedAt: new Date().toISOString(),
     source: 'OpenStreetMap (Overpass API)',
-    queryMethod,
+    queryMethod: 'bbox',
     village: CONFIG.villageName,
     district: CONFIG.districtName,
-    bbox: CONFIG.fallbackBbox,
+    center: [CONFIG.centerLat, CONFIG.centerLng],
+    radiusKm: CONFIG.radiusKm,
+    bbox,
   });
 
   await fs.mkdir(path.dirname(CONFIG.outputPath), { recursive: true });
   await fs.writeFile(CONFIG.outputPath, JSON.stringify(geoJson, null, 2), 'utf8');
 
   const { counts } = geoJson.metadata;
-  console.log('\n=== Overpass Fetch Summary ===');
-  console.log(`Query method    : ${queryMethod}`);
-  console.log(`Total features  : ${counts.total}`);
-  console.log(`Roads (highway) : ${counts.roads}`);
-  console.log(`Public buildings: ${counts.publicBuildings}`);
-  console.log(`  - Schools     : ${counts.buildingsBreakdown.school}`);
-  console.log(`  - Anganwadis  : ${counts.buildingsBreakdown.anganwadi}`);
-  console.log(`  - PHC/Clinic  : ${counts.buildingsBreakdown.hospitalOrClinic}`);
-  console.log(`  - Community   : ${counts.buildingsBreakdown.communityCentre}`);
-  console.log(`  - Temples     : ${counts.buildingsBreakdown.temple}`);
-  console.log(`  - Govt/GP Off.: ${counts.buildingsBreakdown.panchayatOrGovtOffice}`);
-  console.log(`  - Other named : ${counts.buildingsBreakdown.otherNamedBuilding}`);
-  console.log(`Water structures: ${counts.waterTanks}`);
-  console.log(`  - water_tower : ${counts.waterBreakdown.water_tower}`);
-  console.log(`  - water_tank  : ${counts.waterBreakdown.water_tank}`);
-  console.log(`  - water_well  : ${counts.waterBreakdown.water_well}`);
-  console.log(`\nSaved GeoJSON to: ${CONFIG.outputPath}`);
+  console.log('\n=== Overpass Fetch Summary for Hulikere Village ===');
+  console.log(`Total valid features : ${counts.total}`);
+  console.log(`Roads (retained)     : ${counts.roads}`);
+  console.log(`Roads/paths (dropped): ${counts.droppedRoads}`);
+  console.log(`Public buildings     : ${counts.publicBuildings}`);
+  console.log(`  - Schools          : ${counts.buildingsBreakdown.school}`);
+  console.log(`  - Anganwadis       : ${counts.buildingsBreakdown.anganwadi}`);
+  console.log(`  - PHC/Clinic       : ${counts.buildingsBreakdown.hospitalOrClinic}`);
+  console.log(`  - Community Centres: ${counts.buildingsBreakdown.communityCentre}`);
+  console.log(`  - Temples          : ${counts.buildingsBreakdown.temple}`);
+  console.log(`  - Govt/GP Offices  : ${counts.buildingsBreakdown.panchayatOrGovtOffice}`);
+  console.log(`  - Other buildings  : ${counts.buildingsBreakdown.otherNamedBuilding}`);
+  console.log(`Water structures     : ${counts.waterTanks}`);
+  console.log(`  - water_tower      : ${counts.waterBreakdown.water_tower}`);
+  console.log(`  - water_tank       : ${counts.waterBreakdown.water_tank}`);
+  console.log(`  - water_well       : ${counts.waterBreakdown.water_well}`);
+  console.log(`\nGeoJSON saved successfully to: ${CONFIG.outputPath}`);
+
+  return geoJson;
 }
 
-main().catch((err) => {
-  console.error('Failed to fetch OSM data:', err.message);
-  process.exitCode = 1;
-});
+// Execute when run as CLI
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  fetchOsmData().catch((err) => {
+    console.error('Failed to fetch OSM data:', err.message);
+    process.exitCode = 1;
+  });
+}

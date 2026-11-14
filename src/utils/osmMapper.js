@@ -350,9 +350,15 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
   const finalRoads =
     osmRoads.length > 0 ? osmRoads : tagAsSample(sampleAssets.roads || []);
 
+  // Include OSM buildings along with any sample buildings that are missing from OSM
+  const foundOsmBldgTypes = new Set(osmBuildings.map((b) => b.type));
+  const missingSampleBuildings = tagAsSample(
+    (sampleAssets.publicBuildings || []).filter((b) => !foundOsmBldgTypes.has(b.type))
+  );
+
   const finalBuildings =
     osmBuildings.length > 0
-      ? osmBuildings
+      ? [...osmBuildings, ...missingSampleBuildings]
       : tagAsSample(sampleAssets.publicBuildings || []);
 
   const finalLights = tagAsSample(sampleAssets.streetLights || []);
@@ -361,10 +367,13 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
     ...sampleAssets,
     meta: {
       ...sampleAssets.meta,
+      center: osmGeoJson?.metadata?.center || sampleAssets.meta.center || [12.57056, 76.77363],
+      bbox: osmGeoJson?.metadata?.bbox || sampleAssets.meta.bbox,
       osmFetchedAt: osmGeoJson?.metadata?.fetchedAt || null,
       osmCounts: osmGeoJson?.metadata?.counts || null,
       hasRealOsmData: osmRoads.length > 0 || osmBuildings.length > 0 || osmWaterTanks.length > 0,
     },
+    wards: sampleAssets.wards,
     waterTanks: finalWaterTanks,
     roads: finalRoads,
     publicBuildings: finalBuildings,

@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
+import 'leaflet.markercluster';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { RefreshCw } from 'lucide-react';
 import {
   getLocalizedName,
@@ -17,8 +20,14 @@ import {
 import { MapControlsPanel } from './MapControlsPanel';
 import { MapLegend } from './MapLegend';
 
-const VILLAGE_CENTER = [12.52, 76.9];
-const VILLAGE_ZOOM = 17;
+const VILLAGE_CENTER = [12.57056, 76.77363];
+const VILLAGE_ZOOM = 15;
+const VILLAGE_BBOX = [12.557063, 76.759824, 12.584057, 76.787436];
+const PAN_PAD = 0.008;
+const MAX_BOUNDS = L.latLngBounds(
+  [VILLAGE_BBOX[0] - PAN_PAD, VILLAGE_BBOX[1] - PAN_PAD],
+  [VILLAGE_BBOX[2] + PAN_PAD, VILLAGE_BBOX[3] + PAN_PAD]
+);
 
 const WARD_COLORS = ['#0f766e', '#2563eb', '#9333ea', '#d97706', '#db2777'];
 
@@ -30,15 +39,30 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function buildClusterIcon(cluster, color) {
+  const count = cluster.getChildCount();
+  const size = count >= 10 ? 30 : 24;
+  return L.divIcon({
+    html: `
+      <div style="width:${size}px;height:${size}px;border-radius:9999px;background:${color};color:#ffffff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;border:2px solid #ffffff;box-shadow:0 2px 6px rgba(0,0,0,0.35);">
+        ${count}
+      </div>
+    `,
+    className: 'gp-cluster-icon',
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+  });
+}
+
 function buildTankIcon(condition, isSelected) {
   const status = getStatusMeta(condition);
-  const size = isSelected ? 40 : 34;
+  const size = isSelected ? 26 : 20;
   const isPoor = status.bucket === 'poor';
   const ring = isSelected
-    ? 'box-shadow: 0 0 0 3px #0f172a, 0 6px 14px rgba(0,0,0,0.35);'
-    : 'box-shadow: 0 2px 8px rgba(15,23,42,0.28);';
+    ? 'box-shadow: 0 0 0 3px #0f172a, 0 4px 10px rgba(0,0,0,0.35);'
+    : 'box-shadow: 0 1px 5px rgba(15,23,42,0.25);';
   const pulse = isPoor
-    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-5px;border-radius:9999px;border:2.5px solid #dc2626;"></span>`
+    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-4px;border-radius:9999px;border:2px solid #dc2626;"></span>`
     : '';
 
   return L.divIcon({
@@ -46,10 +70,10 @@ function buildTankIcon(condition, isSelected) {
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
     html: `
-      <div style="position:relative;width:${size}px;height:${size}px;border-radius:9999px;background:${status.colorHex};padding:3px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
+      <div style="position:relative;width:${size}px;height:${size}px;border-radius:9999px;background:${status.colorHex};padding:2.5px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
         ${pulse}
-        <div style="width:100%;height:100%;border-radius:9999px;background:#0284c7;border:1.5px solid #ffffff;display:flex;align-items:center;justify-content:center;">
-          <svg width="${isSelected ? 17 : 14}" height="${isSelected ? 17 : 14}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <div style="width:100%;height:100%;border-radius:9999px;background:#0284c7;border:1px solid #ffffff;display:flex;align-items:center;justify-content:center;">
+          <svg width="${isSelected ? 13 : 10}" height="${isSelected ? 13 : 10}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
           </svg>
         </div>
@@ -60,13 +84,13 @@ function buildTankIcon(condition, isSelected) {
 
 function buildBuildingIcon(condition, isSelected) {
   const status = getStatusMeta(condition);
-  const size = isSelected ? 40 : 34;
+  const size = isSelected ? 26 : 20;
   const isPoor = status.bucket === 'poor';
   const ring = isSelected
-    ? 'box-shadow: 0 0 0 3px #0f172a, 0 6px 14px rgba(0,0,0,0.35);'
-    : 'box-shadow: 0 2px 8px rgba(15,23,42,0.28);';
+    ? 'box-shadow: 0 0 0 3px #0f172a, 0 4px 10px rgba(0,0,0,0.35);'
+    : 'box-shadow: 0 1px 5px rgba(15,23,42,0.25);';
   const pulse = isPoor
-    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-5px;border-radius:12px;border:2.5px solid #dc2626;"></span>`
+    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-4px;border-radius:8px;border:2px solid #dc2626;"></span>`
     : '';
 
   return L.divIcon({
@@ -74,17 +98,13 @@ function buildBuildingIcon(condition, isSelected) {
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
     html: `
-      <div style="position:relative;width:${size}px;height:${size}px;border-radius:10px;background:${status.colorHex};padding:3px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
+      <div style="position:relative;width:${size}px;height:${size}px;border-radius:7px;background:${status.colorHex};padding:2.5px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
         ${pulse}
-        <div style="width:100%;height:100%;border-radius:7px;background:#4f46e5;border:1.5px solid #ffffff;display:flex;align-items:center;justify-content:center;">
-          <svg width="${isSelected ? 17 : 14}" height="${isSelected ? 17 : 14}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <div style="width:100%;height:100%;border-radius:5px;background:#4f46e5;border:1px solid #ffffff;display:flex;align-items:center;justify-content:center;">
+          <svg width="${isSelected ? 13 : 10}" height="${isSelected ? 13 : 10}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
             <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
             <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
-            <path d="M10 6h4"></path>
-            <path d="M10 10h4"></path>
-            <path d="M10 14h4"></path>
-            <path d="M10 18h4"></path>
           </svg>
         </div>
       </div>
@@ -94,28 +114,27 @@ function buildBuildingIcon(condition, isSelected) {
 
 function buildStreetLightIcon(status, isSelected) {
   const isFaulty = status === 'faulty';
-  const size = isSelected ? 28 : 22;
+  const size = isSelected ? 18 : 14;
   const conditionColor = isFaulty ? '#dc2626' : '#16a34a';
   const innerBg = isFaulty ? '#991b1b' : '#f59e0b';
   const pulse = isFaulty
-    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-4px;border-radius:9999px;border:2px solid #dc2626;"></span>`
+    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-3px;border-radius:9999px;border:1.8px solid #dc2626;"></span>`
     : '';
   const selectedRing = isSelected
-    ? 'box-shadow: 0 0 0 3px #0f172a, 0 4px 10px rgba(0,0,0,0.3);'
-    : 'box-shadow: 0 1px 5px rgba(15,23,42,0.3);';
+    ? 'box-shadow: 0 0 0 2.5px #0f172a, 0 3px 8px rgba(0,0,0,0.3);'
+    : 'box-shadow: 0 1px 4px rgba(15,23,42,0.25);';
 
   return L.divIcon({
     className: 'gp-custom-icon',
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
     html: `
-      <div style="position:relative;width:${size}px;height:${size}px;border-radius:9999px;background:${conditionColor};padding:2.5px;display:flex;align-items:center;justify-content:center;${selectedRing}">
+      <div style="position:relative;width:${size}px;height:${size}px;border-radius:9999px;background:${conditionColor};padding:2px;display:flex;align-items:center;justify-content:center;${selectedRing}">
         ${pulse}
         <div style="width:100%;height:100%;border-radius:9999px;background:${innerBg};border:1px solid #ffffff;display:flex;align-items:center;justify-content:center;">
-          <svg width="${isSelected ? 13 : 10}" height="${isSelected ? 13 : 10}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="${isSelected ? 9 : 7}" height="${isSelected ? 9 : 7}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
             <path d="M9 18h6"></path>
-            <path d="M10 22h4"></path>
           </svg>
         </div>
       </div>
@@ -206,6 +225,10 @@ export function VillageMap({
     const map = L.map(mapContainerRef.current, {
       center: VILLAGE_CENTER,
       zoom: VILLAGE_ZOOM,
+      minZoom: 13,
+      maxZoom: 19,
+      maxBounds: MAX_BOUNDS,
+      maxBoundsViscosity: 0.85,
       zoomControl: false,
     });
 
@@ -224,9 +247,27 @@ export function VillageMap({
     layersRef.current = {
       wards: L.layerGroup().addTo(map),
       roads: L.layerGroup().addTo(map),
-      waterTanks: L.layerGroup().addTo(map),
-      publicBuildings: L.layerGroup().addTo(map),
-      streetLights: L.layerGroup().addTo(map),
+      waterTanks: L.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 30,
+        spiderfyOnMaxZoom: true,
+        disableClusteringAtZoom: 17,
+        iconCreateFunction: (c) => buildClusterIcon(c, '#0284c7'),
+      }).addTo(map),
+      publicBuildings: L.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 30,
+        spiderfyOnMaxZoom: true,
+        disableClusteringAtZoom: 17,
+        iconCreateFunction: (c) => buildClusterIcon(c, '#4f46e5'),
+      }).addTo(map),
+      streetLights: L.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 40,
+        spiderfyOnMaxZoom: true,
+        disableClusteringAtZoom: 17,
+        iconCreateFunction: (c) => buildClusterIcon(c, '#d97706'),
+      }).addTo(map),
       draft: L.layerGroup().addTo(map),
     };
 
@@ -539,25 +580,21 @@ export function VillageMap({
   }, [focusRequest]);
 
   const fitVillageOrOsm = (map, animate = true) => {
-    const osmCoords = [];
-    for (const item of filteredAssets) {
-      if (item.dataSource !== 'osm' || !Array.isArray(item.coordinates)) continue;
-      if (item.category === 'roads') {
-        osmCoords.push(...item.coordinates);
-      } else if (item.coordinates.length === 2) {
-        osmCoords.push(item.coordinates);
-      }
-    }
-    if (osmCoords.length > 0) {
-      map.fitBounds(L.latLngBounds(osmCoords), {
-        padding: [40, 40],
-        maxZoom: 17,
-        animate,
+    const villageBounds = L.latLngBounds(
+      [VILLAGE_BBOX[0], VILLAGE_BBOX[1]],
+      [VILLAGE_BBOX[2], VILLAGE_BBOX[3]]
+    );
+    if (animate) {
+      map.flyToBounds(villageBounds, {
+        padding: [35, 35],
+        maxZoom: 16,
+        duration: 0.6,
       });
-    } else if (animate) {
-      map.flyTo(VILLAGE_CENTER, VILLAGE_ZOOM, { duration: 0.55 });
     } else {
-      map.setView(VILLAGE_CENTER, VILLAGE_ZOOM);
+      map.fitBounds(villageBounds, {
+        padding: [35, 35],
+        maxZoom: 16,
+      });
     }
   };
 

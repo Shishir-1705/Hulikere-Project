@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { PhotoCaptureInput } from './PhotoCaptureInput';
 
-const DEFAULT_CENTER = [12.52, 76.9];
+const DEFAULT_CENTER = [12.57056, 76.77363];
 
 const PROBLEM_TYPES = [
   {

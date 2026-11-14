@@ -126,14 +126,14 @@ export function flattenAssets(data) {
 }
 
 export function getAssetCenter(category, item) {
-  if (!item || !Array.isArray(item.coordinates)) return [12.52, 76.9];
+  if (!item || !Array.isArray(item.coordinates)) return [12.57056, 76.77363];
   if (category === 'roads') {
     const pts = item.coordinates;
-    if (pts.length === 0) return [12.52, 76.9];
+    if (pts.length === 0) return [12.57056, 76.77363];
     const mid = pts[Math.floor(pts.length / 2)];
-    return Array.isArray(mid) && mid.length === 2 ? mid : [12.52, 76.9];
+    return Array.isArray(mid) && mid.length === 2 ? mid : [12.57056, 76.77363];
   }
-  return item.coordinates.length === 2 ? item.coordinates : [12.52, 76.9];
+  return item.coordinates.length === 2 ? item.coordinates : [12.57056, 76.77363];
 }
 
 export function formatDate(dateStr) {
@@ -202,8 +202,8 @@ export function createDefaultForm(category, wards = []) {
     nameKn: '',
     ward: firstWard,
     notes: '',
-    lat: 12.52,
-    lng: 76.9,
+    lat: 12.5706,
+    lng: 76.7736,
   };
 
   if (category === 'waterTanks') {
@@ -226,8 +226,8 @@ export function createDefaultForm(category, wards = []) {
       condition: 'good',
       lastRepaired: today,
       polylinePoints: [
-        [12.5202, 76.8992],
-        [12.5202, 76.9008],
+        [12.5702, 76.7725],
+        [12.5710, 76.7745],
       ],
     };
   }
@@ -256,8 +256,8 @@ export function assetToForm(category, asset) {
     nameKn: asset.name?.kn || '',
     ward: asset.ward || 'Ward 1',
     notes: asset.notes || '',
-    lat: !isRoad && coords.length === 2 ? coords[0] : 12.52,
-    lng: !isRoad && coords.length === 2 ? coords[1] : 76.9,
+    lat: !isRoad && coords.length === 2 ? coords[0] : 12.5706,
+    lng: !isRoad && coords.length === 2 ? coords[1] : 76.7736,
     polylinePoints: isRoad ? coords : [],
     type: asset.type || '',
     condition: asset.condition || 'good',
@@ -331,15 +331,15 @@ export function formToAsset(
         Array.isArray(form.polylinePoints) && form.polylinePoints.length >= 2
           ? form.polylinePoints
           : [
-              [12.5202, 76.8992],
-              [12.5202, 76.9008],
+              [12.5702, 76.7725],
+              [12.5710, 76.7745],
             ],
     };
   }
 
   const coordinates = [
-    Number(form.lat) || 12.52,
-    Number(form.lng) || 76.9,
+    Number(form.lat) || 12.5706,
+    Number(form.lng) || 76.7736,
   ];
 
   if (category === 'waterTanks') {

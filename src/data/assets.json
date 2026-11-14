@@ -5,112 +5,225 @@
     "taluk": "Mandya",
     "district": "Mandya",
     "state": "Karnataka",
-    "center": [12.52, 76.9],
+    "center": [
+      12.57056,
+      76.77363
+    ],
+    "radiusKm": 1.5,
+    "bbox": [
+      12.557063,
+      76.759824,
+      12.584057,
+      76.787436
+    ],
     "isSampleData": true
   },
   "wards": [
     {
       "id": "WARD-01",
       "name": {
-        "en": "Ward 1 - Grama Kendra",
-        "kn": "ವಾರ್ಡ್ 1 - ಗ್ರಾಮ ಕೇಂದ್ರ"
+        "en": "Ward 1 - Gramatana (Village Centre)",
+        "kn": "ವಾರ್ಡ್ 1 - ಗ್ರಾಮಠಾಣಾ (ಕೇಂದ್ರ)"
       },
       "ward": "Ward 1",
       "status": "active",
       "wardNumber": 1,
-      "households": 105,
-      "population": 452,
+      "households": 118,
+      "population": 495,
       "representative": "H.N. Manjunath",
-      "center": [12.52, 76.9],
+      "center": [
+        12.57056,
+        76.77363
+      ],
       "polygon": [
-        [12.5209, 76.8986],
-        [12.5209, 76.9014],
-        [12.5189, 76.9014],
-        [12.5189, 76.8986]
+        [
+          12.574,
+          76.77
+        ],
+        [
+          12.574,
+          76.777
+        ],
+        [
+          12.567,
+          76.777
+        ],
+        [
+          12.567,
+          76.77
+        ]
       ]
     },
     {
       "id": "WARD-02",
       "name": {
-        "en": "Ward 2 - Doddakeri",
-        "kn": "ವಾರ್ಡ್ 2 - ದೊಡ್ಡಕೇರಿ"
+        "en": "Ward 2 - Hulikere Koppalu",
+        "kn": "ವಾರ್ಡ್ 2 - ಹುಲಿಕೆರೆ ಕೊಪ್ಪಲು"
       },
       "ward": "Ward 2",
       "status": "active",
       "wardNumber": 2,
-      "households": 94,
-      "population": 410,
+      "households": 96,
+      "population": 412,
       "representative": "B.R. Savithramma",
-      "center": [12.5221, 76.8996],
+      "center": [
+        12.5765,
+        76.78
+      ],
       "polygon": [
-        [12.5234, 76.897],
-        [12.5234, 76.9016],
-        [12.5209, 76.9014],
-        [12.5209, 76.8986],
-        [12.521, 76.897]
+        [
+          12.584057,
+          76.77363
+        ],
+        [
+          12.584057,
+          76.787436
+        ],
+        [
+          12.57056,
+          76.787436
+        ],
+        [
+          12.57056,
+          76.777
+        ],
+        [
+          12.574,
+          76.777
+        ],
+        [
+          12.574,
+          76.77363
+        ]
       ]
     },
     {
       "id": "WARD-03",
       "name": {
-        "en": "Ward 3 - Devasthana Beedhi",
-        "kn": "ವಾರ್ಡ್ 3 - ದೇವಸ್ಥಾನ ಬೀದಿ"
+        "en": "Ward 3 - Doddakeri (North-West)",
+        "kn": "ವಾರ್ಡ್ 3 - ದೊಡ್ಡಕೇರಿ"
       },
       "ward": "Ward 3",
       "status": "active",
       "wardNumber": 3,
-      "households": 82,
-      "population": 358,
+      "households": 88,
+      "population": 375,
       "representative": "K.S. Puttegowda",
-      "center": [12.5208, 76.9029],
+      "center": [
+        12.5765,
+        76.7665
+      ],
       "polygon": [
-        [12.523, 76.9016],
-        [12.523, 76.9044],
-        [12.5186, 76.9044],
-        [12.5189, 76.9014],
-        [12.5209, 76.9014]
+        [
+          12.584057,
+          76.759824
+        ],
+        [
+          12.584057,
+          76.77363
+        ],
+        [
+          12.574,
+          76.77363
+        ],
+        [
+          12.574,
+          76.77
+        ],
+        [
+          12.57056,
+          76.77
+        ],
+        [
+          12.57056,
+          76.759824
+        ]
       ]
     },
     {
       "id": "WARD-04",
       "name": {
-        "en": "Ward 4 - Shala Beedhi",
-        "kn": "ವಾರ್ಡ್ 4 - ಶಾಲಾ ಬೀದಿ"
+        "en": "Ward 4 - Visvesvaraya Nale (South-West)",
+        "kn": "ವಾರ್ಡ್ 4 - ವಿಶ್ವೇಶ್ವರಯ್ಯ ನಾಲೆ"
       },
       "ward": "Ward 4",
       "status": "active",
       "wardNumber": 4,
-      "households": 71,
-      "population": 308,
+      "households": 76,
+      "population": 320,
       "representative": "Lakshmi Narasimha",
-      "center": [12.5194, 76.8972],
+      "center": [
+        12.5635,
+        76.7665
+      ],
       "polygon": [
-        [12.521, 76.8956],
-        [12.521, 76.8986],
-        [12.518, 76.8986],
-        [12.518, 76.8956]
+        [
+          12.57056,
+          76.759824
+        ],
+        [
+          12.57056,
+          76.77
+        ],
+        [
+          12.567,
+          76.77
+        ],
+        [
+          12.567,
+          76.77363
+        ],
+        [
+          12.557063,
+          76.77363
+        ],
+        [
+          12.557063,
+          76.759824
+        ]
       ]
     },
     {
       "id": "WARD-05",
       "name": {
-        "en": "Ward 5 - Kere Angala",
+        "en": "Ward 5 - Kere Angala (South-East)",
         "kn": "ವಾರ್ಡ್ 5 - ಕೆರೆ ಅಂಗಳ"
       },
       "ward": "Ward 5",
       "status": "active",
       "wardNumber": 5,
-      "households": 68,
-      "population": 296,
-      "representative": "C. Ningamma",
-      "center": [12.5176, 76.9006],
+      "households": 82,
+      "population": 348,
+      "representative": "C. Mahadevaiah",
+      "center": [
+        12.5635,
+        76.78
+      ],
       "polygon": [
-        [12.5189, 76.8986],
-        [12.5189, 76.9014],
-        [12.5186, 76.9044],
-        [12.5162, 76.9044],
-        [12.5162, 76.8974],
-        [12.518, 76.8974]
+        [
+          12.57056,
+          76.777
+        ],
+        [
+          12.57056,
+          76.787436
+        ],
+        [
+          12.557063,
+          76.787436
+        ],
+        [
+          12.557063,
+          76.77363
+        ],
+        [
+          12.567,
+          76.77363
+        ],
+        [
+          12.567,
+          76.777
+        ]
       ]
     }
   ],
@@ -118,1262 +231,1000 @@
     {
       "id": "WT-01",
       "name": {
-        "en": "Main Overhead Tank (OHT) – Grama Kendra",
-        "kn": "ಮುಖ್ಯ ಓವರ್‌ಹೆಡ್ ನೀರಿನ ಟ್ಯಾಂಕ್ – ಗ್ರಾಮ ಕೇಂದ್ರ"
+        "en": "Village Core Overhead Tank (OHT-1)",
+        "kn": "ಗ್ರಾಮ ಕೇಂದ್ರ ಮೇಲ್ಮಟ್ಟದ ಜಲಸಂಗ್ರಹಾಗಾರ (OHT-1)"
       },
       "ward": "Ward 1",
       "type": "overhead",
       "capacity": 50000,
-      "yearBuilt": 2016,
+      "yearBuilt": 2018,
       "condition": "good",
-      "lastCleaningDate": "2026-09-15",
-      "householdsServed": 145,
-      "coordinates": [12.5205, 76.8998],
-      "notes": "Primary JJM distribution tank feeding Wards 1 & 3.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-WT01-1",
-          "date": "2026-09-15",
-          "action": "Chlorination & interior tank wash",
-          "performedBy": "GP Watermen Team",
-          "notes": "Sediment flushed; water sample passed residual chlorine check."
-        },
-        {
-          "id": "MH-WT01-2",
-          "date": "2026-03-10",
-          "action": "Sluice valve & ladder inspection",
-          "performedBy": "Rural Water Supply Tech",
-          "notes": "Replaced rubber gasket on main outlet."
-        }
-      ]
+      "lastCleaningDate": "2026-09-12",
+      "householdsServed": 110,
+      "coordinates": [
+        12.5714,
+        76.7738
+      ],
+      "notes": "50,000 litre primary overhead tank near Panchayat office",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "WT-02",
       "name": {
-        "en": "Doddakeri Overhead Tank",
-        "kn": "ದೊಡ್ಡಕೇರಿ ಓವರ್‌ಹೆಡ್ ನೀರಿನ ಟ್ಯಾಂಕ್"
+        "en": "School Road Mini Water Supply Tank",
+        "kn": "ಶಾಲಾ ರಸ್ತೆ ಮಿನಿ ನೀರು ಸರಬರಾಜು ಟ್ಯಾಂಕ್"
       },
-      "ward": "Ward 2",
-      "type": "overhead",
-      "capacity": 35000,
-      "yearBuilt": 2012,
-      "condition": "fair",
-      "lastCleaningDate": "2026-06-20",
-      "householdsServed": 98,
-      "coordinates": [12.5221, 76.8994],
-      "notes": "Minor exterior plastering needed; valve serviced in June.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-WT02-1",
-          "date": "2026-06-20",
-          "action": "Tank cleaning & gate valve servicing",
-          "performedBy": "GP Watermen Team",
-          "notes": "Noted minor hairline cracks on outer staging column."
-        },
-        {
-          "id": "MH-WT02-2",
-          "date": "2025-12-04",
-          "action": "Overflow pipe replacement",
-          "performedBy": "Local Plumber",
-          "notes": "Installed 75mm PVC overflow elbow."
-        }
-      ]
+      "ward": "Ward 1",
+      "type": "mini",
+      "capacity": 5000,
+      "yearBuilt": 2021,
+      "condition": "poor",
+      "lastCleaningDate": "2026-06-18",
+      "householdsServed": 35,
+      "coordinates": [
+        12.5698,
+        76.7725
+      ],
+      "notes": "Inlet pipe valve leaking, complaint logged",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "WT-03",
       "name": {
-        "en": "Devasthana Ground-Level Reservoir",
-        "kn": "ದೇವಸ್ಥಾನ ನೆಲಮಟ್ಟದ ನೀರಿನ ತೊಟ್ಟಿ"
+        "en": "Hulikere Koppalu Overhead Tank (OHT-2)",
+        "kn": "ಹುಲಿಕೆರೆ ಕೊಪ್ಪಲು ಓವರ್‌ಹೆಡ್ ಟ್ಯಾಂಕ್"
       },
-      "ward": "Ward 3",
-      "type": "ground-level",
-      "capacity": 25000,
+      "ward": "Ward 2",
+      "type": "overhead",
+      "capacity": 40000,
       "yearBuilt": 2019,
       "condition": "good",
-      "lastCleaningDate": "2026-10-02",
-      "householdsServed": 82,
-      "coordinates": [12.5207, 76.9027],
-      "notes": "Chlorination checked weekly; clean boundary wall.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-WT03-1",
-          "date": "2026-10-02",
-          "action": "Quarterly scrubbing & bleaching wash",
-          "performedBy": "GP Sanitation Crew",
-          "notes": "Hatch lock lubricated; surroundings cleared."
-        }
-      ]
+      "lastCleaningDate": "2026-08-05",
+      "householdsServed": 85,
+      "coordinates": [
+        12.5755,
+        76.7782
+      ],
+      "notes": "Supplies Ward 2 residential layout",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "WT-04",
       "name": {
-        "en": "Halebavi Open Well – Shala Beedhi",
-        "kn": "ಹಳೆಬಾವಿ ತೆರೆದ ಬಾವಿ – ಶಾಲಾ ಬೀದಿ"
+        "en": "Doddakeri Ground Level Reservoir (GLSR)",
+        "kn": "ದೊಡ್ಡಕೇರಿ ನೆಲಮಟ್ಟದ ಜಲಸಂಗ್ರಹಾಗಾರ (GLSR)"
       },
-      "ward": "Ward 4",
-      "type": "open well",
-      "capacity": 18000,
-      "yearBuilt": 1994,
-      "condition": "poor",
-      "lastCleaningDate": "2025-11-10",
-      "householdsServed": 34,
-      "coordinates": [12.5187, 76.8971],
-      "notes": "Requires desilting and safety parapet grill repair.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-WT04-1",
-          "date": "2026-07-18",
-          "action": "PDO safety inspection",
-          "performedBy": "Panchayat Development Officer",
-          "notes": "Flagged rusted safety mesh and silt buildup for 15th Finance grant."
-        },
-        {
-          "id": "MH-WT04-2",
-          "date": "2025-11-10",
-          "action": "Chlorination & debris removal",
-          "performedBy": "GP Watermen Team",
-          "notes": "Cleared fallen leaves and added potassium permanganate."
-        }
-      ]
+      "ward": "Ward 3",
+      "type": "ground",
+      "capacity": 30000,
+      "yearBuilt": 2017,
+      "condition": "fair",
+      "lastCleaningDate": "2026-07-20",
+      "householdsServed": 70,
+      "coordinates": [
+        12.5748,
+        76.7678
+      ],
+      "notes": "Pumphouse functional, mild seepage on boundary wall",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "WT-05",
       "name": {
-        "en": "Kere Angala Borewell & Mini Tank",
-        "kn": "ಕೆರೆ ಅಂಗಳ ಕೊಳವೆಬಾವಿ ಮತ್ತು ಮಿನಿ ಟ್ಯಾಂಕ್"
+        "en": "Visvesvaraya Canal Feeder Borewell Tank",
+        "kn": "ವಿಶ್ವೇಶ್ವರಯ್ಯ ನಾಲೆ ಕೊಳವೆಬಾವಿ ಟ್ಯಾಂಕ್"
       },
-      "ward": "Ward 5",
-      "type": "borewell",
-      "capacity": 10000,
-      "yearBuilt": 2021,
+      "ward": "Ward 4",
+      "type": "mini",
+      "capacity": 5000,
+      "yearBuilt": 2022,
       "condition": "good",
-      "lastCleaningDate": "2026-08-28",
-      "householdsServed": 46,
-      "coordinates": [12.5174, 76.9004],
-      "notes": "5 HP submersible pump; solar panel backup installed.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-WT05-1",
-          "date": "2026-08-28",
-          "action": "Mini cistern cleaning & solar controller check",
-          "performedBy": "JJM Maintenance Vendor",
-          "notes": "Pump discharge steady at 140 LPM."
-        }
-      ]
+      "lastCleaningDate": "2026-09-01",
+      "householdsServed": 40,
+      "coordinates": [
+        12.5645,
+        76.7672
+      ],
+      "notes": "Solar powered borewell tank near canal road",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "WT-06",
       "name": {
-        "en": "North Colony Borewell Unit",
-        "kn": "ಉತ್ತರ ಬಡಾವಣೆ ಕೊಳವೆಬಾವಿ ಘಟಕ"
+        "en": "Kere Angala Open Well & Sump",
+        "kn": "ಕೆರೆ ಅಂಗಳ ತೆರೆದ ಬಾವಿ ಮತ್ತು ಸಿಸ್ಟರ್ನ್"
       },
-      "ward": "Ward 2",
-      "type": "borewell",
-      "capacity": 8000,
-      "yearBuilt": 2014,
-      "condition": "fair",
-      "lastCleaningDate": "2026-04-12",
-      "householdsServed": 38,
-      "coordinates": [12.5226, 76.9009],
-      "notes": "Starter panel replaced in April; due for tank wash.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-WT06-1",
-          "date": "2026-04-12",
-          "action": "Motor starter capacitor replacement",
-          "performedBy": "GP Electrician",
-          "notes": "Restored automatic cut-off switch; tank cleaning due next month."
-        }
-      ]
+      "ward": "Ward 5",
+      "type": "open well",
+      "capacity": 20000,
+      "yearBuilt": 2016,
+      "condition": "good",
+      "lastCleaningDate": "2026-08-25",
+      "householdsServed": 55,
+      "coordinates": [
+        12.5642,
+        76.7795
+      ],
+      "notes": "Submersible pump with fenced masonry enclosure",
+      "dataSource": "sample",
+      "isSample": true
     }
   ],
   "roads": [
     {
       "id": "RD-01",
       "name": {
-        "en": "Hulikere Main Panchayat Road",
-        "kn": "ಹುಲಿಕೆರೆ ಮುಖ್ಯ ಪಂಚಾಯಿತಿ ರಸ್ತೆ"
+        "en": "Hulikere Gramatana Main Road",
+        "kn": "ಹುಲಿಕೆರೆ ಗ್ರಾಮಠಾಣಾ ಮುಖ್ಯ ರಸ್ತೆ"
       },
       "ward": "Ward 1",
-      "type": "tar",
-      "length": 680,
+      "type": "CC",
+      "length": 520,
       "width": 5.5,
       "condition": "good",
-      "lastRepaired": "2025-12-18",
+      "lastRepaired": "2024-02-10",
       "coordinates": [
-        [12.5198, 76.8962],
-        [12.52, 76.8982],
-        [12.5202, 76.9002],
-        [12.5201, 76.9022],
-        [12.52, 76.9038]
+        [
+          12.5702,
+          76.7715
+        ],
+        [
+          12.5706,
+          76.7735
+        ],
+        [
+          12.5714,
+          76.7755
+        ]
       ],
-      "notes": "Main village spine linking Mandya approach to East Temple street.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD01-1",
-          "date": "2025-12-18",
-          "action": "Bituminous seal coat & pothole patching",
-          "performedBy": "PWD / GP Joint Work",
-          "notes": "Resurfaced full 680m stretch; white edge markings painted."
-        },
-        {
-          "id": "MH-RD01-2",
-          "date": "2024-06-09",
-          "action": "Stormwater drain desilting",
-          "performedBy": "GP Sanitation Crew",
-          "notes": "Cleared culverts before monsoon."
-        }
-      ]
+      "notes": "Cement concrete road through central village market",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "RD-02",
       "name": {
-        "en": "Doddakeri Colony CC Road",
-        "kn": "ದೊಡ್ಡಕೇರಿ ಕಾಲೋನಿ ಸಿ.ಸಿ. ರಸ್ತೆ"
+        "en": "School Link Road",
+        "kn": "ಶಾಲೆ ಸಂಪರ್ಕ ರಸ್ತೆ"
       },
-      "ward": "Ward 2",
-      "type": "CC",
-      "length": 420,
-      "width": 4.0,
-      "condition": "good",
-      "lastRepaired": "2026-03-10",
+      "ward": "Ward 1",
+      "type": "tar",
+      "length": 380,
+      "width": 4.5,
+      "condition": "fair",
+      "lastRepaired": "2023-08-15",
       "coordinates": [
-        [12.52, 76.8986],
-        [12.5212, 76.8988],
-        [12.5223, 76.8992],
-        [12.523, 76.9004]
+        [
+          12.5706,
+          76.7735
+        ],
+        [
+          12.57,
+          76.7722
+        ],
+        [
+          12.5694,
+          76.7718
+        ]
       ],
-      "notes": "Completed under Grama Vikasa grant with side drains.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD02-1",
-          "date": "2026-03-10",
-          "action": "Expansion joint bitumen sealing",
-          "performedBy": "GP Civil Contractor",
-          "notes": "Sealed 14 transverse concrete joints."
-        }
-      ]
+      "notes": "Bitumen surface, slight edge wear near school gate",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "RD-03",
       "name": {
-        "en": "Basaveshwara Temple CC Street",
-        "kn": "ಬಸವೇಶ್ವರ ದೇವಸ್ಥಾನ ಸಿ.ಸಿ. ಬೀದಿ"
+        "en": "Hulikere Koppalu Cross Road",
+        "kn": "ಹುಲಿಕೆರೆ ಕೊಪ್ಪಲು ಕ್ರಾಸ್ ರಸ್ತೆ"
       },
-      "ward": "Ward 3",
-      "type": "CC",
-      "length": 310,
-      "width": 3.8,
+      "ward": "Ward 2",
+      "type": "tar",
+      "length": 640,
+      "width": 5,
       "condition": "good",
-      "lastRepaired": "2026-01-22",
+      "lastRepaired": "2024-01-20",
       "coordinates": [
-        [12.5201, 76.9022],
-        [12.5213, 76.9025],
-        [12.5222, 76.9032]
+        [
+          12.5714,
+          76.7755
+        ],
+        [
+          12.5742,
+          76.7778
+        ],
+        [
+          12.5768,
+          76.7802
+        ]
       ],
-      "notes": "Clean concrete pavement serving Temple Hall and East houses.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD03-1",
-          "date": "2026-01-22",
-          "action": "Side drain slab replacement",
-          "performedBy": "GP Maintenance Crew",
-          "notes": "Replaced 4 broken precast drain covers near temple entrance."
-        }
-      ]
+      "notes": "Connects Ward 1 core to Hulikere Koppalu",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "RD-04",
       "name": {
-        "en": "Government School Approach Road",
-        "kn": "ಸರ್ಕಾರಿ ಶಾಲಾ ಸಂಪರ್ಕ ರಸ್ತೆ"
+        "en": "Doddakeri Western Approach Road",
+        "kn": "ದೊಡ್ಡಕೇರಿ ಪಶ್ಚಿಮ ಸಂಪರ್ಕ ರಸ್ತೆ"
       },
-      "ward": "Ward 4",
-      "type": "tar",
-      "length": 390,
-      "width": 4.5,
-      "condition": "fair",
-      "lastRepaired": "2023-08-14",
+      "ward": "Ward 3",
+      "type": "WBM",
+      "length": 490,
+      "width": 4,
+      "condition": "poor",
+      "lastRepaired": "2022-11-05",
       "coordinates": [
-        [12.5198, 76.8962],
-        [12.5192, 76.8974],
-        [12.5184, 76.898]
+        [
+          12.5706,
+          76.7735
+        ],
+        [
+          12.5732,
+          76.7702
+        ],
+        [
+          12.5758,
+          76.7668
+        ]
       ],
-      "notes": "Edge patching needed near school gate before monsoon.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD04-1",
-          "date": "2026-08-05",
-          "action": "Road condition assessment",
-          "performedBy": "Junior Engineer (ZP)",
-          "notes": "Shoulder erosion observed along 60m section near school gate."
-        },
-        {
-          "id": "MH-RD04-2",
-          "date": "2023-08-14",
-          "action": "Cold-mix pothole repair",
-          "performedBy": "GP Works Team",
-          "notes": "Patched 9 depressions before Independence Day."
-        }
-      ]
+      "notes": "Potholes along 150m stretch near agricultural fields",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "RD-05",
       "name": {
-        "en": "Kere Bund WBM Road",
-        "kn": "ಕೆರೆ ಏರಿ ಡಬ್ಲ್ಯೂ.ಬಿ.ಎಂ. ರಸ್ತೆ"
+        "en": "Visvesvaraya Canal Bank Road",
+        "kn": "ವಿಶ್ವೇಶ್ವರಯ್ಯ ನಾಲೆ ದಂಡೆ ರಸ್ತೆ"
       },
-      "ward": "Ward 5",
-      "type": "WBM",
-      "length": 540,
-      "width": 3.5,
-      "condition": "fair",
-      "lastRepaired": "2024-02-05",
+      "ward": "Ward 4",
+      "type": "tar",
+      "length": 780,
+      "width": 5.5,
+      "condition": "good",
+      "lastRepaired": "2023-12-14",
       "coordinates": [
-        [12.5184, 76.898],
-        [12.5178, 76.8996],
-        [12.5176, 76.9016],
-        [12.5182, 76.9032]
+        [
+          12.5702,
+          76.7715
+        ],
+        [
+          12.5668,
+          76.769
+        ],
+        [
+          12.563,
+          76.7662
+        ]
       ],
-      "notes": "Water Bound Macadam surface; proposed for CC upgrade in FY 2026-27.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD05-1",
-          "date": "2024-02-05",
-          "action": "Gravel spreading & roller compaction",
-          "performedBy": "MGNREGA Crew",
-          "notes": "Regraded bund stretch with 40mm metal aggregate."
-        }
-      ]
+      "notes": "Paved inspection road along the historic irrigation canal",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "RD-06",
       "name": {
-        "en": "Anganwadi Cross CC Lane",
-        "kn": "ಅಂಗನವಾಡಿ ಅಡ್ಡ ಸಿ.ಸಿ. ರಸ್ತೆ"
-      },
-      "ward": "Ward 1",
-      "type": "CC",
-      "length": 240,
-      "width": 3.2,
-      "condition": "good",
-      "lastRepaired": "2025-07-30",
-      "coordinates": [
-        [12.5202, 76.9002],
-        [12.5192, 76.9002],
-        [12.5181, 76.9]
-      ],
-      "notes": "Connects Panchayat office junction to Kere Angala.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD06-1",
-          "date": "2025-07-30",
-          "action": "New CC pavement laid",
-          "performedBy": "GP Engineering Wing",
-          "notes": "M20 concrete cured for 14 days; zero surface defects."
-        }
-      ]
-    },
-    {
-      "id": "RD-07",
-      "name": {
-        "en": "North Farm Link WBM Road",
-        "kn": "ಉತ್ತರ ಕೃಷಿ ಸಂಪರ್ಕ ಡಬ್ಲ್ಯೂ.ಬಿ.ಎಂ. ರಸ್ತೆ"
-      },
-      "ward": "Ward 2",
-      "type": "WBM",
-      "length": 460,
-      "width": 3.5,
-      "condition": "poor",
-      "lastRepaired": "2021-11-19",
-      "coordinates": [
-        [12.5223, 76.8976],
-        [12.5225, 76.8998],
-        [12.5227, 76.9018]
-      ],
-      "notes": "Heavy ruts caused by sugarcane tractors; gravel filling urgent.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD07-1",
-          "date": "2026-09-21",
-          "action": "Damage inspection & estimate prep",
-          "performedBy": "PDO & Ward 2 Member",
-          "notes": "Deep wheel ruts recorded; Rs 2.4L WBM restoration proposed."
-        },
-        {
-          "id": "MH-RD07-2",
-          "date": "2021-11-19",
-          "action": "WBM metaling & rolling",
-          "performedBy": "Taluk Panchayat Grant",
-          "notes": "Initial WBM surfacing completed."
-        }
-      ]
-    },
-    {
-      "id": "RD-08",
-      "name": {
-        "en": "South Layout Kaccha Track",
-        "kn": "ದಕ್ಷಿಣ ಬಡಾವಣೆ ಕಚ್ಚಾ ರಸ್ತೆ"
+        "en": "Kere Angala Lake Bund Road",
+        "kn": "ಕೆರೆ ಅಂಗಳ ಏರಿ ರಸ್ತೆ"
       },
       "ward": "Ward 5",
       "type": "kaccha",
-      "length": 350,
-      "width": 3.0,
-      "condition": "poor",
-      "lastRepaired": "2022-05-03",
+      "length": 510,
+      "width": 3.5,
+      "condition": "fair",
+      "lastRepaired": "2023-05-18",
       "coordinates": [
-        [12.5176, 76.9016],
-        [12.5169, 76.9022],
-        [12.5166, 76.9034]
+        [
+          12.5702,
+          76.7715
+        ],
+        [
+          12.5672,
+          76.7752
+        ],
+        [
+          12.564,
+          76.7792
+        ]
       ],
-      "notes": "Muddy during rains; included in MGNREGA work plan.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-RD08-1",
-          "date": "2026-07-12",
-          "action": "Monsoon waterlogging inspection",
-          "performedBy": "GP Bill Collector",
-          "notes": "Temporary earthen bund cut to drain standing rainwater."
-        },
-        {
-          "id": "MH-RD08-2",
-          "date": "2022-05-03",
-          "action": "Red-earth leveling",
-          "performedBy": "MGNREGA Crew",
-          "notes": "Cleared thorny bushes and leveled track."
-        }
-      ]
+      "notes": "Gravel and mud road requiring pitching reinforcement",
+      "dataSource": "sample",
+      "isSample": true
     }
   ],
   "publicBuildings": [
     {
       "id": "PB-01",
       "name": {
-        "en": "Hulikere Gram Panchayat Karyalaya",
+        "en": "Hulikere Gram Panchayat Office",
         "kn": "ಹುಲಿಕೆರೆ ಗ್ರಾಮ ಪಂಚಾಯಿತಿ ಕಾರ್ಯಾಲಯ"
       },
       "ward": "Ward 1",
       "type": "panchayat office",
-      "yearBuilt": 2015,
+      "yearBuilt": 2014,
       "condition": "good",
-      "coordinates": [12.5203, 76.9005],
-      "notes": "Includes Bapuji Seva Kendra counter and meeting hall.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB01-1",
-          "date": "2026-08-12",
-          "action": "Exterior whitewash & roof cleaning",
-          "performedBy": "GP Maintenance Fund",
-          "notes": "Cleaned rainwater downspouts and painted flag mast."
-        },
-        {
-          "id": "MH-PB01-2",
-          "date": "2025-11-01",
-          "action": "UPS battery & LAN servicing",
-          "performedBy": "Panchatantra Support",
-          "notes": "Replaced 2 inverter batteries for Bapuji Seva Kendra."
-        }
-      ]
+      "coordinates": [
+        12.571,
+        76.7732
+      ],
+      "notes": "Main administrative building, PDO chamber & meeting hall",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "PB-02",
       "name": {
-        "en": "Government Higher Primary School",
+        "en": "Govt Higher Primary School (GHPS)",
         "kn": "ಸರ್ಕಾರಿ ಹಿರಿಯ ಪ್ರಾಥಮಿಕ ಶಾಲೆ"
       },
-      "ward": "Ward 4",
-      "type": "primary school",
-      "yearBuilt": 1998,
-      "condition": "fair",
-      "coordinates": [12.5193, 76.8971],
-      "notes": "Classes 1–7; East wing roof waterproofing scheduled.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB02-1",
-          "date": "2026-05-24",
-          "action": "Pre-monsoon classroom & toilet inspection",
-          "performedBy": "SDMC & PDO",
-          "notes": "Toilet taps replaced; East wing slab seepage noted."
-        },
-        {
-          "id": "MH-PB02-2",
-          "date": "2024-06-03",
-          "action": "Blackboard repainting & gate hinge weld",
-          "performedBy": "GP School Grant",
-          "notes": "Refurbished 6 classroom boards before school reopening."
-        }
-      ]
+      "ward": "Ward 1",
+      "type": "school",
+      "yearBuilt": 2008,
+      "condition": "good",
+      "coordinates": [
+        12.5702,
+        76.772
+      ],
+      "notes": "Classes 1 to 7, mid-day meal kitchen and playground",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "PB-03",
       "name": {
-        "en": "Hulikere Primary Health Centre (PHC)",
-        "kn": "ಹುಲಿಕೆರೆ ಪ್ರಾಥಮಿಕ ಆರೋಗ್ಯ ಕೇಂದ್ರ"
+        "en": "Anganwadi Centre 1 (Main Village)",
+        "kn": "ಅಂಗನವಾಡಿ ಕೇಂದ್ರ 1 (ಮುಖ್ಯ ಗ್ರಾಮ)"
       },
       "ward": "Ward 1",
-      "type": "PHC",
-      "yearBuilt": 2018,
+      "type": "anganwadi",
+      "yearBuilt": 2012,
       "condition": "good",
-      "coordinates": [12.5196, 76.8993],
-      "notes": "6-bed sub-unit with cold-chain immunization facility.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB03-1",
-          "date": "2026-09-03",
-          "action": "Solar backup & plumbing service",
-          "performedBy": "Health Dept Engineer",
-          "notes": "Cold-chain power backup verified at 100%."
-        }
-      ]
+      "coordinates": [
+        12.5695,
+        76.7739
+      ],
+      "notes": "Early childhood care & supplementary nutrition center",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "PB-04",
       "name": {
-        "en": "Anganwadi Centre – Ward 2",
-        "kn": "ಅಂಗನವಾಡಿ ಕೇಂದ್ರ – ವಾರ್ಡ್ 2"
+        "en": "Primary Health Sub-Centre (HWC)",
+        "kn": "ಪ್ರಾಥಮಿಕ ಆರೋಗ್ಯ ಉಪಕೇಂದ್ರ (ಆರೋಗ್ಯ ಮತ್ತು ಕ್ಷೇಮ ಕೇಂದ್ರ)"
       },
-      "ward": "Ward 2",
-      "type": "anganwadi",
-      "yearBuilt": 2017,
+      "ward": "Ward 1",
+      "type": "hospital",
+      "yearBuilt": 2016,
       "condition": "good",
-      "coordinates": [12.5215, 76.8986],
-      "notes": "32 children enrolled; kitchen garden maintained.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB04-1",
-          "date": "2026-07-14",
-          "action": "Window mosquito mesh & fan installation",
-          "performedBy": "Women & Child Welfare",
-          "notes": "Installed 2 ceiling fans and child-safe door stopper."
-        }
-      ]
+      "coordinates": [
+        12.5718,
+        76.7745
+      ],
+      "notes": "ANM clinic, immunization and basic outpatient care",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "PB-05",
       "name": {
-        "en": "Anganwadi Centre – Kere Angala",
-        "kn": "ಅಂಗನವಾಡಿ ಕೇಂದ್ರ – ಕೆರೆ ಅಂಗಳ"
+        "en": "Hulikere Koppalu Anganwadi Centre 2",
+        "kn": "ಹುಲಿಕೆರೆ ಕೊಪ್ಪಲು ಅಂಗನವಾಡಿ ಕೇಂದ್ರ 2"
       },
-      "ward": "Ward 5",
+      "ward": "Ward 2",
       "type": "anganwadi",
-      "yearBuilt": 2009,
+      "yearBuilt": 2011,
       "condition": "poor",
-      "coordinates": [12.5177, 76.8991],
-      "notes": "Wall dampness and door frame damage; repair estimate submitted.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB05-1",
-          "date": "2026-09-29",
-          "action": "Structural repair assessment",
-          "performedBy": "PDO & AE",
-          "notes": "Termite damage in main door frame and damp lower walls; Rs 85,000 estimate queued."
-        },
-        {
-          "id": "MH-PB05-2",
-          "date": "2024-10-15",
-          "action": "Temporary roof sheet patch",
-          "performedBy": "GP Maintenance Crew",
-          "notes": "Sealed kitchen corner leak."
-        }
-      ]
+      "coordinates": [
+        12.5762,
+        76.779
+      ],
+      "notes": "Roof waterproofing repair required, minor wall dampness",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "PB-06",
       "name": {
-        "en": "Dr. B.R. Ambedkar Community Hall",
-        "kn": "ಡಾ. ಬಿ.ಆರ್. ಅಂಬೇಡ್ಕರ್ ಸಮುದಾಯ ಭವನ"
+        "en": "Doddakeri Community Hall (Samudaya Bhavana)",
+        "kn": "ದೊಡ್ಡಕೇರಿ ಸಮುದಾಯ ಭವನ"
       },
-      "ward": "Ward 2",
+      "ward": "Ward 3",
       "type": "community hall",
-      "yearBuilt": 2020,
-      "condition": "good",
-      "coordinates": [12.522, 76.9001],
-      "notes": "Used for Gram Sabha meetings and community functions.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB06-1",
-          "date": "2026-04-10",
-          "action": "PA system & electrical board check",
-          "performedBy": "GP Electrician",
-          "notes": "Replaced 4 tube lights ahead of Gram Sabha."
-        }
-      ]
+      "yearBuilt": 2019,
+      "condition": "fair",
+      "coordinates": [
+        12.5752,
+        76.7672
+      ],
+      "notes": "Civic functions and SHG federation gatherings",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "PB-07",
       "name": {
-        "en": "Sri Basaveshwara Temple Hall",
-        "kn": "ಶ್ರೀ ಬಸವೇಶ್ವರ ದೇವಸ್ಥಾನ ಕಲ್ಯಾಣ ಮಂಟಪ"
+        "en": "Dr. B.R. Ambedkar Bhavan (Canal Layout)",
+        "kn": "ಡಾ. ಬಿ.ಆರ್. ಅಂಬೇಡ್ಕರ್ ಭವನ"
       },
-      "ward": "Ward 3",
-      "type": "temple hall",
-      "yearBuilt": 2004,
-      "condition": "fair",
-      "coordinates": [12.5214, 76.9028],
-      "notes": "Requires fresh exterior paint and electrical rewiring.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB07-1",
-          "date": "2026-02-19",
-          "action": "Festival lighting & MCB check",
-          "performedBy": "Temple Committee & GP",
-          "notes": "Recommended upgrading distribution box before next jatra."
-        }
-      ]
+      "ward": "Ward 4",
+      "type": "community hall",
+      "yearBuilt": 2020,
+      "condition": "good",
+      "coordinates": [
+        12.5638,
+        76.768
+      ],
+      "notes": "Public library and village reading room",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "PB-08",
       "name": {
-        "en": "Government Lower Primary School – East",
-        "kn": "ಸರ್ಕಾರಿ ಕಿರಿಯ ಪ್ರಾಥಮಿಕ ಶಾಲೆ – ಪೂರ್ವ"
+        "en": "Sri Basaveshwara Swamy Temple",
+        "kn": "ಶ್ರೀ ಬಸವೇಶ್ವರ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನ"
       },
-      "ward": "Ward 3",
-      "type": "primary school",
-      "yearBuilt": 2006,
-      "condition": "fair",
-      "coordinates": [12.5196, 76.9029],
-      "notes": "Classes 1–5; drinking water tap connection active.",
-      "maintenanceHistory": [
-        {
-          "id": "MH-PB08-1",
-          "date": "2026-06-08",
-          "action": "Compound gate painting & tap fix",
-          "performedBy": "GP Watermen Team",
-          "notes": "Installed brass tap on handwash station."
-        }
-      ]
+      "ward": "Ward 5",
+      "type": "temple",
+      "yearBuilt": 2005,
+      "condition": "good",
+      "coordinates": [
+        12.565,
+        76.7788
+      ],
+      "notes": "Village temple and festival congregation ground",
+      "dataSource": "sample",
+      "isSample": true
     }
   ],
   "streetLights": [
     {
       "id": "SL-01",
-      "name": { "en": "Main Road Pole #01", "kn": "ಮುಖ್ಯ ರಸ್ತೆ ದೀಪ #01" },
+      "poleNumber": "HLK-P-01",
       "ward": "Ward 1",
-      "poleNumber": "HGP-P01",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2023-04-12",
-      "coordinates": [12.5201, 76.899],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL01-1",
-          "date": "2026-08-01",
-          "action": "Routine timer & fixture check",
-          "performedBy": "GP Lineman",
-          "notes": "45W LED fixture operating normally."
-        }
-      ]
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569872,
+        76.776976
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-02",
-      "name": { "en": "Panchayat Gate Pole #02", "kn": "ಪಂಚಾಯಿತಿ ಗೇಟ್ ದೀಪ #02" },
+      "poleNumber": "HLK-P-02",
       "ward": "Ward 1",
-      "poleNumber": "HGP-P02",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2023-04-12",
-      "coordinates": [12.5202, 76.9],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL02-1",
-          "date": "2026-08-01",
-          "action": "Junction box tightened",
-          "performedBy": "GP Lineman",
-          "notes": "Replaced weatherproof fuse carrier."
-        }
-      ]
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569905,
+        76.776582
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-03",
-      "name": { "en": "PHC Junction Pole #03", "kn": "ಆರೋಗ್ಯ ಕೇಂದ್ರ ದೀಪ #03" },
+      "poleNumber": "HLK-P-03",
       "ward": "Ward 1",
-      "poleNumber": "HGP-P03",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-01-18",
-      "coordinates": [12.5197, 76.8996],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL03-1",
-          "date": "2024-01-18",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Upgraded from old CFL to 45W LED."
-        }
-      ]
+      "wattage": 70,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569912,
+        76.776236
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-04",
-      "name": { "en": "Anganwadi Cross Pole #04", "kn": "ಅಂಗನವಾಡಿ ಕ್ರಾಸ್ ದೀಪ #04" },
+      "poleNumber": "HLK-P-04",
       "ward": "Ward 1",
-      "poleNumber": "HGP-P04",
-      "type": "LED",
-      "status": "working",
-      "installedDate": "2024-01-18",
-      "coordinates": [12.5192, 76.9002],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL04-1",
-          "date": "2025-11-22",
-          "action": "Bracket bolt tightened",
-          "performedBy": "GP Lineman",
-          "notes": "Secured arm clamp after gusty winds."
-        }
-      ]
+      "status": "faulty",
+      "wattage": 90,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569836,
+        76.775673
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-05",
-      "name": { "en": "Main Road East-Mid Pole #05", "kn": "ಮುಖ್ಯ ರಸ್ತೆ ಮಧ್ಯ ದೀಪ #05" },
+      "poleNumber": "HLK-P-05",
       "ward": "Ward 1",
-      "poleNumber": "HGP-P05",
-      "type": "CFL",
-      "status": "faulty",
-      "installedDate": "2020-07-09",
-      "coordinates": [12.5201, 76.901],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL05-1",
-          "date": "2026-10-28",
-          "action": "Fault reported — ballast burnt",
-          "performedBy": "Ward 1 Resident Report",
-          "notes": "Scheduled for LED retrofit replacement."
-        }
-      ]
+      "status": "working",
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569776,
+        76.775286
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-06",
-      "name": { "en": "Cross Lane South Pole #06", "kn": "ಅಡ್ಡ ರಸ್ತೆ ದಕ್ಷಿಣ ದೀಪ #06" },
+      "poleNumber": "HLK-P-06",
       "ward": "Ward 1",
-      "poleNumber": "HGP-P06",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2025-02-11",
-      "coordinates": [12.5186, 76.9001],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL06-1",
-          "date": "2025-02-11",
-          "action": "New pole & LED lamp commissioned",
-          "performedBy": "GP Works",
-          "notes": "Connected to Ward 1 timer circuit."
-        }
-      ]
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569693,
+        76.774787
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-07",
-      "name": { "en": "Doddakeri Entry Pole #07", "kn": "ದೊಡ್ಡಕೇರಿ ಪ್ರವೇಶ ದೀಪ #07" },
+      "poleNumber": "HLK-P-07",
       "ward": "Ward 2",
-      "poleNumber": "HGP-P07",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-06-05",
-      "coordinates": [12.5208, 76.8987],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL07-1",
-          "date": "2024-06-05",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Operating under 3-year warranty."
-        }
-      ]
+      "wattage": 70,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.584163,
+        76.781187
+      ],
+      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-08",
-      "name": { "en": "Doddakeri Anganwadi Pole #08", "kn": "ದೊಡ್ಡಕೇರಿ ಅಂಗನವಾಡಿ ದೀಪ #08" },
+      "poleNumber": "HLK-P-08",
       "ward": "Ward 2",
-      "poleNumber": "HGP-P08",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-06-05",
-      "coordinates": [12.5216, 76.8989],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL08-1",
-          "date": "2026-04-16",
-          "action": "Tree branch trimming",
-          "performedBy": "GP Maintenance Crew",
-          "notes": "Cleared canopy blocking light spread."
-        }
-      ]
+      "wattage": 90,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.583908,
+        76.781074
+      ],
+      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-09",
-      "name": { "en": "Community Hall Pole #09", "kn": "ಸಮುದಾಯ ಭವನ ದೀಪ #09" },
+      "poleNumber": "HLK-P-09",
       "ward": "Ward 2",
-      "poleNumber": "HGP-P09",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2025-01-20",
-      "coordinates": [12.5223, 76.8995],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL09-1",
-          "date": "2025-01-20",
-          "action": "High-output 60W LED installed",
-          "performedBy": "GP Electrician",
-          "notes": "Illuminates Community Hall forecourt."
-        }
-      ]
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.583651,
+        76.780966
+      ],
+      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-10",
-      "name": { "en": "North Colony Turn Pole #10", "kn": "ಉತ್ತರ ಬಡಾವಣೆ ತಿರುವು ದೀಪ #10" },
+      "poleNumber": "HLK-P-10",
       "ward": "Ward 2",
-      "poleNumber": "HGP-P10",
-      "type": "CFL",
-      "status": "faulty",
-      "installedDate": "2019-11-15",
-      "coordinates": [12.5229, 76.9003],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL10-1",
-          "date": "2026-10-19",
-          "action": "Fault reported — flickering & out",
-          "performedBy": "GP Lineman",
-          "notes": "Service wire corroded near pole top; needs new LED unit."
-        }
-      ]
+      "status": "working",
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.58339,
+        76.780873
+      ],
+      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-11",
-      "name": { "en": "North Farm Link West Pole #11", "kn": "ಉತ್ತರ ಕೃಷಿ ರಸ್ತೆ ಪಶ್ಚಿಮ ದೀಪ #11" },
+      "poleNumber": "HLK-P-11",
       "ward": "Ward 2",
-      "poleNumber": "HGP-P11",
-      "type": "LED",
-      "status": "working",
-      "installedDate": "2023-09-14",
-      "coordinates": [12.5224, 76.8981],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL11-1",
-          "date": "2023-09-14",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Tested normal."
-        }
-      ]
+      "status": "faulty",
+      "wattage": 70,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.583119,
+        76.780815
+      ],
+      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-12",
-      "name": { "en": "North Borewell Pole #12", "kn": "ಉತ್ತರ ಕೊಳವೆಬಾವಿ ದೀಪ #12" },
+      "poleNumber": "HLK-P-12",
       "ward": "Ward 2",
-      "poleNumber": "HGP-P12",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-08-22",
-      "coordinates": [12.5226, 76.9012],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL12-1",
-          "date": "2024-08-22",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Mounted near borewell control box."
-        }
-      ]
+      "wattage": 90,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.582842,
+        76.780788
+      ],
+      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-13",
-      "name": { "en": "Temple Junction Pole #13", "kn": "ದೇವಸ್ಥಾನ ಕೂಡುರಸ್ತೆ ದೀಪ #13" },
+      "poleNumber": "HLK-P-13",
       "ward": "Ward 3",
-      "poleNumber": "HGP-P13",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2025-03-04",
-      "coordinates": [12.5201, 76.9022],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL13-1",
-          "date": "2025-03-04",
-          "action": "LED upgrade completed",
-          "performedBy": "GP Electrician",
-          "notes": "Replaced legacy CFL tube."
-        }
-      ]
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.58412,
+        76.766378
+      ],
+      "notes": "Snapped on OSM road way/52082814 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-14",
-      "name": { "en": "Basaveshwara Street Pole #14", "kn": "ಬಸವೇಶ್ವರ ಬೀದಿ ದೀಪ #14" },
+      "poleNumber": "HLK-P-14",
       "ward": "Ward 3",
-      "poleNumber": "HGP-P14",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2025-03-04",
-      "coordinates": [12.521, 76.9024],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL14-1",
-          "date": "2025-03-04",
-          "action": "LED upgrade completed",
-          "performedBy": "GP Electrician",
-          "notes": "Replaced legacy CFL tube."
-        }
-      ]
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.583593,
+        76.766227
+      ],
+      "notes": "Snapped on OSM road way/52082814 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-15",
-      "name": { "en": "Temple Hall Front Pole #15", "kn": "ದೇವಸ್ಥಾನ ಮಂಟಪ ದೀಪ #15" },
+      "poleNumber": "HLK-P-15",
       "ward": "Ward 3",
-      "poleNumber": "HGP-P15",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-10-11",
-      "coordinates": [12.5218, 76.9028],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL15-1",
-          "date": "2026-02-18",
-          "action": "Pre-festival check",
-          "performedBy": "GP Lineman",
-          "notes": "Clean luminaire lens; working properly."
-        }
-      ]
+      "wattage": 70,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.582757,
+        76.766063
+      ],
+      "notes": "Snapped on OSM road way/52082814 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-16",
-      "name": { "en": "Temple North End Pole #16", "kn": "ದೇವಸ್ಥಾನ ಉತ್ತರ ಕೊನೆ ದೀಪ #16" },
+      "poleNumber": "HLK-P-16",
       "ward": "Ward 3",
-      "poleNumber": "HGP-P16",
-      "type": "CFL",
       "status": "working",
-      "installedDate": "2021-02-27",
-      "coordinates": [12.5223, 76.9033],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL16-1",
-          "date": "2025-05-12",
-          "action": "CFL tube replaced",
-          "performedBy": "GP Lineman",
-          "notes": "Working; queued for Phase-2 LED conversion."
-        }
-      ]
+      "wattage": 90,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.582448,
+        76.766049
+      ],
+      "notes": "Snapped on OSM road way/52082814 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-17",
-      "name": { "en": "East Main End Pole #17", "kn": "ಪೂರ್ವ ಮುಖ್ಯ ರಸ್ತೆ ದೀಪ #17" },
+      "poleNumber": "HLK-P-17",
       "ward": "Ward 3",
-      "poleNumber": "HGP-P17",
-      "type": "LED",
-      "status": "faulty",
-      "installedDate": "2022-12-08",
-      "coordinates": [12.52, 76.9035],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL17-1",
-          "date": "2026-11-02",
-          "action": "Driver module failure reported",
-          "performedBy": "GP Lineman",
-          "notes": "Power reaching pole; LED driver unit failed after surge."
-        }
-      ]
+      "status": "working",
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.581612,
+        76.765958
+      ],
+      "notes": "Snapped on OSM road way/52082814 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-18",
-      "name": { "en": "East Primary School Pole #18", "kn": "ಪೂರ್ವ ಶಾಲೆ ದೀಪ #18" },
+      "poleNumber": "HLK-P-18",
       "ward": "Ward 3",
-      "poleNumber": "HGP-P18",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-05-19",
-      "coordinates": [12.5194, 76.9026],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL18-1",
-          "date": "2024-05-19",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Tested normal."
-        }
-      ]
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.581085,
+        76.765882
+      ],
+      "notes": "Snapped on OSM road way/52082814 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-19",
-      "name": { "en": "Village West Gate Pole #19", "kn": "ಗ್ರಾಮ ಪಶ್ಚಿಮ ದ್ವಾರ ದೀಪ #19" },
+      "poleNumber": "HLK-P-19",
       "ward": "Ward 4",
-      "poleNumber": "HGP-P19",
-      "type": "LED",
-      "status": "working",
-      "installedDate": "2023-11-02",
-      "coordinates": [12.5198, 76.8963],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL19-1",
-          "date": "2023-11-02",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Entry gate visibility lamp."
-        }
-      ]
+      "status": "faulty",
+      "wattage": 70,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.556361,
+        76.771471
+      ],
+      "notes": "Snapped on OSM road way/343193308 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-20",
-      "name": { "en": "Main Road West Pole #20", "kn": "ಮುಖ್ಯ ರಸ್ತೆ ಪಶ್ಚಿಮ ದೀಪ #20" },
+      "poleNumber": "HLK-P-20",
       "ward": "Ward 4",
-      "poleNumber": "HGP-P20",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2023-11-02",
-      "coordinates": [12.5199, 76.8973],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL20-1",
-          "date": "2023-11-02",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Tested normal."
-        }
-      ]
+      "wattage": 90,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.556926,
+        76.771524
+      ],
+      "notes": "Snapped on OSM road way/343193308 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-21",
-      "name": { "en": "Main Road West-Mid Pole #21", "kn": "ಪಶ್ಚಿಮ ಮಧ್ಯ ರಸ್ತೆ ದೀಪ #21" },
+      "poleNumber": "HLK-P-21",
       "ward": "Ward 4",
-      "poleNumber": "HGP-P21",
-      "type": "CFL",
       "status": "working",
-      "installedDate": "2020-09-25",
-      "coordinates": [12.52, 76.8981],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL21-1",
-          "date": "2025-08-14",
-          "action": "Holder & CFL bulb replaced",
-          "performedBy": "GP Lineman",
-          "notes": "Working properly."
-        }
-      ]
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.558139,
+        76.771587
+      ],
+      "notes": "Snapped on OSM road way/343193308 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-22",
-      "name": { "en": "School Gate Pole #22", "kn": "ಶಾಲಾ ದ್ವಾರ ದೀಪ #22" },
+      "poleNumber": "HLK-P-22",
       "ward": "Ward 4",
-      "poleNumber": "HGP-P22",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2025-06-14",
-      "coordinates": [12.5194, 76.8969],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL22-1",
-          "date": "2025-06-14",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Installed prior to school academic year."
-        }
-      ]
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.558787,
+        76.771597
+      ],
+      "notes": "Snapped on OSM road way/343193308 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-23",
-      "name": { "en": "Halebavi Corner Pole #23", "kn": "ಹಳೆಬಾವಿ ಮೂಲೆ ದೀಪ #23" },
+      "poleNumber": "HLK-P-23",
       "ward": "Ward 4",
-      "poleNumber": "HGP-P23",
-      "type": "CFL",
-      "status": "faulty",
-      "installedDate": "2019-08-19",
-      "coordinates": [12.5189, 76.8976],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL23-1",
-          "date": "2026-10-11",
-          "action": "Fault reported — bulb fused",
-          "performedBy": "Ward 4 Member",
-          "notes": "Dark stretch near open well; priority LED upgrade requested."
-        }
-      ]
+      "status": "working",
+      "wattage": 70,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.559988,
+        76.771646
+      ],
+      "notes": "Snapped on OSM road way/343193308 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-24",
-      "name": { "en": "School Road South Pole #24", "kn": "ಶಾಲಾ ರಸ್ತೆ ದಕ್ಷಿಣ ದೀಪ #24" },
+      "poleNumber": "HLK-P-24",
       "ward": "Ward 4",
-      "poleNumber": "HGP-P24",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-03-17",
-      "coordinates": [12.5185, 76.898],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL24-1",
-          "date": "2024-03-17",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Tested normal."
-        }
-      ]
+      "wattage": 90,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.560541,
+        76.771684
+      ],
+      "notes": "Snapped on OSM road way/343193308 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-25",
-      "name": { "en": "Kere Bund West Pole #25", "kn": "ಕೆರೆ ಏರಿ ಪಶ್ಚಿಮ ದೀಪ #25" },
+      "poleNumber": "HLK-P-25",
       "ward": "Ward 5",
-      "poleNumber": "HGP-P25",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2024-07-08",
-      "coordinates": [12.518, 76.8989],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL25-1",
-          "date": "2024-07-08",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Tested normal."
-        }
-      ]
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.56964,
+        76.78715
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-26",
-      "name": { "en": "Kere Angala Anganwadi Pole #26", "kn": "ಕೆರೆ ಅಂಗಳ ಅಂಗನವಾಡಿ ದೀಪ #26" },
+      "poleNumber": "HLK-P-26",
       "ward": "Ward 5",
-      "poleNumber": "HGP-P26",
-      "type": "LED",
-      "status": "working",
-      "installedDate": "2024-07-08",
-      "coordinates": [12.5178, 76.8997],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL26-1",
-          "date": "2024-07-08",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Tested normal."
-        }
-      ]
+      "status": "faulty",
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569758,
+        76.786793
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-27",
-      "name": { "en": "Kere Borewell Pole #27", "kn": "ಕೆರೆ ಕೊಳವೆಬಾವಿ ದೀಪ #27" },
+      "poleNumber": "HLK-P-27",
       "ward": "Ward 5",
-      "poleNumber": "HGP-P27",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2025-04-01",
-      "coordinates": [12.5176, 76.9007],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL27-1",
-          "date": "2025-04-01",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Illuminates borewell pump platform."
-        }
-      ]
+      "wattage": 70,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.569995,
+        76.786034
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-28",
-      "name": { "en": "Kere Bund East Pole #28", "kn": "ಕೆರೆ ಏರಿ ಪೂರ್ವ ದೀಪ #28" },
+      "poleNumber": "HLK-P-28",
       "ward": "Ward 5",
-      "poleNumber": "HGP-P28",
-      "type": "CFL",
-      "status": "faulty",
-      "installedDate": "2020-03-12",
-      "coordinates": [12.5179, 76.9023],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL28-1",
-          "date": "2026-10-05",
-          "action": "Fault reported — broken shade & bulb",
-          "performedBy": "GP Lineman",
-          "notes": "Damaged during branch fall; fixture replacement pending."
-        }
-      ]
+      "status": "working",
+      "wattage": 90,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.570113,
+        76.785631
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-29",
-      "name": { "en": "South Layout Junction Pole #29", "kn": "ದಕ್ಷಿಣ ಬಡಾವಣೆ ಕೂಡು ದೀಪ #29" },
+      "poleNumber": "HLK-P-29",
       "ward": "Ward 5",
-      "poleNumber": "HGP-P29",
-      "type": "LED",
       "status": "working",
-      "installedDate": "2023-12-09",
-      "coordinates": [12.5172, 76.9019],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL29-1",
-          "date": "2023-12-09",
-          "action": "LED fixture installed",
-          "performedBy": "GP Electrician",
-          "notes": "Tested normal."
-        }
-      ]
+      "wattage": 40,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.57025,
+        76.785163
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     },
     {
       "id": "SL-30",
-      "name": { "en": "South Layout End Pole #30", "kn": "ದಕ್ಷಿಣ ಬಡಾವಣೆ ಕೊನೆ ದೀಪ #30" },
+      "poleNumber": "HLK-P-30",
       "ward": "Ward 5",
-      "poleNumber": "HGP-P30",
-      "type": "CFL",
-      "status": "faulty",
-      "installedDate": "2020-01-28",
-      "coordinates": [12.5167, 76.903],
-      "maintenanceHistory": [
-        {
-          "id": "MH-SL30-1",
-          "date": "2026-09-24",
-          "action": "Fault reported — no power at terminal",
-          "performedBy": "GP Lineman",
-          "notes": "Needs phase jumper reconnection from Pole #29."
-        }
-      ]
+      "status": "working",
+      "wattage": 60,
+      "installedDate": "2023-04-15",
+      "lastCheckedDate": "2026-10-10",
+      "coordinates": [
+        12.570324,
+        76.784901
+      ],
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "dataSource": "sample",
+      "isSample": true
     }
   ],
   "complaints": [
     {
-      "id": "CMP-01",
-      "assetId": "SL-05",
-      "assetCategory": "streetLights",
-      "assetName": {
-        "en": "Main Road East-Mid Pole #05",
-        "kn": "ಮುಖ್ಯ ರಸ್ತೆ ಮಧ್ಯ ದೀಪ #05"
-      },
-      "ward": "Ward 1",
+      "id": "CMP-2026-001",
+      "assetId": "SL-04",
+      "assetType": "streetLight",
       "date": "2026-10-28",
-      "description": "Street light not working at night; old CFL ballast appears burnt out.",
-      "reportedBy": "Ward 1 Residents",
-      "status": "Open"
+      "description": "Street light not working for 4 days near Main Road junction",
+      "status": "Open",
+      "reportedBy": "K. Raju (Ward 1)",
+      "phone": "9845012345",
+      "coordinates": [
+        12.569836,
+        76.775673
+      ],
+      "photoId": null
     },
     {
-      "id": "CMP-02",
-      "assetId": "WT-04",
-      "assetCategory": "waterTanks",
-      "assetName": {
-        "en": "Halebavi Open Well – Shala Beedhi",
-        "kn": "ಹಳೆಬಾವಿ ತೆರೆದ ಬಾವಿ – ಶಾಲಾ ಬೀದಿ"
-      },
-      "ward": "Ward 4",
-      "date": "2026-10-15",
-      "description": "Safety parapet grill is rusted and silt needs clearing near school lane.",
-      "reportedBy": "School Headmaster",
-      "status": "In Progress"
+      "id": "CMP-2026-002",
+      "assetId": "WT-02",
+      "assetType": "waterTank",
+      "date": "2026-11-02",
+      "description": "Mini water tank inlet pipe valve leaking, water wasting continuously",
+      "status": "In Progress",
+      "reportedBy": "Suma Patel",
+      "phone": "9880123456",
+      "coordinates": [
+        12.5698,
+        76.7725
+      ],
+      "photoId": null
     },
     {
-      "id": "CMP-03",
-      "assetId": "RD-07",
-      "assetCategory": "roads",
-      "assetName": {
-        "en": "North Farm Link WBM Road",
-        "kn": "ಉತ್ತರ ಕೃಷಿ ಸಂಪರ್ಕ ಡಬ್ಲ್ಯೂ.ಬಿ.ಎಂ. ರಸ್ತೆ"
-      },
-      "ward": "Ward 2",
-      "date": "2026-11-01",
-      "description": "Deep tractor ruts along the WBM stretch causing water pooling.",
-      "reportedBy": "Ward 2 Farmers",
-      "status": "Open"
+      "id": "CMP-2026-003",
+      "assetId": "SL-11",
+      "assetType": "streetLight",
+      "date": "2026-11-06",
+      "description": "Flickering street light pole near school entrance",
+      "status": "Open",
+      "reportedBy": "Basavaraju M.",
+      "phone": "9900234567",
+      "coordinates": [
+        12.583119,
+        76.780815
+      ],
+      "photoId": null
     },
     {
-      "id": "CMP-04",
-      "assetId": "WT-03",
-      "assetCategory": "waterTanks",
-      "assetName": {
-        "en": "Devasthana Ground-Level Reservoir",
-        "kn": "ದೇವಸ್ಥಾನ ನೆಲಮಟ್ಟದ ನೀರಿನ ತೊಟ್ಟಿ"
-      },
-      "ward": "Ward 3",
-      "date": "2026-09-20",
-      "resolvedDate": "2026-09-25",
-      "description": "Outlet tap leaking continuously near reservoir gate.",
-      "reportedBy": "Temple Committee",
-      "status": "Resolved",
-      "resolutionNotes": "Replaced brass valve washer and resealed outlet joint."
+      "id": "CMP-2026-004",
+      "assetId": "PB-05",
+      "assetType": "publicBuilding",
+      "date": "2026-11-09",
+      "description": "Roof seepage and peeling plaster at Anganwadi Centre 2",
+      "status": "Open",
+      "reportedBy": "Girijamma (Worker)",
+      "phone": "9448345678",
+      "coordinates": [
+        12.5762,
+        76.779
+      ],
+      "photoId": null
     }
   ]
 }

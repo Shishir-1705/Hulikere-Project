@@ -12,32 +12,60 @@ export function MapLegend({ lang }) {
         <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
           {tr(lang, 'legendAssetTypes')}
         </p>
-        <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
-          <div className="flex items-center gap-1.5 text-slate-700 font-medium">
-            <span className="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center shrink-0">
-              <CategoryIcon category="waterTanks" className="w-3 h-3" />
+        <div className="space-y-1.5">
+          {/* Water Tanks */}
+          <div className="flex items-center justify-between gap-1.5 text-slate-700 font-medium">
+            <div className="flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center shrink-0">
+                <CategoryIcon category="waterTanks" className="w-3 h-3" />
+              </span>
+              <span>{tr(lang, 'legendWaterTank')}</span>
+            </div>
+            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+              {tr(lang, 'legendSamplePill')}
             </span>
-            <span>{tr(lang, 'legendWaterTank')}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-slate-700 font-medium">
-            <span className="w-5 h-5 rounded-md bg-indigo-600 text-white flex items-center justify-center shrink-0">
-              <CategoryIcon category="publicBuildings" className="w-3 h-3" />
+
+          {/* Buildings */}
+          <div className="flex items-center justify-between gap-1.5 text-slate-700 font-medium">
+            <div className="flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-md bg-indigo-600 text-white flex items-center justify-center shrink-0">
+                <CategoryIcon category="publicBuildings" className="w-3 h-3" />
+              </span>
+              <span>{tr(lang, 'legendBuilding')}</span>
+            </div>
+            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+              {tr(lang, 'legendMixedPill')}
             </span>
-            <span>{tr(lang, 'legendBuilding')}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-slate-700 font-medium">
-            <span className="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0">
-              <CategoryIcon category="streetLights" className="w-3 h-3" />
+
+          {/* Street Lights */}
+          <div className="flex items-center justify-between gap-1.5 text-slate-700 font-medium">
+            <div className="flex items-center gap-1.5">
+              <span className="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0">
+                <CategoryIcon category="streetLights" className="w-3 h-3" />
+              </span>
+              <span>{tr(lang, 'legendStreetLight')}</span>
+            </div>
+            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+              {tr(lang, 'legendSamplePill')}
             </span>
-            <span>{tr(lang, 'legendStreetLight')}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-slate-700 font-medium">
-            <span className="w-5 h-2 rounded-full bg-teal-600 inline-block shrink-0 border border-white shadow-sm" />
-            <span>{tr(lang, 'legendRoadLine')}</span>
+
+          {/* Roads */}
+          <div className="flex items-center justify-between gap-1.5 text-slate-700 font-medium">
+            <div className="flex items-center gap-1.5">
+              <span className="w-5 h-2 rounded-full bg-teal-600 inline-block shrink-0 border border-white shadow-sm" />
+              <span>{tr(lang, 'legendRoadLine')}</span>
+            </div>
+            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-sky-100 text-sky-800 border border-sky-300">
+              {tr(lang, 'legendRealOsm')}
+            </span>
           </div>
         </div>
       </div>
 
+      {/* Condition / Status indicators */}
       <div className="border-t border-slate-200/80 pt-2">
         <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
           {tr(lang, 'legendConditionTitle')}
@@ -57,11 +85,24 @@ export function MapLegend({ lang }) {
           </span>
         </div>
       </div>
+
+      {/* Data Source Notice */}
+      <div className="border-t border-slate-200/80 pt-2 text-[10px] text-slate-500">
+        <p className="font-bold text-slate-600 mb-0.5">{tr(lang, 'legendDataSources')}:</p>
+        <p className="leading-tight">
+          <span className="font-semibold text-sky-800">{tr(lang, 'legendRealOsm')}:</span>{' '}
+          {tr(lang, 'legendOsmDesc')}
+        </p>
+        <p className="leading-tight mt-1">
+          <span className="font-semibold text-amber-800">{tr(lang, 'legendSamplePill')}:</span>{' '}
+          {tr(lang, 'legendSampleDesc')}
+        </p>
+      </div>
     </div>
   );
 
   return (
-    <div className="absolute bottom-3 left-3 z-[400] max-w-[270px] sm:max-w-[300px]">
+    <div className="absolute bottom-3 left-3 z-[400] max-w-[280px] sm:max-w-[320px]">
       {/* Desktop / Tablet Always-Visible Corner Legend */}
       <div className="hidden sm:block bg-white/95 backdrop-blur rounded-2xl border border-slate-200 shadow-lg p-3">
         <div className="flex items-center gap-1.5 mb-2">
