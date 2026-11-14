@@ -3,6 +3,9 @@
  * Mandya taluk, Mandya district, Karnataka using the Overpass API with a configurable
  * bounding box centered on Hulikere village.
  *
+ * All road geometries are clipped strictly to the village bounding box so no road
+ * extends beyond it, and long highway segments leaving the area are clipped/trimmed.
+ *
  * Usage:
  *   node scripts/fetchOsm.js
  *   npm run fetch:osm
@@ -51,6 +54,151 @@ export function getBoundingBox(
     Number((lat + deltaLat).toFixed(6)), // north
     Number((lng + deltaLng).toFixed(6)), // east
   ];
+}
+
+function toRadians(deg) {
+  return (deg * Math.PI) / 180;
+}
+
+function haversineMeters(lat1, lon1, lat2, lon2) {
+  const R = 6371000;
+  const dLat = toRadians(lat2 - lat1);
+  const dLon = toRadians(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function polylineLengthMeters(coords) {
+  let len = 0;
+  for (let i = 0; i < coords.length - 1; i++) {
+    len += haversineMeters(
+      coords[i][1],
+      coords[i][0],
+      coords[i + 1][1],
+      coords[i + 1][0]
+    );
+  }
+  return len;
+}
+
+// Cohen-Sutherland line segment clipping against [south, west, north, east]
+const INSIDE = 0;
+const LEFT = 1;
+const RIGHT = 2;
+const BOTTOM = 4;
+const TOP = 8;
+
+function computeOutCode(x, y, xMin, yMin, xMax, yMax) {
+  let code = INSIDE;
+  if (x < xMin) code |= LEFT;
+  else if (x > xMax) code |= RIGHT;
+  if (y < yMin) code |= BOTTOM;
+  else if (y > yMax) code |= TOP;
+  return code;
+}
+
+function clipSegment(p0, p1, xMin, yMin, xMax, yMax) {
+  let [x0, y0] = p0;
+  let [x1, y1] = p1;
+  let code0 = computeOutCode(x0, y0, xMin, yMin, xMax, yMax);
+  let code1 = computeOutCode(x1, y1, xMin, yMin, xMax, yMax);
+  let accept = false;
+
+  for (let iter = 0; iter < 10; iter++) {
+    if ((code0 | code1) === 0) {
+      accept = true;
+      break;
+    } else if ((code0 & code1) !== 0) {
+      break;
+    } else {
+      const codeOut = code0 !== 0 ? code0 : code1;
+      let x = 0;
+      let y = 0;
+
+      if (codeOut & TOP) {
+        x = x0 + ((x1 - x0) * (yMax - y0)) / (y1 - y0);
+        y = yMax;
+      } else if (codeOut & BOTTOM) {
+        x = x0 + ((x1 - x0) * (yMin - y0)) / (y1 - y0);
+        y = yMin;
+      } else if (codeOut & RIGHT) {
+        y = y0 + ((y1 - y0) * (xMax - x0)) / (x1 - x0);
+        x = xMax;
+      } else if (codeOut & LEFT) {
+        y = y0 + ((y1 - y0) * (xMin - x0)) / (x1 - x0);
+        x = xMin;
+      }
+
+      if (codeOut === code0) {
+        x0 = x;
+        y0 = y;
+        code0 = computeOutCode(x0, y0, xMin, yMin, xMax, yMax);
+      } else {
+        x1 = x;
+        y1 = y;
+        code1 = computeOutCode(x1, y1, xMin, yMin, xMax, yMax);
+      }
+    }
+  }
+
+  if (accept) {
+    return [
+      [Number(x0.toFixed(7)), Number(y0.toFixed(7))],
+      [Number(x1.toFixed(7)), Number(y1.toFixed(7))],
+    ];
+  }
+  return null;
+}
+
+/**
+ * Clips a polyline to bounding box.
+ * Returns an array of clipped continuous polylines.
+ */
+function clipPolylineToBbox(coords, bbox) {
+  const [south, west, north, east] = bbox;
+  const xMin = west;
+  const xMax = east;
+  const yMin = south;
+  const yMax = north;
+
+  const clippedLines = [];
+  let currentLine = [];
+
+  for (let i = 0; i < coords.length - 1; i++) {
+    const seg = clipSegment(coords[i], coords[i + 1], xMin, yMin, xMax, yMax);
+    if (!seg) {
+      if (currentLine.length >= 2) {
+        clippedLines.push(currentLine);
+      }
+      currentLine = [];
+      continue;
+    }
+
+    const [cp0, cp1] = seg;
+    if (currentLine.length === 0) {
+      currentLine.push(cp0, cp1);
+    } else {
+      const lastPt = currentLine[currentLine.length - 1];
+      const dist = Math.hypot(lastPt[0] - cp0[0], lastPt[1] - cp0[1]);
+      if (dist < 1e-6) {
+        currentLine.push(cp1);
+      } else {
+        if (currentLine.length >= 2) {
+          clippedLines.push(currentLine);
+        }
+        currentLine = [cp0, cp1];
+      }
+    }
+  }
+
+  if (currentLine.length >= 2) {
+    clippedLines.push(currentLine);
+  }
+
+  // Filter out tiny sliver segments (< 20 meters)
+  return clippedLines.filter((line) => polylineLengthMeters(line) >= 20);
 }
 
 function buildFeatureFilters(scopeClause) {
@@ -125,7 +273,6 @@ function shouldKeepRoad(tags = {}) {
     if (['driveway', 'parking_aisle', 'alley'].includes(serviceType)) {
       return false;
     }
-    // Also drop tiny unnamed service access
     if (!name && serviceType === '') {
       return false;
     }
@@ -152,12 +299,7 @@ function classifyElement(tags = {}) {
     return 'road';
   }
 
-  if (
-    tags.amenity ||
-    tags.office ||
-    tags.government ||
-    tags.building
-  ) {
+  if (tags.amenity || tags.office || tags.government || tags.building) {
     return 'publicBuilding';
   }
 
@@ -171,8 +313,12 @@ function isClosedRing(coords) {
   return first[0] === last[0] && first[1] === last[1];
 }
 
-function elementToGeometry(el, category) {
+function elementToGeometry(el, category, bbox) {
   if (el.type === 'node' && typeof el.lon === 'number' && typeof el.lat === 'number') {
+    const [south, west, north, east] = bbox;
+    if (el.lat < south || el.lat > north || el.lon < west || el.lon > east) {
+      return null;
+    }
     return {
       type: 'Point',
       coordinates: [el.lon, el.lat],
@@ -187,10 +333,11 @@ function elementToGeometry(el, category) {
     if (coords.length === 0) return null;
 
     if (category === 'road') {
-      if (coords.length < 2) return null;
+      const clippedLines = clipPolylineToBbox(coords, bbox);
+      if (clippedLines.length === 0) return null;
       return {
-        type: 'LineString',
-        coordinates: coords,
+        type: 'ClippedLines',
+        lines: clippedLines,
       };
     }
 
@@ -214,45 +361,10 @@ function elementToGeometry(el, category) {
     };
   }
 
-  if (el.type === 'relation' && Array.isArray(el.members)) {
-    const outerRings = [];
-    const fallbackPoints = [];
-
-    for (const member of el.members) {
-      if (!Array.isArray(member.geometry) || member.geometry.length === 0) continue;
-      const ring = member.geometry
-        .filter((pt) => typeof pt.lon === 'number' && typeof pt.lat === 'number')
-        .map((pt) => [pt.lon, pt.lat]);
-      if (ring.length === 0) continue;
-      fallbackPoints.push(...ring);
-      if (member.role === 'outer' && isClosedRing(ring)) {
-        outerRings.push(ring);
-      }
-    }
-
-    if (outerRings.length > 0) {
-      return {
-        type: 'Polygon',
-        coordinates: [outerRings[0]],
-      };
-    }
-
-    if (fallbackPoints.length > 0) {
-      const avgLon =
-        fallbackPoints.reduce((s, p) => s + p[0], 0) / fallbackPoints.length;
-      const avgLat =
-        fallbackPoints.reduce((s, p) => s + p[1], 0) / fallbackPoints.length;
-      return {
-        type: 'Point',
-        coordinates: [Number(avgLon.toFixed(6)), Number(avgLat.toFixed(6))],
-      };
-    }
-  }
-
   return null;
 }
 
-function overpassToGeoJson(overpassJson, metaInfo) {
+function overpassToGeoJson(overpassJson, metaInfo, bbox) {
   const elements = Array.isArray(overpassJson?.elements)
     ? overpassJson.elements
     : [];
@@ -294,12 +406,40 @@ function overpassToGeoJson(overpassJson, metaInfo) {
     if (seenKeys.has(uniqueKey)) continue;
     seenKeys.add(uniqueKey);
 
-    const geometry = elementToGeometry(el, category);
-    if (!geometry) continue;
+    const geomResult = elementToGeometry(el, category, bbox);
+    if (!geomResult) continue;
 
-    if (category === 'road') {
-      counts.roads += 1;
-    } else if (category === 'waterTank') {
+    if (category === 'road' && geomResult.type === 'ClippedLines') {
+      geomResult.lines.forEach((lineCoords, idx) => {
+        counts.roads += 1;
+        const lineId = geomResult.lines.length > 1 ? `${uniqueKey}_${idx + 1}` : uniqueKey;
+        features.push({
+          type: 'Feature',
+          id: lineId,
+          properties: {
+            osmId: lineId,
+            osmType: el.type,
+            category: 'road',
+            name: tags.name || tags['name:en'] || null,
+            nameKn: tags['name:kn'] || null,
+            highway: tags.highway || null,
+            surface: tags.surface || null,
+            amenity: tags.amenity || null,
+            building: tags.building || null,
+            office: tags.office || null,
+            man_made: tags.man_made || null,
+            tags,
+          },
+          geometry: {
+            type: 'LineString',
+            coordinates: lineCoords,
+          },
+        });
+      });
+      continue;
+    }
+
+    if (category === 'waterTank') {
       counts.waterTanks += 1;
       const mm = String(tags.man_made || '').toLowerCase();
       if (mm === 'water_tower') counts.waterBreakdown.water_tower += 1;
@@ -378,7 +518,7 @@ function overpassToGeoJson(overpassJson, metaInfo) {
         man_made: tags.man_made || null,
         tags,
       },
-      geometry,
+      geometry: geomResult,
     });
   }
 
@@ -416,16 +556,20 @@ export async function fetchOsmData() {
     console.warn(`Overpass remark: ${overpassData.remark}`);
   }
 
-  const geoJson = overpassToGeoJson(overpassData, {
-    fetchedAt: new Date().toISOString(),
-    source: 'OpenStreetMap (Overpass API)',
-    queryMethod: 'bbox',
-    village: CONFIG.villageName,
-    district: CONFIG.districtName,
-    center: [CONFIG.centerLat, CONFIG.centerLng],
-    radiusKm: CONFIG.radiusKm,
-    bbox,
-  });
+  const geoJson = overpassToGeoJson(
+    overpassData,
+    {
+      fetchedAt: new Date().toISOString(),
+      source: 'OpenStreetMap (Overpass API)',
+      queryMethod: 'bbox',
+      village: CONFIG.villageName,
+      district: CONFIG.districtName,
+      center: [CONFIG.centerLat, CONFIG.centerLng],
+      radiusKm: CONFIG.radiusKm,
+      bbox,
+    },
+    bbox
+  );
 
   await fs.mkdir(path.dirname(CONFIG.outputPath), { recursive: true });
   await fs.writeFile(CONFIG.outputPath, JSON.stringify(geoJson, null, 2), 'utf8');
@@ -433,20 +577,10 @@ export async function fetchOsmData() {
   const { counts } = geoJson.metadata;
   console.log('\n=== Overpass Fetch Summary for Hulikere Village ===');
   console.log(`Total valid features : ${counts.total}`);
-  console.log(`Roads (retained)     : ${counts.roads}`);
+  console.log(`Roads (clipped)      : ${counts.roads}`);
   console.log(`Roads/paths (dropped): ${counts.droppedRoads}`);
   console.log(`Public buildings     : ${counts.publicBuildings}`);
-  console.log(`  - Schools          : ${counts.buildingsBreakdown.school}`);
-  console.log(`  - Anganwadis       : ${counts.buildingsBreakdown.anganwadi}`);
-  console.log(`  - PHC/Clinic       : ${counts.buildingsBreakdown.hospitalOrClinic}`);
-  console.log(`  - Community Centres: ${counts.buildingsBreakdown.communityCentre}`);
-  console.log(`  - Temples          : ${counts.buildingsBreakdown.temple}`);
-  console.log(`  - Govt/GP Offices  : ${counts.buildingsBreakdown.panchayatOrGovtOffice}`);
-  console.log(`  - Other buildings  : ${counts.buildingsBreakdown.otherNamedBuilding}`);
   console.log(`Water structures     : ${counts.waterTanks}`);
-  console.log(`  - water_tower      : ${counts.waterBreakdown.water_tower}`);
-  console.log(`  - water_tank       : ${counts.waterBreakdown.water_tank}`);
-  console.log(`  - water_well       : ${counts.waterBreakdown.water_well}`);
   console.log(`\nGeoJSON saved successfully to: ${CONFIG.outputPath}`);
 
   return geoJson;

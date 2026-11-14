@@ -37,20 +37,24 @@
       ],
       "polygon": [
         [
-          12.574,
-          76.77
+          12.5735,
+          76.7712
         ],
         [
-          12.574,
-          76.777
+          12.5738,
+          76.7758
         ],
         [
-          12.567,
-          76.777
+          12.5695,
+          76.7765
         ],
         [
-          12.567,
-          76.77
+          12.5678,
+          76.7738
+        ],
+        [
+          12.5684,
+          76.771
         ]
       ]
     },
@@ -72,28 +76,24 @@
       ],
       "polygon": [
         [
-          12.584057,
-          76.77363
-        ],
-        [
-          12.584057,
-          76.787436
-        ],
-        [
-          12.57056,
-          76.787436
-        ],
-        [
-          12.57056,
+          12.5788,
           76.777
         ],
         [
-          12.574,
-          76.777
+          12.5815,
+          76.7825
         ],
         [
-          12.574,
-          76.77363
+          12.5745,
+          76.784
+        ],
+        [
+          12.5728,
+          76.7785
+        ],
+        [
+          12.575,
+          76.776
         ]
       ]
     },
@@ -115,28 +115,24 @@
       ],
       "polygon": [
         [
-          12.584057,
-          76.759824
+          12.5805,
+          76.7645
         ],
         [
-          12.584057,
-          76.77363
+          12.5775,
+          76.771
         ],
         [
-          12.574,
-          76.77363
+          12.5732,
+          76.7705
         ],
         [
-          12.574,
-          76.77
+          12.5725,
+          76.764
         ],
         [
-          12.57056,
-          76.77
-        ],
-        [
-          12.57056,
-          76.759824
+          12.577,
+          76.7625
         ]
       ]
     },
@@ -158,28 +154,24 @@
       ],
       "polygon": [
         [
-          12.57056,
-          76.759824
+          12.568,
+          76.7635
         ],
         [
-          12.57056,
-          76.77
+          12.5685,
+          76.7695
         ],
         [
-          12.567,
-          76.77
+          12.5615,
+          76.7715
         ],
         [
-          12.567,
-          76.77363
+          12.5595,
+          76.765
         ],
         [
-          12.557063,
-          76.77363
-        ],
-        [
-          12.557063,
-          76.759824
+          12.563,
+          76.762
         ]
       ]
     },
@@ -201,28 +193,24 @@
       ],
       "polygon": [
         [
-          12.57056,
+          12.5685,
           76.777
         ],
         [
-          12.57056,
-          76.787436
+          12.5675,
+          76.7835
         ],
         [
-          12.557063,
-          76.787436
+          12.5605,
+          76.7845
         ],
         [
-          12.557063,
-          76.77363
+          12.5598,
+          76.7775
         ],
         [
-          12.567,
-          76.77363
-        ],
-        [
-          12.567,
-          76.777
+          12.5645,
+          76.7755
         ]
       ]
     }
@@ -693,8 +681,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569872,
-        76.776976
+        12.570123,
+        76.779857
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -709,8 +697,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569905,
-        76.776582
+        12.570061,
+        76.779201
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -725,8 +713,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569912,
-        76.776236
+        12.569953,
+        76.778097
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -741,8 +729,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569836,
-        76.775673
+        12.569908,
+        76.777649
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -757,8 +745,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569776,
-        76.775286
+        12.569872,
+        76.776976
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -773,8 +761,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569693,
-        76.774787
+        12.569905,
+        76.776582
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -789,10 +777,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.584163,
-        76.781187
+        12.569995,
+        76.786034
       ],
-      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -805,10 +793,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.583908,
-        76.781074
+        12.570113,
+        76.785631
       ],
-      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -821,10 +809,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.583651,
-        76.780966
+        12.57025,
+        76.785163
       ],
-      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -837,10 +825,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.58339,
-        76.780873
+        12.570324,
+        76.784901
       ],
-      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -853,10 +841,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.583119,
-        76.780815
+        12.570407,
+        76.784445
       ],
-      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -869,10 +857,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.582842,
-        76.780788
+        12.570436,
+        76.784184
       ],
-      "notes": "Snapped on OSM road way/393233071 (tertiary)",
+      "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -885,8 +873,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.58412,
-        76.766378
+        12.583727,
+        76.766266
       ],
       "notes": "Snapped on OSM road way/52082814 (tertiary)",
       "dataSource": "sample",
@@ -901,8 +889,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.583593,
-        76.766227
+        12.583397,
+        76.766171
       ],
       "notes": "Snapped on OSM road way/52082814 (tertiary)",
       "dataSource": "sample",
@@ -981,8 +969,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.556361,
-        76.771471
+        12.557277,
+        76.771556
       ],
       "notes": "Snapped on OSM road way/343193308 (tertiary)",
       "dataSource": "sample",
@@ -997,8 +985,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.556926,
-        76.771524
+        12.558139,
+        76.771587
       ],
       "notes": "Snapped on OSM road way/343193308 (tertiary)",
       "dataSource": "sample",
@@ -1013,8 +1001,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.558139,
-        76.771587
+        12.558787,
+        76.771597
       ],
       "notes": "Snapped on OSM road way/343193308 (tertiary)",
       "dataSource": "sample",
@@ -1029,8 +1017,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.558787,
-        76.771597
+        12.559988,
+        76.771646
       ],
       "notes": "Snapped on OSM road way/343193308 (tertiary)",
       "dataSource": "sample",
@@ -1045,8 +1033,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.559988,
-        76.771646
+        12.560541,
+        76.771684
       ],
       "notes": "Snapped on OSM road way/343193308 (tertiary)",
       "dataSource": "sample",
@@ -1061,8 +1049,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.560541,
-        76.771684
+        12.561381,
+        76.771741
       ],
       "notes": "Snapped on OSM road way/343193308 (tertiary)",
       "dataSource": "sample",
@@ -1077,8 +1065,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.56964,
-        76.78715
+        12.569655,
+        76.787103
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -1093,8 +1081,8 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569758,
-        76.786793
+        12.569766,
+        76.78677
       ],
       "notes": "Snapped on OSM road way/343202610 (tertiary)",
       "dataSource": "sample",
@@ -1109,10 +1097,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.569995,
-        76.786034
+        12.568776,
+        76.782876
       ],
-      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "notes": "Snapped on OSM road way/784148263 (unclassified)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -1125,10 +1113,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.570113,
-        76.785631
+        12.568478,
+        76.782957
       ],
-      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "notes": "Snapped on OSM road way/784148263 (unclassified)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -1141,10 +1129,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.57025,
-        76.785163
+        12.568311,
+        76.782973
       ],
-      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "notes": "Snapped on OSM road way/784148263 (unclassified)",
       "dataSource": "sample",
       "isSample": true
     },
@@ -1157,10 +1145,10 @@
       "installedDate": "2023-04-15",
       "lastCheckedDate": "2026-10-10",
       "coordinates": [
-        12.570324,
-        76.784901
+        12.568166,
+        76.783126
       ],
-      "notes": "Snapped on OSM road way/343202610 (tertiary)",
+      "notes": "Snapped on OSM road way/784148263 (unclassified)",
       "dataSource": "sample",
       "isSample": true
     }
@@ -1176,8 +1164,8 @@
       "reportedBy": "K. Raju (Ward 1)",
       "phone": "9845012345",
       "coordinates": [
-        12.569836,
-        76.775673
+        12.569908,
+        76.777649
       ],
       "photoId": null
     },
@@ -1206,8 +1194,8 @@
       "reportedBy": "Basavaraju M.",
       "phone": "9900234567",
       "coordinates": [
-        12.583119,
-        76.780815
+        12.570407,
+        76.784445
       ],
       "photoId": null
     },

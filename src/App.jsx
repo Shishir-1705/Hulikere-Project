@@ -43,7 +43,7 @@ const DEFAULT_VISIBLE_LAYERS = {
   roads: true,
   publicBuildings: true,
   streetLights: true,
-  wards: true,
+  wards: false,
 };
 
 export default function App() {

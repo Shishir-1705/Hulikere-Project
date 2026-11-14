@@ -62,6 +62,17 @@ export function MapLegend({ lang }) {
               {tr(lang, 'legendRealOsm')}
             </span>
           </div>
+
+          {/* Ward Boundaries (Sample) */}
+          <div className="flex items-center justify-between gap-1.5 text-slate-700 font-medium">
+            <div className="flex items-center gap-1.5">
+              <span className="w-5 h-2.5 rounded border border-dashed border-teal-600 bg-teal-500/10 inline-block shrink-0" />
+              <span>{tr(lang, 'legendWardBoundaries')}</span>
+            </div>
+            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+              {tr(lang, 'legendSamplePill')}
+            </span>
+          </div>
         </div>
       </div>
 

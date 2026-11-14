@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, RotateCcw } from 'lucide-react';
 import {
   getLocalizedName,
   getSecondaryName,
@@ -23,7 +23,8 @@ import { MapLegend } from './MapLegend';
 const VILLAGE_CENTER = [12.57056, 76.77363];
 const VILLAGE_ZOOM = 15;
 const VILLAGE_BBOX = [12.557063, 76.759824, 12.584057, 76.787436];
-const PAN_PAD = 0.008;
+// Restrict panning slightly beyond the bounding box (~650m padding)
+const PAN_PAD = 0.006;
 const MAX_BOUNDS = L.latLngBounds(
   [VILLAGE_BBOX[0] - PAN_PAD, VILLAGE_BBOX[1] - PAN_PAD],
   [VILLAGE_BBOX[2] + PAN_PAD, VILLAGE_BBOX[3] + PAN_PAD]
@@ -41,10 +42,10 @@ function escapeHtml(str) {
 
 function buildClusterIcon(cluster, color) {
   const count = cluster.getChildCount();
-  const size = count >= 10 ? 30 : 24;
+  const size = count >= 10 ? 28 : 22;
   return L.divIcon({
     html: `
-      <div style="width:${size}px;height:${size}px;border-radius:9999px;background:${color};color:#ffffff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;border:2px solid #ffffff;box-shadow:0 2px 6px rgba(0,0,0,0.35);">
+      <div style="width:${size}px;height:${size}px;border-radius:9999px;background:${color};color:#ffffff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;border:2px solid #ffffff;box-shadow:0 2px 6px rgba(0,0,0,0.35);">
         ${count}
       </div>
     `,
@@ -56,13 +57,13 @@ function buildClusterIcon(cluster, color) {
 
 function buildTankIcon(condition, isSelected) {
   const status = getStatusMeta(condition);
-  const size = isSelected ? 26 : 20;
+  const size = isSelected ? 24 : 18;
   const isPoor = status.bucket === 'poor';
   const ring = isSelected
-    ? 'box-shadow: 0 0 0 3px #0f172a, 0 4px 10px rgba(0,0,0,0.35);'
-    : 'box-shadow: 0 1px 5px rgba(15,23,42,0.25);';
+    ? 'box-shadow: 0 0 0 2.5px #0f172a, 0 3px 8px rgba(0,0,0,0.35);'
+    : 'box-shadow: 0 1px 4px rgba(15,23,42,0.22);';
   const pulse = isPoor
-    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-4px;border-radius:9999px;border:2px solid #dc2626;"></span>`
+    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-3px;border-radius:9999px;border:1.8px solid #dc2626;"></span>`
     : '';
 
   return L.divIcon({
@@ -70,10 +71,10 @@ function buildTankIcon(condition, isSelected) {
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
     html: `
-      <div style="position:relative;width:${size}px;height:${size}px;border-radius:9999px;background:${status.colorHex};padding:2.5px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
+      <div style="position:relative;width:${size}px;height:${size}px;border-radius:9999px;background:${status.colorHex};padding:2px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
         ${pulse}
         <div style="width:100%;height:100%;border-radius:9999px;background:#0284c7;border:1px solid #ffffff;display:flex;align-items:center;justify-content:center;">
-          <svg width="${isSelected ? 13 : 10}" height="${isSelected ? 13 : 10}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="${isSelected ? 11 : 9}" height="${isSelected ? 11 : 9}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
           </svg>
         </div>
@@ -84,13 +85,13 @@ function buildTankIcon(condition, isSelected) {
 
 function buildBuildingIcon(condition, isSelected) {
   const status = getStatusMeta(condition);
-  const size = isSelected ? 26 : 20;
+  const size = isSelected ? 24 : 18;
   const isPoor = status.bucket === 'poor';
   const ring = isSelected
-    ? 'box-shadow: 0 0 0 3px #0f172a, 0 4px 10px rgba(0,0,0,0.35);'
-    : 'box-shadow: 0 1px 5px rgba(15,23,42,0.25);';
+    ? 'box-shadow: 0 0 0 2.5px #0f172a, 0 3px 8px rgba(0,0,0,0.35);'
+    : 'box-shadow: 0 1px 4px rgba(15,23,42,0.22);';
   const pulse = isPoor
-    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-4px;border-radius:8px;border:2px solid #dc2626;"></span>`
+    ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-3px;border-radius:6px;border:1.8px solid #dc2626;"></span>`
     : '';
 
   return L.divIcon({
@@ -98,10 +99,10 @@ function buildBuildingIcon(condition, isSelected) {
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
     html: `
-      <div style="position:relative;width:${size}px;height:${size}px;border-radius:7px;background:${status.colorHex};padding:2.5px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
+      <div style="position:relative;width:${size}px;height:${size}px;border-radius:6px;background:${status.colorHex};padding:2px;display:flex;align-items:center;justify-content:center;${ring}transition:all 150ms ease;">
         ${pulse}
-        <div style="width:100%;height:100%;border-radius:5px;background:#4f46e5;border:1px solid #ffffff;display:flex;align-items:center;justify-content:center;">
-          <svg width="${isSelected ? 13 : 10}" height="${isSelected ? 13 : 10}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <div style="width:100%;height:100%;border-radius:4px;background:#4f46e5;border:1px solid #ffffff;display:flex;align-items:center;justify-content:center;">
+          <svg width="${isSelected ? 11 : 9}" height="${isSelected ? 11 : 9}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
             <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
             <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
@@ -112,10 +113,33 @@ function buildBuildingIcon(condition, isSelected) {
   });
 }
 
-function buildStreetLightIcon(status, isSelected) {
+function buildStreetLightIcon(status, isSelected, isDetailZoom) {
   const isFaulty = status === 'faulty';
-  const size = isSelected ? 18 : 14;
   const conditionColor = isFaulty ? '#dc2626' : '#16a34a';
+
+  if (!isDetailZoom) {
+    // Small dot representation when zoomed out/overview
+    const dotSize = isSelected ? 11 : 7;
+    const ring = isSelected
+      ? 'box-shadow: 0 0 0 2.5px #0f172a, 0 2px 6px rgba(0,0,0,0.35);'
+      : 'box-shadow: 0 1px 3px rgba(15,23,42,0.3);';
+    const pulse = isFaulty
+      ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-3px;border-radius:9999px;border:1.5px solid #dc2626;"></span>`
+      : '';
+    return L.divIcon({
+      className: 'gp-custom-icon',
+      iconSize: [dotSize, dotSize],
+      iconAnchor: [dotSize / 2, dotSize / 2],
+      html: `
+        <div style="position:relative;width:${dotSize}px;height:${dotSize}px;border-radius:9999px;background:${conditionColor};border:1.2px solid #ffffff;${ring}">
+          ${pulse}
+        </div>
+      `,
+    });
+  }
+
+  // Full icon representation when zoomed in close (zoom >= 17)
+  const size = isSelected ? 20 : 15;
   const innerBg = isFaulty ? '#991b1b' : '#f59e0b';
   const pulse = isFaulty
     ? `<span class="gp-faulty-pulse" style="position:absolute;inset:-3px;border-radius:9999px;border:1.8px solid #dc2626;"></span>`
@@ -132,7 +156,7 @@ function buildStreetLightIcon(status, isSelected) {
       <div style="position:relative;width:${size}px;height:${size}px;border-radius:9999px;background:${conditionColor};padding:2px;display:flex;align-items:center;justify-content:center;${selectedRing}">
         ${pulse}
         <div style="width:100%;height:100%;border-radius:9999px;background:${innerBg};border:1px solid #ffffff;display:flex;align-items:center;justify-content:center;">
-          <svg width="${isSelected ? 9 : 7}" height="${isSelected ? 9 : 7}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="${isSelected ? 10 : 8}" height="${isSelected ? 10 : 8}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
             <path d="M9 18h6"></path>
           </svg>
@@ -200,14 +224,18 @@ export function VillageMap({
 }) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
-  const hasAutoFitOsmRef = useRef(false);
   const [tilesLoading, setTilesLoading] = useState(true);
+  const [mapZoom, setMapZoom] = useState(VILLAGE_ZOOM);
+  const hasInitialFitRef = useRef(false);
+
   const layersRef = useRef({
+    surveyBoundary: null,
     wards: null,
     roads: null,
     waterTanks: null,
     publicBuildings: null,
     streetLights: null,
+    villageTitle: null,
     draft: null,
   });
 
@@ -225,10 +253,10 @@ export function VillageMap({
     const map = L.map(mapContainerRef.current, {
       center: VILLAGE_CENTER,
       zoom: VILLAGE_ZOOM,
-      minZoom: 13,
+      minZoom: 14,
       maxZoom: 19,
       maxBounds: MAX_BOUNDS,
-      maxBoundsViscosity: 0.85,
+      maxBoundsViscosity: 0.9,
       zoomControl: false,
     });
 
@@ -244,32 +272,78 @@ export function VillageMap({
     tileLayer.on('tileerror', () => setTilesLoading(false));
     tileLayer.addTo(map);
 
+    // Track zoom level for dynamic dot vs icon switching
+    map.on('zoomend', () => {
+      setMapZoom(map.getZoom());
+    });
+
     layersRef.current = {
+      surveyBoundary: L.layerGroup().addTo(map),
       wards: L.layerGroup().addTo(map),
       roads: L.layerGroup().addTo(map),
       waterTanks: L.markerClusterGroup({
         showCoverageOnHover: false,
         maxClusterRadius: 30,
         spiderfyOnMaxZoom: true,
-        disableClusteringAtZoom: 17,
+        disableClusteringAtZoom: 16,
         iconCreateFunction: (c) => buildClusterIcon(c, '#0284c7'),
       }).addTo(map),
       publicBuildings: L.markerClusterGroup({
         showCoverageOnHover: false,
         maxClusterRadius: 30,
         spiderfyOnMaxZoom: true,
-        disableClusteringAtZoom: 17,
+        disableClusteringAtZoom: 16,
         iconCreateFunction: (c) => buildClusterIcon(c, '#4f46e5'),
       }).addTo(map),
       streetLights: L.markerClusterGroup({
         showCoverageOnHover: false,
-        maxClusterRadius: 40,
+        maxClusterRadius: 35,
         spiderfyOnMaxZoom: true,
-        disableClusteringAtZoom: 17,
+        disableClusteringAtZoom: 16,
         iconCreateFunction: (c) => buildClusterIcon(c, '#d97706'),
       }).addTo(map),
+      villageTitle: L.layerGroup().addTo(map),
       draft: L.layerGroup().addTo(map),
     };
+
+    // Survey area subtle outline and soft background highlight
+    const surveyPoly = L.polygon(
+      [
+        [VILLAGE_BBOX[2], VILLAGE_BBOX[1]],
+        [VILLAGE_BBOX[2], VILLAGE_BBOX[3]],
+        [VILLAGE_BBOX[0], VILLAGE_BBOX[3]],
+        [VILLAGE_BBOX[0], VILLAGE_BBOX[1]],
+      ],
+      {
+        color: '#059669',
+        weight: 1.5,
+        dashArray: '6, 6',
+        opacity: 0.7,
+        fillColor: '#10b981',
+        fillOpacity: 0.035,
+        interactive: false,
+      }
+    );
+    surveyPoly.addTo(layersRef.current.surveyBoundary);
+
+    // Permanent, readable "Hulikere" title at village centre
+    const titleMarker = L.marker(VILLAGE_CENTER, {
+      icon: L.divIcon({
+        className: 'gp-village-title-marker',
+        iconSize: [160, 32],
+        iconAnchor: [80, 16],
+        html: `
+          <div style="background:rgba(255,255,255,0.94);backdrop-filter:blur(6px);border:1.5px solid #047857;border-radius:9999px;padding:3px 12px;box-shadow:0 3px 10px rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center;gap:6px;pointer-events:none;white-space:nowrap;">
+            <span style="width:7px;height:7px;border-radius:9999px;background:#059669;display:inline-block;box-shadow:0 0 0 2px rgba(5,150,105,0.25);"></span>
+            <span style="font-weight:800;font-size:12px;color:#064e3b;letter-spacing:-0.2px;">ಹುಲಿಕೆರೆ</span>
+            <span style="font-size:11px;font-weight:700;color:#047857;">• Hulikere</span>
+          </div>
+        `,
+      }),
+      zIndexOffset: 2500,
+      interactive: false,
+    });
+    titleMarker.addTo(layersRef.current.villageTitle);
 
     map.on('click', (e) => {
       if (pickModeRef.current?.active) {
@@ -287,7 +361,7 @@ export function VillageMap({
         try {
           map.invalidateSize({ animate: false });
         } catch {
-          // Ignore if map was just unmounted
+          // Ignore if unmounted
         }
       }
     });
@@ -298,11 +372,13 @@ export function VillageMap({
       map.remove();
       mapInstanceRef.current = null;
       layersRef.current = {
+        surveyBoundary: null,
         wards: null,
         roads: null,
         waterTanks: null,
         publicBuildings: null,
         streetLights: null,
+        villageTitle: null,
         draft: null,
       };
     };
@@ -315,7 +391,7 @@ export function VillageMap({
     container.style.cursor = pickMode?.active ? 'crosshair' : '';
   }, [pickMode?.active]);
 
-  // Render Ward Boundaries
+  // Render Ward Boundaries (light dashed style)
   useEffect(() => {
     const group = layersRef.current.wards;
     if (!group) return;
@@ -329,10 +405,11 @@ export function VillageMap({
 
       const poly = L.polygon(ward.polygon, {
         color,
-        weight: isHighlightedWard ? 2.5 : 1.5,
-        dashArray: isHighlightedWard ? null : '5, 5',
+        weight: isHighlightedWard ? 2 : 1.2,
+        dashArray: '4, 4',
         fillColor: color,
-        fillOpacity: isHighlightedWard ? 0.14 : 0.06,
+        fillOpacity: isHighlightedWard ? 0.12 : 0.04,
+        opacity: 0.75,
         interactive: false,
       });
 
@@ -353,7 +430,7 @@ export function VillageMap({
     });
   }, [wards, visibleLayers.wards, wardFilter, lang]);
 
-  // Render Filtered Assets
+  // Render Filtered Assets (dots for lights when zoomed out, icons when zoomed in)
   useEffect(() => {
     const { roads, waterTanks, publicBuildings, streetLights } = layersRef.current;
     if (!roads || !waterTanks || !publicBuildings || !streetLights) return;
@@ -362,6 +439,8 @@ export function VillageMap({
     waterTanks.clearLayers();
     publicBuildings.clearLayers();
     streetLights.clearLayers();
+
+    const isDetailZoom = mapZoom >= 17;
 
     for (const item of filteredAssets) {
       const key = `${item.category}:${item.id}`;
@@ -379,7 +458,7 @@ export function VillageMap({
 
         const casing = L.polyline(item.coordinates, {
           color: isSelected ? '#0f172a' : '#ffffff',
-          weight: isSelected ? 11 : 8,
+          weight: isSelected ? 10 : 7,
           opacity: isSelected ? 0.9 : 0.92,
           lineCap: 'round',
           lineJoin: 'round',
@@ -387,7 +466,7 @@ export function VillageMap({
 
         const line = L.polyline(item.coordinates, {
           color: statusMeta.colorHex,
-          weight: isSelected ? 6.5 : 4.5,
+          weight: isSelected ? 6 : 4,
           opacity: 0.95,
           dashArray,
           lineCap: 'round',
@@ -431,7 +510,7 @@ export function VillageMap({
           ),
           {
             direction: 'top',
-            offset: [0, -16],
+            offset: [0, -14],
             className: 'gp-tooltip',
           }
         );
@@ -450,7 +529,7 @@ export function VillageMap({
           buildTooltipHtml(item, translateAssetType(item.type, lang), lang),
           {
             direction: 'top',
-            offset: [0, -16],
+            offset: [0, -14],
             className: 'gp-tooltip',
           }
         );
@@ -461,7 +540,7 @@ export function VillageMap({
       } else if (item.category === 'streetLights' && visibleLayers.streetLights) {
         if (!Array.isArray(item.coordinates) || item.coordinates.length !== 2) continue;
         const marker = L.marker(item.coordinates, {
-          icon: buildStreetLightIcon(item.status, isSelected),
+          icon: buildStreetLightIcon(item.status, isSelected, isDetailZoom),
           zIndexOffset: isSelected ? 550 : item.status === 'faulty' ? 180 : 60,
         });
         marker.bindTooltip(
@@ -472,7 +551,7 @@ export function VillageMap({
           ),
           {
             direction: 'top',
-            offset: [0, -10],
+            offset: [0, isDetailZoom ? -10 : -6],
             className: 'gp-tooltip',
           }
         );
@@ -482,7 +561,7 @@ export function VillageMap({
         marker.addTo(streetLights);
       }
     }
-  }, [filteredAssets, selectedAssetKey, visibleLayers, lang]);
+  }, [filteredAssets, selectedAssetKey, visibleLayers, lang, mapZoom]);
 
   // Render draft location preview during Add Asset pick mode (or focused complaint pin)
   useEffect(() => {
@@ -520,24 +599,26 @@ export function VillageMap({
     if (pickMode.mode === 'road' && pickMode.points.length > 0) {
       if (pickMode.points.length >= 2) {
         L.polyline(pickMode.points, {
-          color: '#059669',
-          weight: 5,
-          dashArray: '6, 6',
+          color: '#10b981',
+          weight: 4,
+          dashArray: '4, 4',
         }).addTo(group);
       }
-      pickMode.points.forEach((pt, idx) => {
+      pickMode.points.forEach((pt, i) => {
         L.circleMarker(pt, {
           radius: 5,
-          color: '#065f46',
-          fillColor: idx === 0 ? '#10b981' : '#ffffff',
+          color: '#064e3b',
+          fillColor: '#34d399',
           fillOpacity: 1,
           weight: 2,
-        }).addTo(group);
+        })
+          .bindTooltip(`${i + 1}`, { permanent: true, direction: 'center', className: 'text-[9px]' })
+          .addTo(group);
       });
     } else if (pickMode.mode === 'point' && pickMode.points.length === 1) {
       L.circleMarker(pickMode.points[0], {
-        radius: 9,
-        color: '#047857',
+        radius: 8,
+        color: '#064e3b',
         fillColor: '#10b981',
         fillOpacity: 0.85,
         weight: 3,
@@ -575,35 +656,46 @@ export function VillageMap({
         map.flyTo(w.center, 18, { duration: 0.6 });
       }
     } else if (focusRequest.type === 'recenter') {
-      map.flyTo(VILLAGE_CENTER, VILLAGE_ZOOM, { duration: 0.6 });
+      fitVillageOrOsm(map, true);
     }
   }, [focusRequest]);
 
+  // Fit bounds to all assets in village with padding so it fills the screen
   const fitVillageOrOsm = (map, animate = true) => {
-    const villageBounds = L.latLngBounds(
-      [VILLAGE_BBOX[0], VILLAGE_BBOX[1]],
-      [VILLAGE_BBOX[2], VILLAGE_BBOX[3]]
-    );
+    const coords = [];
+    for (const item of filteredAssets) {
+      if (!Array.isArray(item.coordinates)) continue;
+      if (item.category === 'roads') {
+        coords.push(...item.coordinates);
+      } else if (item.coordinates.length === 2) {
+        coords.push(item.coordinates);
+      }
+    }
+    const bounds =
+      coords.length > 0
+        ? L.latLngBounds(coords)
+        : L.latLngBounds([VILLAGE_BBOX[0], VILLAGE_BBOX[1]], [VILLAGE_BBOX[2], VILLAGE_BBOX[3]]);
+
     if (animate) {
-      map.flyToBounds(villageBounds, {
-        padding: [35, 35],
+      map.flyToBounds(bounds, {
+        padding: [30, 30],
         maxZoom: 16,
         duration: 0.6,
       });
     } else {
-      map.fitBounds(villageBounds, {
-        padding: [35, 35],
+      map.fitBounds(bounds, {
+        padding: [30, 30],
         maxZoom: 16,
       });
     }
   };
 
+  // Initial fit on mount so the village fills the screen
   useEffect(() => {
     const map = mapInstanceRef.current;
-    if (!map || hasAutoFitOsmRef.current || focusRequest) return;
-    const hasOsm = filteredAssets.some((item) => item.dataSource === 'osm');
-    if (hasOsm) {
-      hasAutoFitOsmRef.current = true;
+    if (!map || hasInitialFitRef.current || focusRequest) return;
+    if (filteredAssets.length > 0) {
+      hasInitialFitRef.current = true;
       fitVillageOrOsm(map, false);
     }
   }, [filteredAssets, focusRequest]);
@@ -617,6 +709,17 @@ export function VillageMap({
   return (
     <div className="relative w-full h-full flex-1 min-h-0">
       <div ref={mapContainerRef} className="w-full h-full z-0" />
+
+      {/* Floating Reset View Button */}
+      <button
+        type="button"
+        onClick={handleRecenter}
+        title={tr(lang, 'recenterMap')}
+        className="absolute top-3 right-3 sm:top-4 sm:right-4 z-[400] inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/95 backdrop-blur border border-slate-200 text-slate-800 text-xs font-bold shadow-md hover:bg-slate-50 hover:text-emerald-800 active:scale-95 transition"
+      >
+        <RotateCcw className="w-3.5 h-3.5 text-emerald-700" />
+        <span>{tr(lang, 'resetView')}</span>
+      </button>
 
       {/* Pick Location Banner */}
       {pickMode?.active ? (
