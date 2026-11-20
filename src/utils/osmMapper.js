@@ -205,6 +205,7 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
   const osmRoads = [];
   const osmBuildings = [];
   const osmWaterTanks = [];
+  const osmLights = [];
 
   for (const feature of features) {
     const props = feature.properties || {};
@@ -223,7 +224,6 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
       ]);
       const mid = latLngs[Math.floor(latLngs.length / 2)];
       const surfaceType = mapRoadSurface(tags.surface, tags.highway);
-      const condition = mapRoadCondition(tags.smoothness, surfaceType);
       const enName =
         tags['name:en'] ||
         tags.name ||
@@ -231,13 +231,13 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
       const knName = tags['name:kn'] || tags.name || `${enName}`;
 
       osmRoads.push({
-        id: `OSM-RD-${String(osmRoads.length + 1).padStart(2, '0')}`,
+        id: props.id || `OSM-RD-${String(osmRoads.length + 1).padStart(2, '0')}`,
         name: { en: enName, kn: knName },
-        ward: assignWard(mid[0], mid[1], wards),
+        ward: props.ward || assignWard(mid[0], mid[1], wards),
         type: surfaceType,
         length: calculatePolylineMeters(latLngs),
         width: mapHighwayWidth(tags, tags.highway),
-        condition,
+        condition: props.condition || 'Unknown',
         lastRepaired: fetchedDate,
         coordinates: latLngs,
         notes: `OSM highway=${tags.highway || 'road'}${
@@ -271,12 +271,12 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
       const knName = tags['name:kn'] || tags.name || enName;
 
       osmBuildings.push({
-        id: `OSM-PB-${String(osmBuildings.length + 1).padStart(2, '0')}`,
+        id: props.id || `OSM-PB-${String(osmBuildings.length + 1).padStart(2, '0')}`,
         name: { en: enName, kn: knName },
-        ward: assignWard(center[0], center[1], wards),
+        ward: props.ward || assignWard(center[0], center[1], wards),
         type: bldgType,
         yearBuilt: Number(tags.start_date) || 2015,
-        condition: 'good',
+        condition: props.condition || 'Unknown',
         coordinates: center,
         notes: `OSM ${
           tags.amenity
@@ -301,25 +301,26 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
     } else if (category === 'waterTank') {
       const center = extractCenterLatLng(feature.geometry);
       if (!center) continue;
-      const tankType = mapWaterTankType(tags.man_made);
+      const isReservoir = tags.landuse === 'reservoir' || tags.natural === 'water';
+      const tankType = isReservoir ? 'ground-level' : mapWaterTankType(tags.man_made);
       const enName =
         tags['name:en'] ||
         tags.name ||
-        `${tags.man_made || 'Water Tank'} (${props.osmId})`;
-      const knName = tags['name:kn'] || tags.name || enName;
+        (isReservoir ? 'Hulikere Kere (Reservoir)' : `${tags.man_made || 'Water Tank'} (${props.osmId})`);
+      const knName = tags['name:kn'] || tags.name || (isReservoir ? 'ಹುಲಿಕೆರೆ ಕೆರೆ (ಜಲಾಶಯ)' : enName);
 
       osmWaterTanks.push({
-        id: `OSM-WT-${String(osmWaterTanks.length + 1).padStart(2, '0')}`,
+        id: props.id || `OSM-WT-${String(osmWaterTanks.length + 1).padStart(2, '0')}`,
         name: { en: enName, kn: knName },
-        ward: assignWard(center[0], center[1], wards),
+        ward: props.ward || assignWard(center[0], center[1], wards),
         type: tankType,
-        capacity: tankType === 'overhead' ? 40000 : tankType === 'open well' ? 15000 : 20000,
+        capacity: isReservoir ? 250000 : tankType === 'overhead' ? 40000 : tankType === 'open well' ? 15000 : 20000,
         yearBuilt: 2016,
-        condition: 'good',
+        condition: props.condition || 'Unknown',
         lastCleaningDate: fetchedDate,
-        householdsServed: 60,
+        householdsServed: isReservoir ? 150 : 60,
         coordinates: center,
-        notes: `OSM man_made=${tags.man_made || 'water_tank'}`,
+        notes: isReservoir ? `OSM reservoir / lake (${props.osmId})` : `OSM man_made=${tags.man_made || 'water_tank'}`,
         osmId: props.osmId,
         dataSource: 'osm',
         isSample: false,
@@ -333,35 +334,76 @@ export function mergeOsmWithSampleAssets(sampleAssets, osmGeoJson) {
           },
         ],
       });
+    } else if (category === 'streetLight') {
+      const center = extractCenterLatLng(feature.geometry);
+      if (!center) continue;
+      osmLights.push({
+        id: props.id || `OSM-SL-${String(osmLights.length + 1).padStart(2, '0')}`,
+        poleNumber: `OSM-P-${osmLights.length + 1}`,
+        type: 'LED',
+        installedDate: fetchedDate,
+        status: 'working',
+        condition: props.condition || 'Unknown',
+        ward: props.ward || assignWard(center[0], center[1], wards),
+        coordinates: center,
+        notes: `OSM highway=street_lamp (${props.osmId})`,
+        osmId: props.osmId,
+        dataSource: 'osm',
+        isSample: false,
+      });
     }
   }
 
-  // Keep sample street lights and any water tank types not found in OSM, clearly marked as sample
-  const foundOsmTankTypes = new Set(osmWaterTanks.map((t) => t.type));
+  // Deduplicate sample water tanks against OSM water tanks (within 10 m)
   const fallbackSampleTanks = tagAsSample(
-    (sampleAssets.waterTanks || []).filter((t) => !foundOsmTankTypes.has(t.type))
+    (sampleAssets.waterTanks || []).filter((sTank) => {
+      const sCenter = sTank.coordinates;
+      if (!Array.isArray(sCenter) || sCenter.length !== 2) return true;
+      return !osmWaterTanks.some(
+        (oTank) => Array.isArray(oTank.coordinates) && haversineMeters(sCenter, oTank.coordinates) <= 10
+      );
+    })
   );
 
   const finalWaterTanks =
-    osmWaterTanks.length > 0
+    osmWaterTanks.length > 0 || fallbackSampleTanks.length > 0
       ? [...osmWaterTanks, ...fallbackSampleTanks]
       : tagAsSample(sampleAssets.waterTanks || []);
 
   const finalRoads =
     osmRoads.length > 0 ? osmRoads : tagAsSample(sampleAssets.roads || []);
 
-  // Include OSM buildings along with any sample buildings that are missing from OSM
-  const foundOsmBldgTypes = new Set(osmBuildings.map((b) => b.type));
+  // Deduplicate sample buildings against OSM buildings (within 10 m)
   const missingSampleBuildings = tagAsSample(
-    (sampleAssets.publicBuildings || []).filter((b) => !foundOsmBldgTypes.has(b.type))
+    (sampleAssets.publicBuildings || []).filter((sBldg) => {
+      const sCenter = sBldg.coordinates;
+      if (!Array.isArray(sCenter) || sCenter.length !== 2) return true;
+      return !osmBuildings.some(
+        (oBldg) => Array.isArray(oBldg.coordinates) && haversineMeters(sCenter, oBldg.coordinates) <= 10
+      );
+    })
   );
 
   const finalBuildings =
-    osmBuildings.length > 0
+    osmBuildings.length > 0 || missingSampleBuildings.length > 0
       ? [...osmBuildings, ...missingSampleBuildings]
       : tagAsSample(sampleAssets.publicBuildings || []);
 
-  const finalLights = tagAsSample(sampleAssets.streetLights || []);
+  // Deduplicate sample lights against OSM lights (within 10 m)
+  const missingSampleLights = tagAsSample(
+    (sampleAssets.streetLights || []).filter((sLight) => {
+      const sCenter = sLight.coordinates;
+      if (!Array.isArray(sCenter) || sCenter.length !== 2) return true;
+      return !osmLights.some(
+        (oLight) => Array.isArray(oLight.coordinates) && haversineMeters(sCenter, oLight.coordinates) <= 10
+      );
+    })
+  );
+
+  const finalLights =
+    osmLights.length > 0
+      ? [...osmLights, ...missingSampleLights]
+      : tagAsSample(sampleAssets.streetLights || []);
 
   return {
     ...sampleAssets,

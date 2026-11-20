@@ -90,13 +90,15 @@ export function Dashboard({ lang = 'en', data, onOpenAssetOnMap, onInspectWard }
         let good = 0;
         let fair = 0;
         let poor = 0;
+        let unknown = 0;
         for (const item of list) {
           const bucket = getStatusMeta(getStatusValue(item)).bucket;
           if (bucket === 'good') good += 1;
           else if (bucket === 'fair') fair += 1;
+          else if (bucket === 'unknown') unknown += 1;
           else poor += 1;
         }
-        return { name: tr(lang, labelKey), good, fair, poor };
+        return { name: tr(lang, labelKey), good, fair, poor, unknown };
       }),
     [data, lang]
   );
@@ -312,7 +314,14 @@ export function Dashboard({ lang = 'en', data, onOpenAssetOnMap, onInspectWard }
                     name={tr(lang, 'poorFaultyOption')}
                     fill="#dc2626"
                     radius={[4, 4, 0, 0]}
-                    maxBarSize={26}
+                    maxBarSize={22}
+                  />
+                  <Bar
+                    dataKey="unknown"
+                    name={tr(lang, 'unknownOption')}
+                    fill="#64748b"
+                    radius={[4, 4, 0, 0]}
+                    maxBarSize={22}
                   />
                 </BarChart>
               </ResponsiveContainer>

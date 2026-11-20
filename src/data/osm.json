@@ -1,42 +1,29 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "fetchedAt": "2026-11-14T06:48:19.507Z",
+    "fetchedAt": "2026-11-20T03:59:47.821Z",
     "source": "OpenStreetMap (Overpass API)",
-    "queryMethod": "bbox",
+    "queryMethod": "bbox-broad",
     "village": "Hulikere",
     "district": "Mandya",
     "center": [
       12.57056,
       76.77363
     ],
-    "radiusKm": 1.5,
+    "radiusKm": 2,
     "bbox": [
-      12.557063,
-      76.759824,
-      12.584057,
-      76.787436
+      12.552563,
+      76.755223,
+      12.588557,
+      76.792037
     ],
     "counts": {
-      "total": 50,
-      "roads": 49,
-      "droppedRoads": 2,
-      "publicBuildings": 1,
-      "waterTanks": 0,
-      "buildingsBreakdown": {
-        "school": 0,
-        "anganwadi": 0,
-        "hospitalOrClinic": 0,
-        "communityCentre": 0,
-        "temple": 0,
-        "panchayatOrGovtOffice": 0,
-        "otherNamedBuilding": 1
-      },
-      "waterBreakdown": {
-        "water_tower": 0,
-        "water_tank": 0,
-        "water_well": 0
-      }
+      "total": 85,
+      "roads": 84,
+      "publicBuildings": 0,
+      "waterTanks": 1,
+      "streetLights": 0,
+      "residentialHouses": 1
     }
   },
   "features": [
@@ -51,20 +38,41 @@
         "nameKn": null,
         "highway": "tertiary",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "tertiary"
-        }
+        },
+        "ward": "Ward 3",
+        "id": "OSM-RD-01"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.7663598,
-            12.584057
+            76.7670645,
+            12.588557
+          ],
+          [
+            76.7670857,
+            12.5877561
+          ],
+          [
+            76.7671866,
+            12.58744
+          ],
+          [
+            76.7671228,
+            12.586414
+          ],
+          [
+            76.7669264,
+            12.585616
+          ],
+          [
+            76.7665282,
+            12.5846469
           ],
           [
             76.7660769,
@@ -95,6 +103,136 @@
     },
     {
       "type": "Feature",
+      "id": "way/343193306",
+      "properties": {
+        "osmId": "way/343193306",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "tertiary",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "tertiary"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-02"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7806503,
+            12.552563
+          ],
+          [
+            76.7806435,
+            12.5526669
+          ],
+          [
+            76.7807016,
+            12.5527062
+          ],
+          [
+            76.7812067,
+            12.5527454
+          ],
+          [
+            76.7819039,
+            12.5530639
+          ],
+          [
+            76.782333,
+            12.5533169
+          ],
+          [
+            76.7829587,
+            12.5538405
+          ],
+          [
+            76.7834771,
+            12.5544556
+          ],
+          [
+            76.7838839,
+            12.5548351
+          ],
+          [
+            76.7840453,
+            12.5548819
+          ],
+          [
+            76.7841699,
+            12.554918
+          ],
+          [
+            76.7845185,
+            12.5549355
+          ],
+          [
+            76.7854124,
+            12.5549442
+          ],
+          [
+            76.787227,
+            12.5552103
+          ],
+          [
+            76.78817,
+            12.5552321
+          ],
+          [
+            76.7885633,
+            12.5552496
+          ],
+          [
+            76.7886795,
+            12.5553717
+          ],
+          [
+            76.7887389,
+            12.5555688
+          ],
+          [
+            76.7887913,
+            12.5557425
+          ],
+          [
+            76.788827,
+            12.5559345
+          ],
+          [
+            76.7889388,
+            12.5560217
+          ],
+          [
+            76.7891354,
+            12.5560479
+          ],
+          [
+            76.7901303,
+            12.5561246
+          ],
+          [
+            76.7907549,
+            12.5561728
+          ],
+          [
+            76.7908601,
+            12.5561809
+          ],
+          [
+            76.792037,
+            12.5562716
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "way/343193308",
       "properties": {
         "osmId": "way/343193308",
@@ -104,20 +242,77 @@
         "nameKn": null,
         "highway": "tertiary",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "tertiary"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-03"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.7715365,
-            12.557063
+            76.7791335,
+            12.552563
+          ],
+          [
+            76.7788263,
+            12.5529076
+          ],
+          [
+            76.778624,
+            12.552994
+          ],
+          [
+            76.7771197,
+            12.5531421
+          ],
+          [
+            76.7757671,
+            12.5533765
+          ],
+          [
+            76.7751287,
+            12.5537097
+          ],
+          [
+            76.7743323,
+            12.5542279
+          ],
+          [
+            76.7733399,
+            12.5546166
+          ],
+          [
+            76.7724044,
+            12.5546721
+          ],
+          [
+            76.7717534,
+            12.5546351
+          ],
+          [
+            76.7714247,
+            12.5546351
+          ],
+          [
+            76.7713742,
+            12.5546783
+          ],
+          [
+            76.7713299,
+            12.5548511
+          ],
+          [
+            76.7713439,
+            12.5551067
+          ],
+          [
+            76.7714184,
+            12.555795
           ],
           [
             76.7715764,
@@ -165,20 +360,57 @@
         "nameKn": null,
         "highway": "tertiary",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "tertiary"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-04"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.787436,
-            12.5695446
+            76.792037,
+            12.5704927
+          ],
+          [
+            76.7917912,
+            12.570182
+          ],
+          [
+            76.7911355,
+            12.5693891
+          ],
+          [
+            76.7906868,
+            12.5690885
+          ],
+          [
+            76.7902249,
+            12.5689253
+          ],
+          [
+            76.7901293,
+            12.5689097
+          ],
+          [
+            76.7899143,
+            12.5688812
+          ],
+          [
+            76.7894391,
+            12.5689356
+          ],
+          [
+            76.7890037,
+            12.5690522
+          ],
+          [
+            76.7875064,
+            12.5695212
           ],
           [
             76.7864366,
@@ -369,8 +601,44 @@
             12.5677986
           ],
           [
-            76.759824,
-            12.5678046
+            76.7595765,
+            12.5678645
+          ],
+          [
+            76.7593381,
+            12.5679708
+          ],
+          [
+            76.7590696,
+            12.5680404
+          ],
+          [
+            76.7588181,
+            12.5680807
+          ],
+          [
+            76.7584689,
+            12.5680716
+          ],
+          [
+            76.7581004,
+            12.5680501
+          ],
+          [
+            76.7580142,
+            12.5680451
+          ],
+          [
+            76.7569498,
+            12.5679498
+          ],
+          [
+            76.7559737,
+            12.5678436
+          ],
+          [
+            76.755223,
+            12.5677502
           ]
         ]
       }
@@ -386,20 +654,141 @@
         "nameKn": null,
         "highway": "tertiary",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "tertiary"
-        }
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-05"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.781141,
-            12.584057
+            76.7861706,
+            12.588557
+          ],
+          [
+            76.7861691,
+            12.5884963
+          ],
+          [
+            76.7861676,
+            12.5884247
+          ],
+          [
+            76.7861208,
+            12.5882821
+          ],
+          [
+            76.7860888,
+            12.5881846
+          ],
+          [
+            76.7860017,
+            12.5878688
+          ],
+          [
+            76.7859355,
+            12.5878171
+          ],
+          [
+            76.7856836,
+            12.5877634
+          ],
+          [
+            76.7852397,
+            12.587687
+          ],
+          [
+            76.7846925,
+            12.5876934
+          ],
+          [
+            76.7840389,
+            12.5877118
+          ],
+          [
+            76.783468,
+            12.5877449
+          ],
+          [
+            76.782782,
+            12.5877534
+          ],
+          [
+            76.7820934,
+            12.5877574
+          ],
+          [
+            76.7816086,
+            12.5877957
+          ],
+          [
+            76.7815458,
+            12.587784
+          ],
+          [
+            76.7814988,
+            12.5877483
+          ],
+          [
+            76.7814845,
+            12.5876589
+          ],
+          [
+            76.7815008,
+            12.5873716
+          ],
+          [
+            76.7815102,
+            12.5871037
+          ],
+          [
+            76.7815206,
+            12.5868257
+          ],
+          [
+            76.7815434,
+            12.586549
+          ],
+          [
+            76.7815667,
+            12.5862745
+          ],
+          [
+            76.7815414,
+            12.586042
+          ],
+          [
+            76.7815094,
+            12.5857883
+          ],
+          [
+            76.7814541,
+            12.5855068
+          ],
+          [
+            76.781424,
+            12.5852827
+          ],
+          [
+            76.78139,
+            12.5850496
+          ],
+          [
+            76.7813513,
+            12.5847927
+          ],
+          [
+            76.781333,
+            12.5845508
+          ],
+          [
+            76.7812417,
+            12.5842909
           ],
           [
             76.7811315,
@@ -642,6 +1031,204 @@
     },
     {
       "type": "Feature",
+      "id": "way/496638297",
+      "properties": {
+        "osmId": "way/496638297",
+        "osmType": "way",
+        "category": "waterTank",
+        "name": null,
+        "nameKn": null,
+        "highway": null,
+        "surface": null,
+        "amenity": null,
+        "building": null,
+        "office": null,
+        "man_made": null,
+        "natural": null,
+        "landuse": "reservoir",
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "landuse": "reservoir"
+        },
+        "ward": "Ward 3",
+        "id": "OSM-WT-01"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              76.7655784,
+              12.5783346
+            ],
+            [
+              76.7656937,
+              12.5783712
+            ],
+            [
+              76.7660773,
+              12.5785963
+            ],
+            [
+              76.7660987,
+              12.578811
+            ],
+            [
+              76.766206,
+              12.5788477
+            ],
+            [
+              76.7664206,
+              12.5790937
+            ],
+            [
+              76.7664206,
+              12.5792037
+            ],
+            [
+              76.7665064,
+              12.5794026
+            ],
+            [
+              76.7665815,
+              12.5794812
+            ],
+            [
+              76.7668927,
+              12.5795649
+            ],
+            [
+              76.7670429,
+              12.579722
+            ],
+            [
+              76.7671341,
+              12.579921
+            ],
+            [
+              76.7672306,
+              12.5799681
+            ],
+            [
+              76.7671341,
+              12.5792351
+            ],
+            [
+              76.7671126,
+              12.5788005
+            ],
+            [
+              76.7670804,
+              12.5786958
+            ],
+            [
+              76.7671019,
+              12.5785911
+            ],
+            [
+              76.7671984,
+              12.5785597
+            ],
+            [
+              76.7672896,
+              12.578366
+            ],
+            [
+              76.7673165,
+              12.5782613
+            ],
+            [
+              76.7673057,
+              12.5781566
+            ],
+            [
+              76.7673862,
+              12.5780833
+            ],
+            [
+              76.7674881,
+              12.5778843
+            ],
+            [
+              76.7674988,
+              12.5780126
+            ],
+            [
+              76.7674828,
+              12.5777534
+            ],
+            [
+              76.7674452,
+              12.5775256
+            ],
+            [
+              76.7669973,
+              12.5772796
+            ],
+            [
+              76.7661175,
+              12.5767534
+            ],
+            [
+              76.7660478,
+              12.5766958
+            ],
+            [
+              76.7659941,
+              12.5766696
+            ],
+            [
+              76.7658842,
+              12.5766775
+            ],
+            [
+              76.7658305,
+              12.5767717
+            ],
+            [
+              76.7658466,
+              12.5768319
+            ],
+            [
+              76.7658305,
+              12.5769366
+            ],
+            [
+              76.7656642,
+              12.577345
+            ],
+            [
+              76.765573,
+              12.5774078
+            ],
+            [
+              76.7654657,
+              12.5774236
+            ],
+            [
+              76.7653745,
+              12.5774969
+            ],
+            [
+              76.7654711,
+              12.5782717
+            ],
+            [
+              76.765565,
+              12.5783005
+            ],
+            [
+              76.7655784,
+              12.5783346
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "way/780440862",
       "properties": {
         "osmId": "way/780440862",
@@ -651,15 +1238,16 @@
         "nameKn": null,
         "highway": "track",
         "surface": "unpaved",
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "track",
           "source": "digitalglobe",
           "surface": "unpaved"
-        }
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-06"
       },
       "geometry": {
         "type": "LineString",
@@ -777,6 +1365,282 @@
     },
     {
       "type": "Feature",
+      "id": "way/780464142",
+      "properties": {
+        "osmId": "way/780464142",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "tertiary",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "tertiary",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-07"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7581004,
+            12.5680501
+          ],
+          [
+            76.7582559,
+            12.5659146
+          ],
+          [
+            76.7582613,
+            12.5655481
+          ],
+          [
+            76.7583364,
+            12.564857
+          ],
+          [
+            76.7583257,
+            12.5647942
+          ],
+          [
+            76.7584705,
+            12.5630768
+          ],
+          [
+            76.7585134,
+            12.5621239
+          ],
+          [
+            76.7585671,
+            12.5609668
+          ],
+          [
+            76.7586744,
+            12.5595689
+          ],
+          [
+            76.7587313,
+            12.558914
+          ],
+          [
+            76.7587929,
+            12.5576303
+          ],
+          [
+            76.7588986,
+            12.5556526
+          ],
+          [
+            76.7588249,
+            12.5544483
+          ],
+          [
+            76.7587015,
+            12.5532805
+          ],
+          [
+            76.7586962,
+            12.5530239
+          ],
+          [
+            76.758723,
+            12.5528511
+          ],
+          [
+            76.7587927,
+            12.5527045
+          ],
+          [
+            76.7588906,
+            12.552563
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/780464143",
+      "properties": {
+        "osmId": "way/780464143",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-08"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7597624,
+            12.5538422
+          ],
+          [
+            76.7596223,
+            12.5536334
+          ],
+          [
+            76.7594955,
+            12.5532753
+          ],
+          [
+            76.7594472,
+            12.5529087
+          ],
+          [
+            76.7594533,
+            12.552563
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/780464144",
+      "properties": {
+        "osmId": "way/780464144",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-09"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7593963,
+            12.5538042
+          ],
+          [
+            76.7594422,
+            12.5539008
+          ],
+          [
+            76.7594583,
+            12.553912
+          ],
+          [
+            76.7594804,
+            12.5539165
+          ],
+          [
+            76.7595079,
+            12.5539145
+          ],
+          [
+            76.7597624,
+            12.5538422
+          ],
+          [
+            76.7601165,
+            12.5537662
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/780464146",
+      "properties": {
+        "osmId": "way/780464146",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-10"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7588249,
+            12.5544483
+          ],
+          [
+            76.7588839,
+            12.5544431
+          ],
+          [
+            76.7589346,
+            12.5544235
+          ],
+          [
+            76.7591525,
+            12.5542431
+          ],
+          [
+            76.7591736,
+            12.5542133
+          ],
+          [
+            76.7591847,
+            12.5541806
+          ],
+          [
+            76.7592021,
+            12.5540412
+          ],
+          [
+            76.7592155,
+            12.5539967
+          ],
+          [
+            76.759235,
+            12.5539633
+          ],
+          [
+            76.7592608,
+            12.5539312
+          ],
+          [
+            76.7593963,
+            12.5538042
+          ],
+          [
+            76.7596223,
+            12.5536334
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "way/780464147",
       "properties": {
         "osmId": "way/780464147",
@@ -786,21 +1650,114 @@
         "nameKn": null,
         "highway": "tertiary",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "tertiary",
           "source": "bing"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-11"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.7677066,
-            12.557063
+            76.7634158,
+            12.552563
+          ],
+          [
+            76.7635581,
+            12.5526754
+          ],
+          [
+            76.7637411,
+            12.5528687
+          ],
+          [
+            76.7638191,
+            12.5529185
+          ],
+          [
+            76.7646441,
+            12.553059
+          ],
+          [
+            76.7647731,
+            12.5530854
+          ],
+          [
+            76.7648421,
+            12.5531322
+          ],
+          [
+            76.7649951,
+            12.5532347
+          ],
+          [
+            76.7654301,
+            12.553835
+          ],
+          [
+            76.7656341,
+            12.5539639
+          ],
+          [
+            76.7657901,
+            12.5539756
+          ],
+          [
+            76.7659461,
+            12.5539522
+          ],
+          [
+            76.7665281,
+            12.5538643
+          ],
+          [
+            76.7667741,
+            12.5538585
+          ],
+          [
+            76.7668911,
+            12.5539287
+          ],
+          [
+            76.7669751,
+            12.55404
+          ],
+          [
+            76.7671341,
+            12.5548306
+          ],
+          [
+            76.7671881,
+            12.5549244
+          ],
+          [
+            76.7672931,
+            12.5550415
+          ],
+          [
+            76.7675571,
+            12.5554075
+          ],
+          [
+            76.7676051,
+            12.5555569
+          ],
+          [
+            76.7677041,
+            12.5561074
+          ],
+          [
+            76.7677101,
+            12.5562655
+          ],
+          [
+            76.7676981,
+            12.5563914
           ],
           [
             76.7677101,
@@ -952,20 +1909,65 @@
         "nameKn": null,
         "highway": "tertiary",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "tertiary"
-        }
+        },
+        "ward": "Ward 3",
+        "id": "OSM-RD-12"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.759824,
-            12.5796444
+            76.755223,
+            12.5843312
+          ],
+          [
+            76.7553813,
+            12.5841843
+          ],
+          [
+            76.7559636,
+            12.5838151
+          ],
+          [
+            76.756601,
+            12.583429
+          ],
+          [
+            76.7573615,
+            12.5829938
+          ],
+          [
+            76.758156,
+            12.5825465
+          ],
+          [
+            76.7586309,
+            12.5821786
+          ],
+          [
+            76.7588926,
+            12.581788
+          ],
+          [
+            76.7591315,
+            12.5813447
+          ],
+          [
+            76.7592224,
+            12.5808905
+          ],
+          [
+            76.7592516,
+            12.5803515
+          ],
+          [
+            76.7594726,
+            12.5799198
           ],
           [
             76.7599361,
@@ -1136,47 +2138,431 @@
     },
     {
       "type": "Feature",
-      "id": "way/783303947",
+      "id": "way/782587122",
       "properties": {
-        "osmId": "way/783303947",
+        "osmId": "way/782587122",
         "osmType": "way",
-        "category": "publicBuilding",
+        "category": "road",
         "name": null,
         "nameKn": null,
-        "highway": null,
+        "highway": "unclassified",
         "surface": null,
-        "amenity": null,
-        "building": "yes",
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
-          "building": "yes"
-        }
+          "highway": "unclassified",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-13"
       },
       "geometry": {
-        "type": "Polygon",
+        "type": "LineString",
         "coordinates": [
           [
-            [
-              76.7620843,
-              12.5689986
-            ],
-            [
-              76.7625591,
-              12.5689321
-            ],
-            [
-              76.7625109,
-              12.5686039
-            ],
-            [
-              76.7620361,
-              12.5686703
-            ],
-            [
-              76.7620843,
-              12.5689986
-            ]
+            76.7861691,
+            12.5884963
+          ],
+          [
+            76.78656,
+            12.5884555
+          ],
+          [
+            76.7866218,
+            12.5884363
+          ],
+          [
+            76.7867137,
+            12.5884019
+          ],
+          [
+            76.7867875,
+            12.5883881
+          ],
+          [
+            76.7869595,
+            12.5883718
+          ],
+          [
+            76.7876117,
+            12.5882974
+          ],
+          [
+            76.7890658,
+            12.5881315
+          ],
+          [
+            76.7900621,
+            12.5879787
+          ],
+          [
+            76.7901097,
+            12.5879509
+          ],
+          [
+            76.790139,
+            12.5879136
+          ],
+          [
+            76.7902066,
+            12.5876104
+          ],
+          [
+            76.7903189,
+            12.5869451
+          ],
+          [
+            76.7904067,
+            12.5865961
+          ],
+          [
+            76.7905227,
+            12.5862134
+          ],
+          [
+            76.7905714,
+            12.5860929
+          ],
+          [
+            76.7906298,
+            12.5859967
+          ],
+          [
+            76.7907929,
+            12.5858145
+          ],
+          [
+            76.7910307,
+            12.5855833
+          ],
+          [
+            76.7913063,
+            12.5853597
+          ],
+          [
+            76.791542,
+            12.5851715
+          ],
+          [
+            76.7917244,
+            12.5850563
+          ],
+          [
+            76.791821,
+            12.5850197
+          ],
+          [
+            76.7919349,
+            12.5850012
+          ],
+          [
+            76.792037,
+            12.584998
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/782595388",
+      "properties": {
+        "osmId": "way/782595388",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-14"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7861208,
+            12.5882821
+          ],
+          [
+            76.7865649,
+            12.58823
+          ],
+          [
+            76.786847,
+            12.58818
+          ],
+          [
+            76.7869864,
+            12.5881486
+          ],
+          [
+            76.7871889,
+            12.588129
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/782595389",
+      "properties": {
+        "osmId": "way/782595389",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "track",
+        "surface": "unpaved",
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "track",
+          "source": "digitalglobe",
+          "surface": "unpaved"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-15"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.787635,
+            12.588557
+          ],
+          [
+            76.7876117,
+            12.5882974
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/782645911",
+      "properties": {
+        "osmId": "way/782645911",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-16"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.792037,
+            12.5757899
+          ],
+          [
+            76.7919833,
+            12.5757892
+          ],
+          [
+            76.7917023,
+            12.5757601
+          ],
+          [
+            76.7916761,
+            12.5757597
+          ],
+          [
+            76.7916536,
+            12.5757662
+          ],
+          [
+            76.7916441,
+            12.5757863
+          ],
+          [
+            76.7916399,
+            12.5758112
+          ],
+          [
+            76.7916324,
+            12.5760355
+          ],
+          [
+            76.7916253,
+            12.5761487
+          ],
+          [
+            76.79162,
+            12.5762743
+          ],
+          [
+            76.7916139,
+            12.576306
+          ],
+          [
+            76.7915985,
+            12.5763869
+          ],
+          [
+            76.7915502,
+            12.576544
+          ],
+          [
+            76.7914268,
+            12.5768712
+          ],
+          [
+            76.7913437,
+            12.5771461
+          ],
+          [
+            76.791231,
+            12.5775309
+          ],
+          [
+            76.7910996,
+            12.5779942
+          ],
+          [
+            76.7910218,
+            12.5783136
+          ],
+          [
+            76.790995,
+            12.5784655
+          ],
+          [
+            76.7909601,
+            12.5787351
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784113356_1",
+      "properties": {
+        "osmId": "way/784113356_1",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "unclassified",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "unclassified",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 3",
+        "id": "OSM-RD-17"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.755223,
+            12.5769142
+          ],
+          [
+            76.7552732,
+            12.5771811
+          ],
+          [
+            76.7552713,
+            12.5772613
+          ],
+          [
+            76.7552453,
+            12.5773172
+          ],
+          [
+            76.755223,
+            12.5773417
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784113356_2",
+      "properties": {
+        "osmId": "way/784113356_2",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "unclassified",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "unclassified",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 3",
+        "id": "OSM-RD-18"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.755223,
+            12.5832478
+          ],
+          [
+            76.7555257,
+            12.5834729
+          ],
+          [
+            76.7555558,
+            12.5834996
+          ],
+          [
+            76.7555768,
+            12.5835463
+          ],
+          [
+            76.755573,
+            12.5836044
+          ],
+          [
+            76.7555597,
+            12.5836495
+          ],
+          [
+            76.7554604,
+            12.5838149
+          ],
+          [
+            76.7552847,
+            12.5840981
+          ],
+          [
+            76.7552527,
+            12.5841236
+          ],
+          [
+            76.755223,
+            12.5841328
           ]
         ]
       }
@@ -1192,14 +2578,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-19"
       },
       "geometry": {
         "type": "LineString",
@@ -1242,14 +2629,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-20"
       },
       "geometry": {
         "type": "LineString",
@@ -1280,14 +2668,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-21"
       },
       "geometry": {
         "type": "LineString",
@@ -1318,14 +2707,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-22"
       },
       "geometry": {
         "type": "LineString",
@@ -1372,14 +2762,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-23"
       },
       "geometry": {
         "type": "LineString",
@@ -1430,14 +2821,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-24"
       },
       "geometry": {
         "type": "LineString",
@@ -1516,14 +2908,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-25"
       },
       "geometry": {
         "type": "LineString",
@@ -1594,14 +2987,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-26"
       },
       "geometry": {
         "type": "LineString",
@@ -1656,14 +3050,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-27"
       },
       "geometry": {
         "type": "LineString",
@@ -1706,14 +3101,15 @@
         "nameKn": null,
         "highway": "unclassified",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "unclassified",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-28"
       },
       "geometry": {
         "type": "LineString",
@@ -1831,8 +3227,88 @@
             12.5654803
           ],
           [
-            76.787436,
-            12.5653858
+            76.7876123,
+            12.5653127
+          ],
+          [
+            76.7879151,
+            12.5651483
+          ],
+          [
+            76.7882336,
+            12.5648699
+          ],
+          [
+            76.7882883,
+            12.5648327
+          ],
+          [
+            76.7883447,
+            12.564815
+          ],
+          [
+            76.7884235,
+            12.5648021
+          ],
+          [
+            76.7896241,
+            12.5647091
+          ],
+          [
+            76.7896679,
+            12.5647047
+          ],
+          [
+            76.7897012,
+            12.5646888
+          ],
+          [
+            76.7897242,
+            12.5646676
+          ],
+          [
+            76.7897378,
+            12.564643
+          ],
+          [
+            76.7897459,
+            12.5644759
+          ],
+          [
+            76.7897552,
+            12.5644551
+          ],
+          [
+            76.7897717,
+            12.5644381
+          ],
+          [
+            76.7897973,
+            12.5644248
+          ],
+          [
+            76.7898296,
+            12.564415
+          ],
+          [
+            76.7905772,
+            12.5642285
+          ],
+          [
+            76.7914937,
+            12.5639616
+          ],
+          [
+            76.7917138,
+            12.5639047
+          ],
+          [
+            76.7919658,
+            12.5638621
+          ],
+          [
+            76.792037,
+            12.5638499
           ]
         ]
       }
@@ -1848,14 +3324,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-29"
       },
       "geometry": {
         "type": "LineString",
@@ -1898,14 +3375,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-30"
       },
       "geometry": {
         "type": "LineString",
@@ -1932,14 +3410,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-31"
       },
       "geometry": {
         "type": "LineString",
@@ -1978,14 +3457,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-32"
       },
       "geometry": {
         "type": "LineString",
@@ -2080,14 +3560,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-33"
       },
       "geometry": {
         "type": "LineString",
@@ -2114,14 +3595,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-34"
       },
       "geometry": {
         "type": "LineString",
@@ -2176,14 +3658,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-35"
       },
       "geometry": {
         "type": "LineString",
@@ -2226,14 +3709,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-36"
       },
       "geometry": {
         "type": "LineString",
@@ -2268,14 +3752,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-37"
       },
       "geometry": {
         "type": "LineString",
@@ -2358,14 +3843,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-38"
       },
       "geometry": {
         "type": "LineString",
@@ -2440,14 +3926,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-39"
       },
       "geometry": {
         "type": "LineString",
@@ -2502,14 +3989,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-40"
       },
       "geometry": {
         "type": "LineString",
@@ -2552,14 +4040,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-41"
       },
       "geometry": {
         "type": "LineString",
@@ -2630,14 +4119,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-42"
       },
       "geometry": {
         "type": "LineString",
@@ -2664,14 +4154,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-43"
       },
       "geometry": {
         "type": "LineString",
@@ -2718,14 +4209,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-44"
       },
       "geometry": {
         "type": "LineString",
@@ -2864,14 +4356,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-45"
       },
       "geometry": {
         "type": "LineString",
@@ -2906,14 +4399,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-46"
       },
       "geometry": {
         "type": "LineString",
@@ -2944,14 +4438,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-47"
       },
       "geometry": {
         "type": "LineString",
@@ -3022,14 +4517,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-48"
       },
       "geometry": {
         "type": "LineString",
@@ -3164,14 +4660,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-49"
       },
       "geometry": {
         "type": "LineString",
@@ -3198,14 +4695,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-50"
       },
       "geometry": {
         "type": "LineString",
@@ -3232,14 +4730,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-51"
       },
       "geometry": {
         "type": "LineString",
@@ -3286,14 +4785,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-52"
       },
       "geometry": {
         "type": "LineString",
@@ -3332,14 +4832,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 1",
+        "id": "OSM-RD-53"
       },
       "geometry": {
         "type": "LineString",
@@ -3378,14 +4879,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-54"
       },
       "geometry": {
         "type": "LineString",
@@ -3415,6 +4917,69 @@
     },
     {
       "type": "Feature",
+      "id": "way/784184824",
+      "properties": {
+        "osmId": "way/784184824",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "service",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "service",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-55"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7671074,
+            12.5580244
+          ],
+          [
+            76.7673541,
+            12.5584327
+          ],
+          [
+            76.7674218,
+            12.5585329
+          ],
+          [
+            76.7674883,
+            12.5586186
+          ],
+          [
+            76.7678424,
+            12.559
+          ],
+          [
+            76.7679874,
+            12.5591608
+          ],
+          [
+            76.7680495,
+            12.5592121
+          ],
+          [
+            76.7681079,
+            12.5592406
+          ],
+          [
+            76.7682874,
+            12.5592866
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "way/784184825",
       "properties": {
         "osmId": "way/784184825",
@@ -3424,14 +4989,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-56"
       },
       "geometry": {
         "type": "LineString",
@@ -3458,14 +5024,15 @@
         "nameKn": null,
         "highway": "residential",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "residential",
           "source": "digitalglobe"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-57"
       },
       "geometry": {
         "type": "LineString",
@@ -3492,13 +5059,14 @@
         "nameKn": null,
         "highway": "tertiary",
         "surface": null,
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "tertiary"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-58"
       },
       "geometry": {
         "type": "LineString",
@@ -3604,8 +5172,778 @@
             12.5570978
           ],
           [
-            76.7797958,
-            12.557063
+            76.7798155,
+            12.5566527
+          ],
+          [
+            76.7800248,
+            12.5561553
+          ],
+          [
+            76.7803037,
+            12.5554799
+          ],
+          [
+            76.7804915,
+            12.553909
+          ],
+          [
+            76.7806435,
+            12.5526669
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784190709",
+      "properties": {
+        "osmId": "way/784190709",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "service",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "service",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 3",
+        "id": "OSM-RD-59"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7648746,
+            12.5765398
+          ],
+          [
+            76.7648211,
+            12.5758271
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784383935",
+      "properties": {
+        "osmId": "way/784383935",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "track",
+        "surface": "unpaved",
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "track",
+          "source": "digitalglobe",
+          "surface": "unpaved"
+        },
+        "ward": "Ward 4",
+        "id": "OSM-RD-60"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7704726,
+            12.552563
+          ],
+          [
+            76.7706534,
+            12.5528787
+          ],
+          [
+            76.7707702,
+            12.5532284
+          ],
+          [
+            76.7708524,
+            12.5535722
+          ],
+          [
+            76.7708682,
+            12.554483
+          ],
+          [
+            76.770884,
+            12.5545688
+          ],
+          [
+            76.7709874,
+            12.5550606
+          ],
+          [
+            76.7709998,
+            12.5550949
+          ],
+          [
+            76.7710203,
+            12.5551224
+          ],
+          [
+            76.7710486,
+            12.5551366
+          ],
+          [
+            76.7710804,
+            12.5551416
+          ],
+          [
+            76.7713439,
+            12.5551067
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784418220",
+      "properties": {
+        "osmId": "way/784418220",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "unclassified",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "unclassified",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-61"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7885633,
+            12.5552496
+          ],
+          [
+            76.7891975,
+            12.5552349
+          ],
+          [
+            76.7892521,
+            12.5552337
+          ],
+          [
+            76.7892866,
+            12.5552233
+          ],
+          [
+            76.7893028,
+            12.5552073
+          ],
+          [
+            76.7893124,
+            12.5551848
+          ],
+          [
+            76.7893161,
+            12.5551384
+          ],
+          [
+            76.7893278,
+            12.5548266
+          ],
+          [
+            76.7893058,
+            12.5541109
+          ],
+          [
+            76.7893333,
+            12.5539918
+          ],
+          [
+            76.789393,
+            12.5538845
+          ],
+          [
+            76.7896821,
+            12.5534373
+          ],
+          [
+            76.7897324,
+            12.5533272
+          ],
+          [
+            76.7897535,
+            12.5531879
+          ],
+          [
+            76.7897897,
+            12.552588
+          ],
+          [
+            76.7897884,
+            12.552563
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450304",
+      "properties": {
+        "osmId": "way/784450304",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-62"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7913813,
+            12.5747106
+          ],
+          [
+            76.7920028,
+            12.5747259
+          ],
+          [
+            76.792037,
+            12.5747267
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450307",
+      "properties": {
+        "osmId": "way/784450307",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-63"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.791789,
+            12.5742446
+          ],
+          [
+            76.792037,
+            12.5742478
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450308",
+      "properties": {
+        "osmId": "way/784450308",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-64"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.792037,
+            12.5734141
+          ],
+          [
+            76.7918682,
+            12.5734151
+          ],
+          [
+            76.7918372,
+            12.5734226
+          ],
+          [
+            76.7918211,
+            12.5734383
+          ],
+          [
+            76.7918092,
+            12.5734642
+          ],
+          [
+            76.7918101,
+            12.573642
+          ],
+          [
+            76.7918191,
+            12.5738802
+          ],
+          [
+            76.7918265,
+            12.5739095
+          ],
+          [
+            76.7918453,
+            12.5739244
+          ],
+          [
+            76.7918727,
+            12.5739344
+          ],
+          [
+            76.792037,
+            12.5739372
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450310",
+      "properties": {
+        "osmId": "way/784450310",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-65"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7918101,
+            12.573642
+          ],
+          [
+            76.7918494,
+            12.5736406
+          ],
+          [
+            76.7920244,
+            12.5736343
+          ],
+          [
+            76.792037,
+            12.5736338
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450313",
+      "properties": {
+        "osmId": "way/784450313",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-66"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7918372,
+            12.5751923
+          ],
+          [
+            76.792037,
+            12.5751958
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450331",
+      "properties": {
+        "osmId": "way/784450331",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-67"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7887389,
+            12.5555688
+          ],
+          [
+            76.7892931,
+            12.5555217
+          ],
+          [
+            76.7900907,
+            12.5554673
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450333",
+      "properties": {
+        "osmId": "way/784450333",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-68"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7892931,
+            12.5555217
+          ],
+          [
+            76.7892866,
+            12.5552233
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450335",
+      "properties": {
+        "osmId": "way/784450335",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-69"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7900948,
+            12.5552403
+          ],
+          [
+            76.7900907,
+            12.5554673
+          ],
+          [
+            76.7900992,
+            12.5556159
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450336",
+      "properties": {
+        "osmId": "way/784450336",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-70"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7908386,
+            12.5556002
+          ],
+          [
+            76.7900992,
+            12.5556159
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450337",
+      "properties": {
+        "osmId": "way/784450337",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-71"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7900992,
+            12.5556159
+          ],
+          [
+            76.7901034,
+            12.5556717
+          ],
+          [
+            76.7901195,
+            12.5559196
+          ],
+          [
+            76.7901303,
+            12.5561246
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784450338",
+      "properties": {
+        "osmId": "way/784450338",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-72"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7893028,
+            12.5552073
+          ],
+          [
+            76.7899156,
+            12.5552285
+          ],
+          [
+            76.7900948,
+            12.5552403
+          ],
+          [
+            76.7907635,
+            12.5552575
+          ],
+          [
+            76.7907955,
+            12.5552605
+          ],
+          [
+            76.7908228,
+            12.5552741
+          ],
+          [
+            76.7908387,
+            12.5552969
+          ],
+          [
+            76.790847,
+            12.5553235
+          ],
+          [
+            76.7908386,
+            12.5556002
+          ],
+          [
+            76.7908399,
+            12.5556341
+          ],
+          [
+            76.7908509,
+            12.5559321
+          ],
+          [
+            76.7908601,
+            12.5561809
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784690144",
+      "properties": {
+        "osmId": "way/784690144",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-73"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7907549,
+            12.5561728
+          ],
+          [
+            76.7906855,
+            12.556339
+          ],
+          [
+            76.7906637,
+            12.556402
+          ],
+          [
+            76.790651,
+            12.556468
+          ],
+          [
+            76.7906333,
+            12.5566276
+          ],
+          [
+            76.7906304,
+            12.556661
+          ],
+          [
+            76.7906042,
+            12.5567497
+          ],
+          [
+            76.7906002,
+            12.5567878
+          ],
+          [
+            76.790611,
+            12.5571642
           ]
         ]
       }
@@ -3621,22 +5959,51 @@
         "nameKn": null,
         "highway": "track",
         "surface": "unpaved",
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "track",
           "source": "digitalglobe",
           "surface": "unpaved"
-        }
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-74"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.7852335,
-            12.557063
+            76.7840453,
+            12.5548819
+          ],
+          [
+            76.7842295,
+            12.5553088
+          ],
+          [
+            76.7844602,
+            12.5558403
+          ],
+          [
+            76.7844977,
+            12.55589
+          ],
+          [
+            76.7848652,
+            12.5563875
+          ],
+          [
+            76.7850771,
+            12.5566597
+          ],
+          [
+            76.7851281,
+            12.5567697
+          ],
+          [
+            76.7852139,
+            12.5570106
           ],
           [
             76.7853587,
@@ -3691,6 +6058,160 @@
     },
     {
       "type": "Feature",
+      "id": "way/784696943",
+      "properties": {
+        "osmId": "way/784696943",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "track",
+        "surface": "unpaved",
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "track",
+          "source": "digitalglobe",
+          "surface": "unpaved"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-75"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7905772,
+            12.5642285
+          ],
+          [
+            76.7906356,
+            12.5657208
+          ],
+          [
+            76.7906517,
+            12.5658412
+          ],
+          [
+            76.79081,
+            12.5663753
+          ],
+          [
+            76.7909575,
+            12.5669931
+          ],
+          [
+            76.7909575,
+            12.5670978
+          ],
+          [
+            76.7909038,
+            12.5672863
+          ],
+          [
+            76.7909038,
+            12.5674381
+          ],
+          [
+            76.7909843,
+            12.5677261
+          ],
+          [
+            76.7910862,
+            12.5682235
+          ],
+          [
+            76.791172,
+            12.5684853
+          ],
+          [
+            76.7913383,
+            12.5686999
+          ],
+          [
+            76.7918104,
+            12.5691921
+          ],
+          [
+            76.792037,
+            12.569558
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784696946",
+      "properties": {
+        "osmId": "way/784696946",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-76"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7901195,
+            12.5559196
+          ],
+          [
+            76.7908509,
+            12.5559321
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784723795",
+      "properties": {
+        "osmId": "way/784723795",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-77"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7916324,
+            12.5760355
+          ],
+          [
+            76.7919636,
+            12.576051
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "way/784723796",
       "properties": {
         "osmId": "way/784723796",
@@ -3700,22 +6221,59 @@
         "nameKn": null,
         "highway": "track",
         "surface": "unpaved",
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "track",
           "source": "digitalglobe",
           "surface": "unpaved"
-        }
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-78"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            76.787436,
-            12.5758374
+            76.7916536,
+            12.5757662
+          ],
+          [
+            76.7913008,
+            12.5757141
+          ],
+          [
+            76.7910433,
+            12.5757001
+          ],
+          [
+            76.790362,
+            12.5757734
+          ],
+          [
+            76.7898416,
+            12.5759986
+          ],
+          [
+            76.789611,
+            12.5760562
+          ],
+          [
+            76.7886722,
+            12.5760666
+          ],
+          [
+            76.7882001,
+            12.5759672
+          ],
+          [
+            76.7875028,
+            12.5759148
+          ],
+          [
+            76.7874598,
+            12.5758886
           ],
           [
             76.787433,
@@ -3738,6 +6296,234 @@
     },
     {
       "type": "Feature",
+      "id": "way/784723797",
+      "properties": {
+        "osmId": "way/784723797",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-79"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7916139,
+            12.576306
+          ],
+          [
+            76.7918913,
+            12.576309
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784723803",
+      "properties": {
+        "osmId": "way/784723803",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-80"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.792037,
+            12.5599781
+          ],
+          [
+            76.7912598,
+            12.5600823
+          ],
+          [
+            76.791197,
+            12.5600866
+          ],
+          [
+            76.7911286,
+            12.5600806
+          ],
+          [
+            76.7909459,
+            12.5600288
+          ],
+          [
+            76.790891,
+            12.5600209
+          ],
+          [
+            76.7908425,
+            12.5600201
+          ],
+          [
+            76.7898459,
+            12.5601972
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784729219",
+      "properties": {
+        "osmId": "way/784729219",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-81"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7901034,
+            12.5556717
+          ],
+          [
+            76.7896213,
+            12.5557192
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/784729220",
+      "properties": {
+        "osmId": "way/784729220",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "residential",
+        "surface": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "residential",
+          "source": "digitalglobe"
+        },
+        "ward": "Ward 5",
+        "id": "OSM-RD-82"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7908399,
+            12.5556341
+          ],
+          [
+            76.7910272,
+            12.5556322
+          ],
+          [
+            76.7910392,
+            12.555632
+          ],
+          [
+            76.7910468,
+            12.555632
+          ],
+          [
+            76.791236,
+            12.55563
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/785040910",
+      "properties": {
+        "osmId": "way/785040910",
+        "osmType": "way",
+        "category": "road",
+        "name": null,
+        "nameKn": null,
+        "highway": "track",
+        "surface": "unpaved",
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
+        "tags": {
+          "highway": "track",
+          "source": "digitalglobe",
+          "surface": "unpaved"
+        },
+        "ward": "Ward 3",
+        "id": "OSM-RD-83"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.7566037,
+            12.573098
+          ],
+          [
+            76.7570436,
+            12.5718728
+          ],
+          [
+            76.7573601,
+            12.5708519
+          ],
+          [
+            76.7575317,
+            12.5703964
+          ],
+          [
+            76.7579931,
+            12.5687052
+          ],
+          [
+            76.7581004,
+            12.5680501
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "way/788551033",
       "properties": {
         "osmId": "way/788551033",
@@ -3747,15 +6533,16 @@
         "nameKn": null,
         "highway": "track",
         "surface": "unpaved",
-        "amenity": null,
-        "building": null,
-        "office": null,
-        "man_made": null,
+        "condition": "Unknown",
+        "dataSource": "osm",
+        "isSample": false,
         "tags": {
           "highway": "track",
           "source": "digitalglobe",
           "surface": "unpaved"
-        }
+        },
+        "ward": "Ward 2",
+        "id": "OSM-RD-84"
       },
       "geometry": {
         "type": "LineString",

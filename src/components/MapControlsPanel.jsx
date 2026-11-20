@@ -121,6 +121,7 @@ export function MapControlsPanel({
             <option value="good">{tr(lang, 'goodWorkingOption')}</option>
             <option value="fair">{tr(lang, 'fairOption')}</option>
             <option value="poor">{tr(lang, 'poorFaultyOption')}</option>
+            <option value="unknown">{tr(lang, 'unknownOption')}</option>
           </select>
         </div>
       </div>

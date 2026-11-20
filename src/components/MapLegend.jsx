@@ -21,8 +21,8 @@ export function MapLegend({ lang }) {
               </span>
               <span>{tr(lang, 'legendWaterTank')}</span>
             </div>
-            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
-              {tr(lang, 'legendSamplePill')}
+            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-sky-50 text-sky-700 border border-sky-200">
+              {tr(lang, 'legendMixedPill')}
             </span>
           </div>
 
@@ -34,8 +34,8 @@ export function MapLegend({ lang }) {
               </span>
               <span>{tr(lang, 'legendBuilding')}</span>
             </div>
-            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
-              {tr(lang, 'legendMixedPill')}
+            <span className="px-1.5 py-0.2 rounded text-[9.5px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+              {tr(lang, 'legendSamplePill')}
             </span>
           </div>
 
@@ -93,6 +93,10 @@ export function MapLegend({ lang }) {
           <span className="inline-flex items-center gap-1.5 font-semibold text-slate-700">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-600 ring-2 ring-rose-200" />
             {tr(lang, 'poorFaultyOption')}
+          </span>
+          <span className="inline-flex items-center gap-1.5 font-semibold text-slate-700">
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-400 ring-2 ring-slate-200" />
+            {tr(lang, 'unknownOption')}
           </span>
         </div>
       </div>

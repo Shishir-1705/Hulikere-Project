@@ -1,10 +1,8 @@
 /**
  * Fetch real OpenStreetMap (OSM) infrastructure data for Hulikere village,
- * Mandya taluk, Mandya district, Karnataka using the Overpass API with a configurable
- * bounding box centered on Hulikere village.
+ * Mandya taluk, Mandya district, Karnataka using Overpass API with mirror fallback.
  *
- * All road geometries are clipped strictly to the village bounding box so no road
- * extends beyond it, and long highway segments leaving the area are clipped/trimmed.
+ * Configurable centre and radius (default: 2 km).
  *
  * Usage:
  *   node scripts/fetchOsm.js
@@ -20,23 +18,27 @@ const __dirname = path.dirname(__filename);
 
 /**
  * Easily editable center & radius configuration.
- * Coordinates centered on Hulikere village, Mandya District (OSM node 3211036616).
+ * Coordinates verified at Hulikere village (OSM place=village node 3211036616).
  */
 export const CONFIG = {
-  overpassUrl: 'https://overpass-api.de/api/interpreter',
+  overpassUrls: [
+    'https://overpass-api.de/api/interpreter',
+    'https://overpass.kumi.systems/api/interpreter',
+    'https://overpass.private.coffee/api/interpreter',
+  ],
   villageName: 'Hulikere',
   districtName: 'Mandya',
   stateName: 'Karnataka',
   // Village centre coordinates
   centerLat: 12.57056,
   centerLng: 76.77363,
-  radiusKm: 1.5,
+  radiusKm: 2.0, // 2 km radius
   outputPath: path.resolve(__dirname, '../src/data/osm.json'),
   timeoutSeconds: 45,
 };
 
 /**
- * Computes bounding box [south, west, north, east] from center (lat, lng) and radius in km.
+ * Computes bounding box [south, west, north, east] from center and radius in km.
  */
 export function getBoundingBox(
   lat = CONFIG.centerLat,
@@ -60,7 +62,7 @@ function toRadians(deg) {
   return (deg * Math.PI) / 180;
 }
 
-function haversineMeters(lat1, lon1, lat2, lon2) {
+export function haversineMeters(lat1, lon1, lat2, lon2) {
   const R = 6371000;
   const dLat = toRadians(lat2 - lat1);
   const dLon = toRadians(lon2 - lon1);
@@ -152,10 +154,6 @@ function clipSegment(p0, p1, xMin, yMin, xMax, yMax) {
   return null;
 }
 
-/**
- * Clips a polyline to bounding box.
- * Returns an array of clipped continuous polylines.
- */
 function clipPolylineToBbox(coords, bbox) {
   const [south, west, north, east] = bbox;
   const xMin = west;
@@ -201,106 +199,102 @@ function clipPolylineToBbox(coords, bbox) {
   return clippedLines.filter((line) => polylineLengthMeters(line) >= 20);
 }
 
-function buildFeatureFilters(scopeClause) {
-  return `
-  way["highway"](${scopeClause});
-  nwr["amenity"](${scopeClause});
-  nwr["office"](${scopeClause});
-  nwr["government"](${scopeClause});
-  nwr["building"](${scopeClause});
-  nwr["man_made"~"^(water_tower|water_tank|water_well|storage_tank)$"](${scopeClause});
-`.trim();
-}
-
-function buildBboxQuery(bbox, timeoutSeconds) {
-  const [south, west, north, east] = bbox;
-  const bboxStr = `${south},${west},${north},${east}`;
+function buildBroadQuery(bboxStr, timeoutSeconds) {
   return `
 [out:json][timeout:${timeoutSeconds}];
 (
-  ${buildFeatureFilters(bboxStr)}
+  // Roads: all highway except motorway, plus tracks and paths
+  way["highway"]["highway"!="motorway"]["highway"!="motorway_link"](${bboxStr});
+
+  // Public buildings & amenities
+  nwr["amenity"~"^(school|kindergarten|college|clinic|hospital|doctors|pharmacy|community_centre|townhall|post_office|library|bank|marketplace|police|place_of_worship)$"](${bboxStr});
+  nwr["building"~"^(school|temple|mosque|church|government|public)$"](${bboxStr});
+  nwr["office"~"^(government|administrative)$"](${bboxStr});
+  nwr["government"](${bboxStr});
+
+  // Water structures & bodies
+  nwr["man_made"~"^(water_tower|water_well|storage_tank|water_tap|pumping_station)$"](${bboxStr});
+  nwr["natural"="water"](${bboxStr});
+  nwr["landuse"="reservoir"](${bboxStr});
+  nwr["amenity"="drinking_water"](${bboxStr});
+
+  // Street lights
+  node["highway"="street_lamp"](${bboxStr});
+  node["lamp_type"](${bboxStr});
+
+  // Building=yes (houses/structures to count)
+  nwr["building"="yes"](${bboxStr});
 );
-out body geom;
+out center geom;
 `.trim();
 }
 
-async function queryOverpass(ql) {
-  const response = await fetch(CONFIG.overpassUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      Accept: 'application/json',
-      'User-Agent': 'HulikereGramPanchayatAssetManager/1.0',
-    },
-    body: `data=${encodeURIComponent(ql)}`,
-  });
+async function queryOverpassWithMirrors(ql) {
+  for (const url of CONFIG.overpassUrls) {
+    try {
+      console.log(`Connecting to Overpass endpoint: ${url}...`);
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          Accept: 'application/json',
+          'User-Agent': 'HulikereBroadOsmImporter/2.0',
+        },
+        body: `data=${encodeURIComponent(ql)}`,
+      });
 
-  if (!response.ok) {
-    const errText = await response.text().catch(() => '');
-    throw new Error(
-      `Overpass API HTTP ${response.status} ${response.statusText}: ${errText.slice(0, 200)}`
-    );
-  }
-
-  return response.json();
-}
-
-/**
- * Filter roads: drop unnamed footpaths and tiny service lanes,
- * while keeping all residential, unclassified, tertiary, secondary, primary, and named roads.
- */
-function shouldKeepRoad(tags = {}) {
-  const highway = String(tags.highway || '').toLowerCase();
-  const name = tags.name || tags['name:en'] || tags['name:kn'];
-
-  // Drop unnamed footpaths, trails, steps, cycleways, tracks
-  const pedestrianTypes = [
-    'footway',
-    'path',
-    'steps',
-    'cycleway',
-    'pedestrian',
-    'bridleway',
-    'corridor',
-  ];
-  if (pedestrianTypes.includes(highway)) {
-    if (!name) return false;
-  }
-
-  // Drop tiny service lanes (driveways, parking aisles, alleys)
-  if (highway === 'service') {
-    const serviceType = String(tags.service || '').toLowerCase();
-    if (['driveway', 'parking_aisle', 'alley'].includes(serviceType)) {
-      return false;
-    }
-    if (!name && serviceType === '') {
-      return false;
+      if (response.ok) {
+        return await response.json();
+      }
+      console.warn(`Endpoint ${url} returned status ${response.status} ${response.statusText}`);
+    } catch (err) {
+      console.warn(`Failed connecting to ${url}: ${err.message}`);
     }
   }
 
-  return true;
+  throw new Error('All Overpass API mirrors failed or timed out.');
 }
 
 function classifyElement(tags = {}) {
-  const manMade = String(tags.man_made || '').toLowerCase();
+  const hw = tags.highway;
+  const mm = tags.man_made;
+  const nat = tags.natural;
+  const lu = tags.landuse;
+  const amenity = tags.amenity;
+  const bldg = tags.building;
+
+  if (hw === 'street_lamp' || tags.lamp_type) {
+    return 'streetLight';
+  }
+
   if (
-    manMade === 'water_tower' ||
-    manMade === 'water_tank' ||
-    manMade === 'water_well' ||
-    manMade === 'storage_tank'
+    mm === 'water_tower' ||
+    mm === 'water_well' ||
+    mm === 'storage_tank' ||
+    mm === 'water_tap' ||
+    mm === 'pumping_station' ||
+    amenity === 'drinking_water' ||
+    nat === 'water' ||
+    lu === 'reservoir'
   ) {
     return 'waterTank';
   }
 
-  if (tags.highway) {
-    if (!shouldKeepRoad(tags)) {
-      return null;
-    }
-    return 'road';
+  if (
+    amenity ||
+    ['school', 'temple', 'mosque', 'church', 'government', 'public'].includes(bldg) ||
+    tags.office ||
+    tags.government
+  ) {
+    return 'publicBuilding';
   }
 
-  if (tags.amenity || tags.office || tags.government || tags.building) {
-    return 'publicBuilding';
+  if (bldg === 'yes') {
+    return 'houseCount';
+  }
+
+  if (hw && hw !== 'motorway' && hw !== 'motorway_link') {
+    return 'road';
   }
 
   return null;
@@ -314,11 +308,10 @@ function isClosedRing(coords) {
 }
 
 function elementToGeometry(el, category, bbox) {
+  const [south, west, north, east] = bbox;
+
   if (el.type === 'node' && typeof el.lon === 'number' && typeof el.lat === 'number') {
-    const [south, west, north, east] = bbox;
-    if (el.lat < south || el.lat > north || el.lon < west || el.lon > east) {
-      return null;
-    }
+    if (el.lat < south || el.lat > north || el.lon < west || el.lon > east) return null;
     return {
       type: 'Point',
       coordinates: [el.lon, el.lat],
@@ -361,59 +354,136 @@ function elementToGeometry(el, category, bbox) {
     };
   }
 
+  if (el.center && typeof el.center.lat === 'number' && typeof el.center.lon === 'number') {
+    if (el.center.lat < south || el.center.lat > north || el.center.lon < west || el.center.lon > east) {
+      return null;
+    }
+    return {
+      type: 'Point',
+      coordinates: [el.center.lon, el.center.lat],
+    };
+  }
+
   return null;
 }
 
-function overpassToGeoJson(overpassJson, metaInfo, bbox) {
-  const elements = Array.isArray(overpassJson?.elements)
-    ? overpassJson.elements
-    : [];
+function getFeatureCenter(feature) {
+  const g = feature.geometry;
+  if (!g) return null;
+  if (g.type === 'Point' && Array.isArray(g.coordinates)) {
+    return [g.coordinates[1], g.coordinates[0]]; // [lat, lon]
+  }
+  if (g.type === 'LineString' && Array.isArray(g.coordinates) && g.coordinates.length > 0) {
+    const mid = g.coordinates[Math.floor(g.coordinates.length / 2)];
+    return [mid[1], mid[0]];
+  }
+  if (g.type === 'Polygon' && Array.isArray(g.coordinates?.[0]) && g.coordinates[0].length > 0) {
+    const ring = g.coordinates[0];
+    const avgLon = ring.reduce((s, p) => s + p[0], 0) / ring.length;
+    const avgLat = ring.reduce((s, p) => s + p[1], 0) / ring.length;
+    return [avgLat, avgLon];
+  }
+  return null;
+}
 
-  const seenKeys = new Set();
-  const features = [];
+function pointInPolygon(lat, lng, polygon) {
+  if (!Array.isArray(polygon) || polygon.length < 3) return false;
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0];
+    const yi = polygon[i][1];
+    const xj = polygon[j][0];
+    const yj = polygon[j][1];
+    const intersect =
+      yi > lng !== yj > lng &&
+      lat < ((xj - xi) * (lng - yi)) / (yj - yi + 1e-12) + xi;
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+
+function assignWard(lat, lng, wards = []) {
+  for (const w of wards) {
+    if (pointInPolygon(lat, lng, w.polygon)) {
+      return w.ward;
+    }
+  }
+  let bestWard = wards[0]?.ward || 'Ward 1';
+  let bestDist = Infinity;
+  for (const w of wards) {
+    if (!Array.isArray(w.center) || w.center.length !== 2) continue;
+    const d = haversineMeters(lat, lng, w.center[0], w.center[1]);
+    if (d < bestDist) {
+      bestDist = d;
+      bestWard = w.ward;
+    }
+  }
+  return bestWard;
+}
+
+export function deduplicateFeatures(features, thresholdMeters = 10) {
+  const kept = [];
+  const byCategory = {};
+
+  for (const f of features) {
+    const cat = f.properties.category;
+    const center = getFeatureCenter(f);
+    if (!center) {
+      kept.push(f);
+      continue;
+    }
+
+    if (!byCategory[cat]) byCategory[cat] = [];
+
+    // Check if within thresholdMeters of an existing item in same category
+    const isDuplicate = byCategory[cat].some((existing) => {
+      const eCenter = getFeatureCenter(existing);
+      if (!eCenter) return false;
+      const d = haversineMeters(center[0], center[1], eCenter[0], eCenter[1]);
+      return d < thresholdMeters;
+    });
+
+    if (!isDuplicate) {
+      byCategory[cat].push(f);
+      kept.push(f);
+    }
+  }
+
+  return kept;
+}
+
+export function overpassToGeoJson(overpassJson, metaInfo, bbox, wards = []) {
+  const elements = Array.isArray(overpassJson?.elements) ? overpassJson.elements : [];
+  const rawFeatures = [];
+
+  let houseCount = 0;
   const counts = {
     roads: 0,
     publicBuildings: 0,
     waterTanks: 0,
-    droppedRoads: 0,
-    buildingsBreakdown: {
-      school: 0,
-      anganwadi: 0,
-      hospitalOrClinic: 0,
-      communityCentre: 0,
-      temple: 0,
-      panchayatOrGovtOffice: 0,
-      otherNamedBuilding: 0,
-    },
-    waterBreakdown: {
-      water_tower: 0,
-      water_tank: 0,
-      water_well: 0,
-    },
+    streetLights: 0,
+    residentialHouses: 0,
   };
 
   for (const el of elements) {
     const tags = el.tags || {};
-    if (tags.highway && !shouldKeepRoad(tags)) {
-      counts.droppedRoads += 1;
-      continue;
-    }
-
     const category = classifyElement(tags);
     if (!category) continue;
 
-    const uniqueKey = `${el.type}/${el.id}`;
-    if (seenKeys.has(uniqueKey)) continue;
-    seenKeys.add(uniqueKey);
+    if (category === 'houseCount') {
+      houseCount++;
+      continue;
+    }
 
     const geomResult = elementToGeometry(el, category, bbox);
     if (!geomResult) continue;
 
+    const uniqueKey = `${el.type}/${el.id}`;
+
     if (category === 'road' && geomResult.type === 'ClippedLines') {
       geomResult.lines.forEach((lineCoords, idx) => {
-        counts.roads += 1;
         const lineId = geomResult.lines.length > 1 ? `${uniqueKey}_${idx + 1}` : uniqueKey;
-        features.push({
+        rawFeatures.push({
           type: 'Feature',
           id: lineId,
           properties: {
@@ -424,10 +494,9 @@ function overpassToGeoJson(overpassJson, metaInfo, bbox) {
             nameKn: tags['name:kn'] || null,
             highway: tags.highway || null,
             surface: tags.surface || null,
-            amenity: tags.amenity || null,
-            building: tags.building || null,
-            office: tags.office || null,
-            man_made: tags.man_made || null,
+            condition: 'Unknown',
+            dataSource: 'osm',
+            isSample: false,
             tags,
           },
           geometry: {
@@ -439,69 +508,7 @@ function overpassToGeoJson(overpassJson, metaInfo, bbox) {
       continue;
     }
 
-    if (category === 'waterTank') {
-      counts.waterTanks += 1;
-      const mm = String(tags.man_made || '').toLowerCase();
-      if (mm === 'water_tower') counts.waterBreakdown.water_tower += 1;
-      else if (mm === 'water_well') counts.waterBreakdown.water_well += 1;
-      else counts.waterBreakdown.water_tank += 1;
-    } else if (category === 'publicBuilding') {
-      counts.publicBuildings += 1;
-      const amenity = String(tags.amenity || '').toLowerCase();
-      const bldg = String(tags.building || '').toLowerCase();
-      const office = String(tags.office || '').toLowerCase();
-      const nameLower = String(tags.name || '').toLowerCase();
-
-      if (amenity === 'school' || bldg === 'school' || nameLower.includes('school')) {
-        counts.buildingsBreakdown.school += 1;
-      } else if (
-        amenity === 'kindergarten' ||
-        bldg === 'kindergarten' ||
-        nameLower.includes('anganwadi')
-      ) {
-        counts.buildingsBreakdown.anganwadi += 1;
-      } else if (
-        amenity === 'hospital' ||
-        amenity === 'clinic' ||
-        amenity === 'doctors' ||
-        bldg === 'hospital' ||
-        bldg === 'clinic' ||
-        nameLower.includes('phc') ||
-        nameLower.includes('hospital') ||
-        nameLower.includes('clinic')
-      ) {
-        counts.buildingsBreakdown.hospitalOrClinic += 1;
-      } else if (
-        amenity === 'community_centre' ||
-        amenity === 'social_facility' ||
-        nameLower.includes('community') ||
-        nameLower.includes('bhavan')
-      ) {
-        counts.buildingsBreakdown.communityCentre += 1;
-      } else if (
-        amenity === 'place_of_worship' ||
-        bldg === 'temple' ||
-        nameLower.includes('temple') ||
-        nameLower.includes('devasthana')
-      ) {
-        counts.buildingsBreakdown.temple += 1;
-      } else if (
-        office === 'government' ||
-        office === 'administrative' ||
-        tags.government ||
-        amenity === 'townhall' ||
-        bldg === 'government' ||
-        bldg === 'public' ||
-        bldg === 'civic' ||
-        nameLower.includes('panchayat')
-      ) {
-        counts.buildingsBreakdown.panchayatOrGovtOffice += 1;
-      } else {
-        counts.buildingsBreakdown.otherNamedBuilding += 1;
-      }
-    }
-
-    features.push({
+    rawFeatures.push({
       type: 'Feature',
       id: uniqueKey,
       properties: {
@@ -516,71 +523,123 @@ function overpassToGeoJson(overpassJson, metaInfo, bbox) {
         building: tags.building || null,
         office: tags.office || null,
         man_made: tags.man_made || null,
+        natural: tags.natural || null,
+        landuse: tags.landuse || null,
+        condition: 'Unknown',
+        dataSource: 'osm',
+        isSample: false,
         tags,
       },
       geometry: geomResult,
     });
   }
 
+  // Deduplicate features within 10 meters
+  const deduplicatedFeatures = deduplicateFeatures(rawFeatures, 10);
+
+  // Assign ID and Ward to each feature
+  let roadSeq = 1;
+  let pbSeq = 1;
+  let wtSeq = 1;
+  let slSeq = 1;
+
+  for (const f of deduplicatedFeatures) {
+    const c = f.properties.category;
+    const center = getFeatureCenter(f);
+    const ward = center ? assignWard(center[0], center[1], wards) : 'Ward 1';
+
+    f.properties.ward = ward;
+    f.properties.condition = 'Unknown';
+    f.properties.dataSource = 'osm';
+    f.properties.isSample = false;
+
+    if (c === 'road') {
+      const assetId = `OSM-RD-${String(roadSeq++).padStart(2, '0')}`;
+      f.properties.id = assetId;
+      counts.roads++;
+    } else if (c === 'publicBuilding') {
+      const assetId = `OSM-PB-${String(pbSeq++).padStart(2, '0')}`;
+      f.properties.id = assetId;
+      counts.publicBuildings++;
+    } else if (c === 'waterTank') {
+      const assetId = `OSM-WT-${String(wtSeq++).padStart(2, '0')}`;
+      f.properties.id = assetId;
+      counts.waterTanks++;
+    } else if (c === 'streetLight') {
+      const assetId = `OSM-SL-${String(slSeq++).padStart(2, '0')}`;
+      f.properties.id = assetId;
+      counts.streetLights++;
+    }
+  }
+  counts.residentialHouses = houseCount;
+
   return {
     type: 'FeatureCollection',
     metadata: {
       ...metaInfo,
       counts: {
-        total: features.length,
+        total: deduplicatedFeatures.length,
         roads: counts.roads,
-        droppedRoads: counts.droppedRoads,
         publicBuildings: counts.publicBuildings,
         waterTanks: counts.waterTanks,
-        buildingsBreakdown: counts.buildingsBreakdown,
-        waterBreakdown: counts.waterBreakdown,
+        streetLights: counts.streetLights,
+        residentialHouses: counts.residentialHouses,
       },
     },
-    features,
+    features: deduplicatedFeatures,
   };
 }
 
 export async function fetchOsmData() {
   const bbox = getBoundingBox(CONFIG.centerLat, CONFIG.centerLng, CONFIG.radiusKm);
   console.log(`\n======================================================`);
-  console.log(`Fetching OpenStreetMap data for ${CONFIG.villageName} village`);
+  console.log(`Broad Overpass Fetch for ${CONFIG.villageName} Village`);
   console.log(`Center: [${CONFIG.centerLat}, ${CONFIG.centerLng}]`);
   console.log(`Radius: ${CONFIG.radiusKm} km`);
   console.log(`Bounding Box [S, W, N, E]: [${bbox.join(', ')}]`);
   console.log(`======================================================\n`);
 
-  const ql = buildBboxQuery(bbox, CONFIG.timeoutSeconds);
-  const overpassData = await queryOverpass(ql);
-
-  if (overpassData.remark) {
-    console.warn(`Overpass remark: ${overpassData.remark}`);
+  let wards = [];
+  try {
+    const assetsPath = path.resolve(__dirname, '../src/data/assets.json');
+    const assetsRaw = await fs.readFile(assetsPath, 'utf8');
+    const parsedAssets = JSON.parse(assetsRaw);
+    wards = parsedAssets.wards || [];
+  } catch (e) {
+    console.warn('Could not load assets.json for ward assignment:', e.message);
   }
+
+  const bboxStr = `${bbox[0]},${bbox[1]},${bbox[2]},${bbox[3]}`;
+  const ql = buildBroadQuery(bboxStr, CONFIG.timeoutSeconds);
+  const overpassData = await queryOverpassWithMirrors(ql);
 
   const geoJson = overpassToGeoJson(
     overpassData,
     {
       fetchedAt: new Date().toISOString(),
       source: 'OpenStreetMap (Overpass API)',
-      queryMethod: 'bbox',
+      queryMethod: 'bbox-broad',
       village: CONFIG.villageName,
       district: CONFIG.districtName,
       center: [CONFIG.centerLat, CONFIG.centerLng],
       radiusKm: CONFIG.radiusKm,
       bbox,
     },
-    bbox
+    bbox,
+    wards
   );
 
   await fs.mkdir(path.dirname(CONFIG.outputPath), { recursive: true });
   await fs.writeFile(CONFIG.outputPath, JSON.stringify(geoJson, null, 2), 'utf8');
 
   const { counts } = geoJson.metadata;
-  console.log('\n=== Overpass Fetch Summary for Hulikere Village ===');
-  console.log(`Total valid features : ${counts.total}`);
-  console.log(`Roads (clipped)      : ${counts.roads}`);
-  console.log(`Roads/paths (dropped): ${counts.droppedRoads}`);
-  console.log(`Public buildings     : ${counts.publicBuildings}`);
-  console.log(`Water structures     : ${counts.waterTanks}`);
+  console.log('\n=== Overpass Broad Fetch Summary for Hulikere Village ===');
+  console.log(`Total real features imported : ${counts.total}`);
+  console.log(`Roads (clipped & deduplicated): ${counts.roads}`);
+  console.log(`Public buildings & amenities  : ${counts.publicBuildings}`);
+  console.log(`Water structures & bodies     : ${counts.waterTanks}`);
+  console.log(`Street lights (OSM)           : ${counts.streetLights}`);
+  console.log(`Residential houses (building=yes): ${counts.residentialHouses}`);
   console.log(`\nGeoJSON saved successfully to: ${CONFIG.outputPath}`);
 
   return geoJson;

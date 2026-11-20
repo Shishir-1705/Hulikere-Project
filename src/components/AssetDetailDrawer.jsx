@@ -362,15 +362,15 @@ export function AssetDetailDrawer({
                 {asset.id}
               </span>
               <span
-                className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full border ${
+                className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                   asset.dataSource === 'osm'
                     ? 'bg-sky-50 text-sky-700 border-sky-200'
                     : 'bg-amber-50 text-amber-800 border-amber-200'
                 }`}
               >
                 {asset.dataSource === 'osm'
-                  ? tr(lang, 'sourceOsmFull')
-                  : tr(lang, 'sourceSample')}
+                  ? tr(lang, 'sourceTagOsm')
+                  : tr(lang, 'sourceTagSample')}
               </span>
             </div>
             <p className="text-xs font-medium text-slate-600 mt-0.5">

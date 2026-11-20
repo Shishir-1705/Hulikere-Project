@@ -99,6 +99,15 @@ export function getStatusMeta(value) {
       bucket: 'fair',
     };
   }
+  if (v === 'unknown') {
+    return {
+      label: 'Unknown',
+      colorHex: '#64748b',
+      pillClass: 'bg-slate-100 text-slate-700 border border-slate-300',
+      dotClass: 'bg-slate-400',
+      bucket: 'unknown',
+    };
+  }
   return {
     label: v === 'faulty' ? 'Faulty' : 'Poor',
     colorHex: '#dc2626',
